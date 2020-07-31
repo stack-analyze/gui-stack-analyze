@@ -1,0 +1,58 @@
+{
+  "name": "gui-stack-analyze",
+  "version": "1.0.0",
+  "description": "GUI version inspired from npm module stack-analyze 1.0.5 and browser extension",
+  "main": "app/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intermachine-developers/gui-stack-analyze.git"
+  },
+  "bugs": {
+    "url": "https://github.com/intermachine-developers/gui-stack-analyze/issues"
+  },
+  "homepage": "https://github.com/intermachine-developers/gui-stack-analyze#readme",
+  "build": {
+    "appId": "com.intermachinedevelopers.stack-analyze",
+    "productName": "stack-analyze",
+    "files": [
+      "./app",
+      "./icons",
+      "./package.json"
+    ],
+    "directories": {
+      "output": "./dist"
+    },
+    "copyright": "Intermachine Developers"
+  },
+  "scripts": {
+    "start": "electron .",
+    "lint": "eslint .",
+    "electron:win": "electron-builder -w portable --x64 --ia32 --dir",
+    "electron:mac": "electron-builder -m zip --dir",
+    "electron:linux": "electron-builder -l AppImage --x64 --ia32 --dir",
+    "electron": "electron-builder"
+  },
+  "keywords": [
+    "wappalyzer",
+    "tech stack",
+    "intermachine",
+    "material design"
+  ],
+  "author": "Intermachine Developers",
+  "license": "MIT",
+  "dependencies": {
+    "material-design-icons": "^3.0.1",
+    "materialize-css": "^1.0.0",
+    "wappalyzer": "^6.1.1"
+  },
+  "devDependencies": {
+    "electron": "^9.1.2",
+    "electron-builder": "^22.8.0",
+    "eslint": "^7.5.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}
