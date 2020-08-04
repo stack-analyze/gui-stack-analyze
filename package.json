@@ -14,10 +14,11 @@
   "build": {
     "appId": "com.intermachinedevelopers.stack-analyze",
     "productName": "stack-analyze",
+    "asar": false,
     "files": [
-      "./app",
-      "./icons",
-      "./package.json"
+      "app/**/*",
+      "icons",
+      "package.json"
     ],
     "directories": {
       "output": "./dist"
@@ -27,10 +28,9 @@
   "scripts": {
     "start": "electron .",
     "lint": "eslint .",
-    "electron:win": "electron-builder -w portable --x64 --ia32 --dir",
-    "electron:mac": "electron-builder -m zip --dir",
-    "electron:linux": "electron-builder -l AppImage --x64 --ia32 --dir",
-    "electron": "electron-builder"
+    "electron:win": "electron-builder -w portable",
+    "electron:mac": "electron-builder -m dmg",
+    "electron:linux": "electron-builder -l AppImage"
   },
   "keywords": [
     "wappalyzer",
