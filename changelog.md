@@ -13,6 +13,7 @@ stack-analyze desktop all version and notable changes, fixed, remove and new add
 - validate status page
 ### Changed
 - rewitre and organize the tools structure
+- remove metalangue
 
 ## version 1.0.0
 - fisrt official version in npm with the modules:
