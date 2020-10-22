@@ -24,9 +24,9 @@ examples of start analyze
 [module repo](https://github.com/intermachine-developers/stack-analyze)
 
 **history version:<br>**
-[changelog](/changelog)
+[changelog](/changelog..md)
 
 **system requeriments:<br>**
-[system requeriments](/requeriments)
+[system requeriments](/requeriments.md)
 
 **Main developer omega5300 _MIT license_**
