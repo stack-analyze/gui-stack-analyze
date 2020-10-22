@@ -7,7 +7,8 @@ const { app, BrowserWindow, Menu, dialog } = require('electron')
 const msg = require('./msg')
 
 // window
-let win = null
+let win
+let htmlTool
 
 // window function
 const createWindow = () => {
@@ -15,11 +16,12 @@ const createWindow = () => {
   win = new BrowserWindow({
     width: 1024,
     height: 768,
+    resizable: false,
+    darkTheme: true,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
     },
     autoHideMenuBar: false,
-    darkTheme: true,
     icon: join(__dirname, '../icons/icon.png')
   })
 
@@ -28,7 +30,7 @@ const createWindow = () => {
   // load index.html in the app
   win.loadURL(
     format({
-      pathname: join(__dirname, 'index.html'),
+      pathname: join(__dirname, 'index/index.html'),
       protocol: 'file',
       slashes: true
     })
@@ -38,10 +40,63 @@ const createWindow = () => {
   win.on('closed', () => (win = null))
 }
 
+function htmlValidator () {
+  htmlTool = new BrowserWindow({
+    width: 800,
+    height: 600,
+    resizable: false,
+    darkTheme: true,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+    autoHideMenuBar: false,
+    icon: join(__dirname, '../icons/icon.png')
+  })
+
+  htmlTool.loadURL(
+    format({
+      pathname: join(__dirname, 'html-validator/index.html'),
+      protocol: 'file',
+      slashes: true
+    })
+  )
+
+  // html validator menu
+  const exclusiveToolMenu = [
+    {
+      label: 'validator tool',
+      submenu: [
+        {
+          label: 'delete validator',
+          click () {
+            htmlTool.webContents.send('clear-validator')
+          }
+        },
+        {
+          label: 'About tool',
+          click () {
+            dialog.showMessageBoxSync({
+              icon: join(__dirname, '../icons/icon.png'),
+              type: 'info',
+              buttons: ['OK'],
+              title: 'HTML validator',
+              detail: 'exclusive tool for stack-analyze-gui analyze HTML page',
+              message: 'developer and design: omega5300'
+            })
+          }
+        }
+      ]
+    }
+  ]
+
+  const menu = Menu.buildFromTemplate(exclusiveToolMenu)
+  htmlTool.setMenu(menu)
+}
+
 // mac os
 const isMac = process.platform === 'dawin'
 
-// menu template
+// main menu template
 const templateMenu = [
   ...(isMac
     ? [
@@ -71,8 +126,33 @@ const templateMenu = [
     ]
   },
   {
+    label: 'Exclusive tool',
+    submenu: [
+      {
+        label: 'html validator',
+        accelerator: 'Ctrl+H',
+        click () {
+          htmlValidator()
+        }
+      }
+    ]
+  },
+  {
     label: 'Help',
     submenu: [
+      {
+        label: 'About tool',
+        click () {
+          dialog.showMessageBoxSync({
+            icon: join(__dirname, '../icons/icon.png'),
+            type: 'info',
+            buttons: ['OK'],
+            title: 'tech stack and pagespeed',
+            detail: 'pagespeed and tech stack analyze tools',
+            message: 'developers and design: omega5300'
+          })
+        }
+      },
       {
         label: 'About App',
         accelerator: 'F1',

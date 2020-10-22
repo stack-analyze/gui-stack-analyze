@@ -1,4 +1,4 @@
-# gui-stack-anlyze
+# stack-anlyze-desktop
 
 ![logo stack-analyze gui edition!](docs/stack-gui-logo.png "stack-analyze gui edition")
 
@@ -11,10 +11,22 @@ examples of start analyze
 ![window start stack-analyze gui edition!](docs/start-window.png "window start")
 
 ### analyze website
-![website analyzer with stack-analyze gui edition!](docs/analyze.png "finish analyzer")
+![website analyzer with stack-analyze gui edition!](docs/tech-analyze-pagespeed.png "finish analyzer")
+
+### HTML validator start
+![start HTML validator exclusive tool](docs/validator-tool.png "finish analyzer")
+
+### HTML validator finish
+![finish HTML validator exclusive tool!](docs/validator-analyze.png "finish validator")
 
 ## CLI edition
 [stack-analyze module](https://www.npmjs.com/package/stack-analyze)<br>
 [module repo](https://github.com/intermachine-developers/stack-analyze)
+
+**history version:<br>**
+[changelog](/changelog)
+
+**system requeriments:<br>**
+[system requeriments](/requeriments)
 
 **Main developer omega5300 _MIT license_**

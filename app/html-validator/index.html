@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>validator Tool</title>
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <header class="header">
+    <h1 id="title">HTML validator</h1>
+  </header>
+
+  <main>
+    <section class="form-validate">
+      <form id="validator">
+        <fieldset>
+          <input type="url" id="website" class="link-validate" placeholder="enter a website"
+            pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+            required>
+        </fieldset>
+        <fieldset>
+          <button id="btn" class="submit-validate" type="submit" disabled>
+            validate
+          </button>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- render results -->
+    <section id="html-results" class="results-validator scroll"></section>
+  </main>
+
+  <footer id="link" class="footer"></footer>
+  <script src="renderer.js"></script>
+</body>
+
+</html>
