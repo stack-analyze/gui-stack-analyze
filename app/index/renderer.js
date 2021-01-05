@@ -3,24 +3,12 @@ const { ipcRenderer, shell } = require('electron')
 const Wappalyzer = require('wappalyzer')
 const { toast } = require('materialize-css')
 
-// pagespeed and resetDOM
-const {
-  ctxMobile,
-  ctxDesktop,
-  mobilePercent,
-  desktopPercent,
-  stats,
-  mobile,
-  desktop
-} = require('./pageSpeed')
-
 // DOM elements
 const From = document.getElementById('analyze')
 const webSite = document.getElementById('web')
 const techStack = document.querySelector('tbody')
 const analyzeLink = document.querySelector('.analyze-link')
 const analyzeButton = document.getElementById('analyze-button')
-const urlTitle = document.getElementById('url')
 
 // DOM fragment
 const fragment = document.createDocumentFragment()
@@ -99,10 +87,6 @@ From.addEventListener('submit', (e) => {
   techStack.innerHTML = ''
   stack(webSite.value)
 
-  desktop(webSite.value)
-  mobile(webSite.value)
-
-  urlTitle.textContent = webSite.value
   analyzeButton.disabled = true
   e.preventDefault()
   From.reset()
@@ -110,10 +94,5 @@ From.addEventListener('submit', (e) => {
 
 // clear analyze
 ipcRenderer.on('clear-stack', () => {
-  stats(ctxMobile, 0, '#000')
-  stats(ctxDesktop, 0, '#000')
-  mobilePercent.textContent = ''
-  desktopPercent.textContent = ''
-  urlTitle.textContent = ''
   techStack.innerHTML = ''
 })

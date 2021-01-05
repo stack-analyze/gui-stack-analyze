@@ -1,6 +1,7 @@
 // modules
 const { ipcRenderer } = require('electron')
 const validator = require('html-validator')
+const { toast } = require('materialize-css')
 
 // DOM elements
 const form = document.getElementById('validator')
@@ -15,6 +16,7 @@ const fragment = document.createDocumentFragment()
 const htmlValidator = async (url) => {
   const options = {
     url,
+    validator: 'http://html5.validator.nu',
     format: 'json'
   }
 
@@ -23,9 +25,10 @@ const htmlValidator = async (url) => {
 
     res.messages.map((data) => {
       // create elements
-      const row = document.createElement('code')
+      const row = document.createElement('article')
       const msg = document.createElement('span')
-      const msgDetails = document.createElement('span')
+      const msgContent = document.createElement('pre')
+      const msgDetails = document.createElement('code')
       const details = document.createElement('b')
 
       // conditional class
@@ -40,8 +43,10 @@ const htmlValidator = async (url) => {
       details.textContent = data.extract
       details.classList.add('code', 'scroll')
 
+      msgContent.appendChild(msgDetails)
+
       row.appendChild(msg)
-      row.appendChild(msgDetails)
+      row.appendChild(msgContent)
       row.appendChild(details)
 
       fragment.appendChild(row)
@@ -49,7 +54,7 @@ const htmlValidator = async (url) => {
       resultValidator.appendChild(fragment)
     })
   } catch (err) {
-    alert(err.message)
+    toast({ html: err.message, classes: 'rounded toast-bottom' })
   }
 }
 
@@ -61,8 +66,6 @@ form.addEventListener('submit', (e) => {
   resultValidator.innerHTML = ''
 
   htmlValidator(website.value)
-
-  webInfo.textContent = website.value
   validatorBtn.disabled = true
 
   e.preventDefault()

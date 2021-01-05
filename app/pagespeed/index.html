@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- materialize css -->
+  <link rel="stylesheet" href="../../node_modules/materialize-css/dist/css/materialize.min.css" />
+  <!-- material icons -->
+  <link rel="stylesheet" href="../../node_modules/material-design-icons/iconfont/material-icons.css" />
+  <!-- scrollbar css -->
+  <link rel="stylesheet" href="../styles/global.css" />
+  <!-- main css -->
+  <link rel="stylesheet" href="main.css" />
+  <title>pagespeed tool</title>
+</head>
+
+<body>
+  <nav class="nav-wrapper navbar-fixed black">
+    <header class="center brand-logo">
+      <h1 id="brand">pagespeed</h1>
+    </header>
+  </nav>
+  <main class="row">
+    <section class="col s12">
+      <form id="pagespeed" class="row">
+        <fieldset class="input-field col s12">
+          <i class="material-icons prefix">web</i>
+          <input 
+            type="url" 
+            name="url" 
+            id="web" 
+            class="analyze-link"
+            pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+            required 
+          />
+          <label for="web">enter a website</label>
+        </fieldset>
+        <fieldset class="col s12">
+          <button id="analyze-button" class="btn waves-effect black full-btn" type="submit" disabled>
+            start pagespeed
+          </button>
+        </fieldset>
+      </form>
+    </section>
+    <section class="col s12">
+      <canvas id="pagespeed-results" class="canvas"></canvas>
+    </section>
+  </main>
+  <!-- render window script -->
+  <script src="renderer.js"></script>
+</body>
+
+</html>

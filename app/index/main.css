@@ -1,25 +1,10 @@
-/* fallback */
-body {
-  font-display: block;
-}
-
-/* title */
-#brand {
-  text-transform: capitalize;
-  margin: 5% 0;
-  font-size: 26pt;
-}
-
 /* class */
 .logo {
   width: 32px;
   height: 32px;
 }
 
-.col.s12 .full-btn {
-  width: 100%;
-}
-
+/* table */
 .table-fixed {
   scrollbar-width: thin;
   scrollbar-color: #fff #000;
@@ -34,37 +19,8 @@ body {
   top: 0;
 }
 
-.toast-bottom {
-  top: 0;
-  transform: translateY(100%);
-}
-
-.outer {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  margin-top: 12px;
-  border-bottom: 1px solid #000;
-}
-
-.percent {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  font-size: 30px;
-  bottom: 40px;
-}
-
-.footer {
-  margin-top: 0;
-}
-
 /* tags */
 
 table tbody td {
   font-size: 10pt;
-}
-
-canvas {
-  position: absolute;
 }

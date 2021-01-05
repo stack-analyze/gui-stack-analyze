@@ -6,9 +6,15 @@ const { app, BrowserWindow, Menu, dialog } = require('electron')
 // message
 const msg = require('./msg')
 
+// recomendation
+const recomendation = require('./recomendation')
+
 // window
 let win
+let pagespeed
 let htmlTool
+let github
+let anime
 
 // window function
 const createWindow = () => {
@@ -16,10 +22,10 @@ const createWindow = () => {
   win = new BrowserWindow({
     width: 1024,
     height: 768,
-    resizable: false,
     darkTheme: true,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation : false
     },
     autoHideMenuBar: false,
     icon: join(__dirname, '../icons/icon.png')
@@ -42,16 +48,18 @@ const createWindow = () => {
 
 function htmlValidator () {
   htmlTool = new BrowserWindow({
-    width: 800,
-    height: 600,
-    resizable: false,
+    width: 940,
+    height: 680,
     darkTheme: true,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation : false
     },
     autoHideMenuBar: false,
     icon: join(__dirname, '../icons/icon.png')
   })
+
+  htmlTool.show()
 
   htmlTool.loadURL(
     format({
@@ -84,14 +92,184 @@ function htmlValidator () {
               message: 'developer and design: omega5300'
             })
           }
-        }
+        },
+        { role: 'close' }
       ]
     }
   ]
 
   const menu = Menu.buildFromTemplate(exclusiveToolMenu)
   htmlTool.setMenu(menu)
+  htmlTool.on('closed', () => (htmlTool = null))
 }
+
+function pagespeedTool () {
+  pagespeed = new BrowserWindow({
+    width: 1024,
+    height: 768,
+    darkTheme: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation : false
+    },
+    autoHideMenuBar: false,
+    icon: join(__dirname, '../icons/icon.png')
+  })
+
+  pagespeed.show()
+
+  pagespeed.loadURL(
+    format({
+      pathname: join(__dirname, 'pagespeed/index.html'),
+      protocol: 'file',
+      slashes: true
+    })
+  )
+
+  // pagespeed menu
+  const pagespeedToolMenu = [
+    {
+      label: 'pagespeed tool',
+      submenu: [
+        { role: 'reload' },
+        {
+          label: 'About tool',
+          click () {
+            dialog.showMessageBoxSync({
+              icon: join(__dirname, '../icons/icon.png'),
+              type: 'info',
+              buttons: ['OK'],
+              title: 'pagespeed tool',
+              detail: 'pagespeed tool for stack-analyze-gui ',
+              message: 'developer and design: omega5300'
+            })
+          }
+        },
+        { role: 'close' }
+      ]
+    }
+  ]
+
+  const menu = Menu.buildFromTemplate(pagespeedToolMenu)
+  pagespeed.setMenu(menu)
+  pagespeed.on('closed', () => (github = null))
+}
+
+function githubInfo () {
+  github = new BrowserWindow({
+    width: 900,
+    height: 550,
+    darkTheme: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation : false
+    },
+    autoHideMenuBar: false,
+    icon: join(__dirname, '../icons/icon.png')
+  })
+
+  github.show()
+
+  github.loadURL(
+    format({
+      pathname: join(__dirname, 'github-info/index.html'),
+      protocol: 'file',
+      slashes: true
+    })
+  )
+
+  // github info menu
+  const githubToolMenu = [
+    {
+      label: 'github info tool',
+      submenu: [
+        {
+          label: 'clear info',
+          click () {
+            github.webContents.send('clear-info')
+          }
+        },
+        {
+          label: 'About tool',
+          click () {
+            dialog.showMessageBoxSync({
+              icon: join(__dirname, '../icons/icon.png'),
+              type: 'info',
+              buttons: ['OK'],
+              title: 'github info',
+              detail: 'github info tool for stack-analyze-gui ',
+              message: 'developer and design: omega5300'
+            })
+          }
+        },
+        { role: 'close' }
+      ]
+    }
+  ]
+
+  const menu = Menu.buildFromTemplate(githubToolMenu)
+  github.setMenu(menu)
+  github.on('closed', () => (github = null))
+}
+
+// anime tool
+function animeSearch () {
+  anime = new BrowserWindow({
+    width: 1024,
+    height: 768,
+    darkTheme: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation : false
+    },
+    autoHideMenuBar: false,
+    icon: join(__dirname, '../icons/icon.png')
+  })
+
+  anime.show()
+
+  anime.loadURL(
+    format({
+      pathname: join(__dirname, 'anime-search/index.html'),
+      protocol: 'file',
+      slashes: true
+    })
+  )
+
+  // github info menu
+  const animeToolMenu = [
+    {
+      label: 'anime search tool',
+      submenu: [
+        {
+          label: 'clear search',
+          click () {
+            anime.webContents.send('clear-anime-list')
+          }
+        },
+        {
+          label: 'About tool',
+          click () {
+            dialog.showMessageBoxSync({
+              icon: join(__dirname, '../icons/icon.png'),
+              type: 'info',
+              buttons: ['OK'],
+              title: 'anime search',
+              detail: 'anime search tool for stack-analyze-gui ',
+              message: 'developer and design: omega5300'
+            })
+          }
+        },
+        { role: 'close' }
+      ]
+    }
+  ]
+
+  const menu = Menu.buildFromTemplate(animeToolMenu)
+  anime.setMenu(menu)
+  anime.on('closed', () => (anime = null))
+}
+
 
 // mac os
 const isMac = process.platform === 'dawin'
@@ -110,6 +288,7 @@ const templateMenu = [
     label: 'File',
     submenu: [
       { role: 'minimize' },
+      { role: 'toggleDevTools' },
       isMac ? { role: 'close' } : { role: 'quit' }
     ]
   },
@@ -135,6 +314,32 @@ const templateMenu = [
           htmlValidator()
         }
       }
+    ]
+  },
+  {
+    label: 'Other tools',
+    submenu: [
+      {
+        label: 'pagespeed',
+        accelerator: 'Ctrl+P',
+        click () {
+          pagespeedTool()
+        }
+      },
+      {
+        label: 'github info',
+        accelerator: 'Ctrl+G',
+        click () {
+          githubInfo()
+        }
+      },
+      {
+        label: 'anime search',
+        accelerator: 'Ctrl+S',
+        click () {
+          animeSearch()
+        }
+      },
     ]
   },
   {
@@ -165,6 +370,10 @@ const templateMenu = [
             message: msg
           })
         }
+      },
+      {
+        label: 'Recomendation',
+        submenu: recomendation
       },
       {
         label: 'Learn wiki',

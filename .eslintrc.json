@@ -1,17 +1,22 @@
 {
     "env": {
+        "browser": true,
         "commonjs": true,
-        "es2020": true,
-        "node": true,
-        "browser": true
+        "es2021": true,
+        "node": true
     },
-    "extends": [
-        "standard"
-    ],
+    "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 11
+        "ecmaVersion": 12
     },
     "rules": {
-        "no-var": "error"
+        "no-var": "error",
+        "eqeqeq": "warn",
+        "eol-last": "error",
+        "spaced-comment": "error",
+        "comma-spacing": "error",
+        "block-spacing": "error",
+        "prefer-const": "error",
+        "indent": ["error", 2]
     }
 }

@@ -26,9 +26,14 @@
       <form id="analyze" class="row">
         <fieldset class="input-field col s12">
           <i class="material-icons prefix">web</i>
-          <input type="url" name="url" id="web" class="analyze-link"
+          <input 
+            type="url" 
+            name="url" 
+            id="web" 
+            class="analyze-link"
             pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
-            required />
+            required 
+          />
           <label for="web">enter a website</label>
         </fieldset>
         <fieldset class="col s12">
@@ -38,8 +43,8 @@
         </fieldset>
       </form>
     </section>
-    <section class="col s12 row">
-      <article class="table-fixed area scroll col s8">
+    <section class="col s12">
+      <article class="table-fixed area scroll">
         <table class="striped centered">
           <thead class="black white-text">
             <tr>
@@ -53,20 +58,8 @@
           <tbody></tbody>
         </table>
       </article>
-      <article class="col s4">
-        <div class="outer">
-          <canvas id="desktop-score"></canvas>
-          <p id="desktop-percent" class="percent"></p>
-        </div>
-        <div class="outer">
-          <canvas id="mobile-score"></canvas>
-          <p id="mobile-percent" class="percent"></p>
-        </div>
-      </article>
     </section>
   </main>
-  <!-- render url result -->
-  <footer id="url" class="black white-text footer"></footer>
   <!-- render window script -->
   <script src="renderer.js"></script>
 </body>

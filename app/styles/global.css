@@ -1,3 +1,15 @@
+/* id */
+#brand {
+  text-transform: capitalize;
+  margin: 5% 0;
+  font-size: 26pt;
+}
+
+/* fallback */
+body {
+  font-display: block;
+}
+
 /* scrollbar*/
 .scroll::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -20,4 +32,8 @@
 
 fieldset {
   border: none;
+}
+
+.col.s12 .full-btn {
+  width: 100%;
 }

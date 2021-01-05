@@ -1,0 +1,19 @@
+.poster {
+  width: 100%;
+  height: 25%;
+}
+
+/* table */
+.table-fixed {
+  scrollbar-width: thin;
+  scrollbar-color: #fff #000;
+  overflow-y: scroll;
+  height: 450px;
+  border-collapse: collapse;
+}
+
+.table-fixed thead th {
+  position: sticky;
+  background: black;
+  top: 0;
+}
