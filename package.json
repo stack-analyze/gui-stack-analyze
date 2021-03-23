@@ -28,8 +28,8 @@
   "scripts": {
     "start": "electron .",
     "lint": "eslint .",
-    "electron:win": "electron-builder -w",
-    "electron:mac": "electron-builder -m dmg",
+    "electron:win": "electron-packager . stack-analyze  --icon=icon/icon.ico --overwrite --out=dist --platform=win32 --arch=x64",
+    "electron:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icon/icon.icns --prune=true --out=dist",
     "electron:linux": "electron-builder -l AppImage"
   },
   "keywords": [
@@ -47,7 +47,7 @@
     "material-design-icons": "^3.0.1",
     "materialize-css": "^1.0.0",
     "timeago.js": "^4.0.2",
-    "wappalyzer": "^6.5.21"
+    "wappalyzer": "^6.5.22"
   },
   "devDependencies": {
     "electron": "^11.0.2",
