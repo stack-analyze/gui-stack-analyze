@@ -15,6 +15,6 @@ install:
   - npm
 
 build_script:
-  - npm run electron:win
+  - npm win
 
 test: off

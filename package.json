@@ -28,9 +28,9 @@
   "scripts": {
     "start": "electron .",
     "lint": "eslint .",
-    "electron:win": "electron-builder -w portable",
-    "electron:mac": "electron-builder -m dmg",
-    "electron:linux": "electron-builder -l AppImage"
+    "win": "electron-builder -w portable",
+    "mac": "electron-builder -m dmg",
+    "linux": "electron-builder -l AppImage"
   },
   "keywords": [
     "wappalyzer",
