@@ -20,9 +20,6 @@ cache:
 script:
   - npm i
   - npm run electron:mac
-    else
-      yarn release
-    fi
 before_cache:
   - rm -rf $HOME/.cache/electron-builder/wine
 
