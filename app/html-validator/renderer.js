@@ -6,9 +6,8 @@ const { toast } = require('materialize-css')
 // DOM elements
 const form = document.getElementById('validator')
 const website = document.getElementById('website')
-const validatorBtn = document.getElementById('btn')
+const validatorBtn = document.getElementById('submit-validate')
 const resultValidator = document.getElementById('html-results')
-const webInfo = document.getElementById('link')
 
 // DOM fragment element
 const fragment = document.createDocumentFragment()
@@ -72,5 +71,4 @@ form.addEventListener('submit', (e) => {
   form.reset()
 })
 
-// clear validator
-ipcRenderer.on('clear-validator', () => (resultValidator.innerHTML = ''))
+ipcRenderer.on('clear-stack', () => (resultValidator.innerHTML = ''))

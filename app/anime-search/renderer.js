@@ -5,7 +5,7 @@ const { toast } = require('materialize-css')
 const { format } = require('timeago.js')
 
 // DOM elements
-const animeList = document.querySelector('tbody')
+const animeList = document.getElementById('anime-cards')
 const search = document.getElementById('anime')
 const sendSearch = document.getElementById('anime-search')
 
@@ -24,49 +24,86 @@ async function animeTool(query) {
 
     res.data.results.map((animeData) => {
       // row element
-      const row = document.createElement('tr')
+      const row = document.createElement('section')
+      const card = document.createElement('article')
 
-      // column elements
-      const animePoster = document.createElement('td')
-      const animeTitle = document.createElement('td')
-      const animeSynopsis = document.createElement('td')
-      const animeType = document.createElement('td')
-      const animeEpisodes = document.createElement('td')
-      const animeDebut = document.createElement('td')
-      const animeFinish = document.createElement('td')
-      const animeRated = document.createElement('td')
-      
+      row.classList.add('col', 's4')
+
+      card.classList.add('card', 'sticky-action')
+
+      // card elements
+      const animePoster = document.createElement('figure')
+      const animeContent = document.createElement('div')
+      const animeTime = document.createElement('div')
+      const animeSynopsisContent = document.createElement('div')
+      const animeTitle = document.createElement('strong')
+      const RevealTitle = document.createElement('h2')
+      const animeSynopsis = document.createElement('p')
+      const animeDesc = document.createElement('blockquote')
+      const animeDebut = document.createElement('a')
+      const animeFinish = document.createElement('a')
+      const iconClose = document.createElement('i')
+      const iconMore = document.createElement('i')
+
+      // poster class
+      animePoster.classList.add('card-image')
+
+      // time content
+      animeTime.classList.add('card-action')
+
       // image
       const poster = document.createElement('img')
 
+      // title
+      iconMore.textContent = 'more_vert'
+      iconMore.classList.add('material-icons', 'right')
       animeTitle.textContent = animeData.title
+      animeTitle.classList.add('card-title', 'flow-text', 'activator')
+      animeTitle.appendChild(iconMore)
+
       animeSynopsis.textContent = animeData.synopsis
-      animeType.textContent = animeData.type
-      animeEpisodes.textContent = animeData.episodes
-      animeDebut.textContent = format(animeData.start_date)
-      
-      if (animeData.end_date === null) {
-        animeFinish.textContent = 'Current Date'
-      } else {
-        animeFinish.textContent = format(animeData.end_date)
-      }
-      
-      animeRated.textContent = animeData.rated
+      animeDesc.textContent = `type: ${animeData.type} \n episodes: ${animeData.episodes} \n rated: ${animeData.rated}`
+      animeDesc.classList.add('description')
+
+      animeDebut.href = '#!'
+      animeDebut.classList.add('info-time')
+      animeDebut.textContent = `debut time: ${format(animeData.start_date)}`
+
+      animeFinish.href = '#!'
+      animeFinish.classList.add('info-time')
+
+      iconClose.textContent = 'close'
+      iconClose.classList.add('material-icons', 'right')
+
+      RevealTitle.textContent = 'Synopsis'
+      RevealTitle.classList.add('card-title', 'flow-text', 'grey-text', 'text-darken-4')
+      RevealTitle.appendChild(iconClose)
+
+      animeData.end_date === null ? animeFinish.textContent = 'Current Date' : animeFinish.textContent = `finish time: ${format(animeData.end_date)}`
 
       poster.src = animeData.image_url
       poster.alt = `poster ${animeData.title}`
-      poster.classList.add('poster')
-      
+      poster.classList.add('responsive-img', 'center')
+
+      animeSynopsisContent.classList.add('card-reveal')
+      animeSynopsisContent.appendChild(RevealTitle)
+      animeSynopsisContent.appendChild(animeSynopsis)
+
       animePoster.appendChild(poster)
 
-      row.appendChild(animePoster)
-      row.appendChild(animeTitle)
-      row.appendChild(animeSynopsis)
-      row.appendChild(animeType)
-      row.appendChild(animeEpisodes)
-      row.appendChild(animeDebut)
-      row.appendChild(animeFinish)
-      row.appendChild(animeRated)
+      animeContent.appendChild(animeDesc)
+      animeContent.classList.add('card-content')
+
+      animeTime.appendChild(animeDebut)
+      animeTime.appendChild(animeFinish)
+
+      card.appendChild(animePoster)
+      card.appendChild(animeTitle)
+      card.appendChild(animeContent)
+      card.appendChild(animeSynopsisContent)
+      card.appendChild(animeTime)
+
+      row.appendChild(card)
 
       fragment.appendChild(row)
 
@@ -89,5 +126,5 @@ sendSearch.addEventListener('submit', (e) => {
   sendSearch.reset()
 })
 
-// clear results
-ipcRenderer.on('clear-anime-list', () => (animeList.innerHTML = ''))
+// anime clear
+ipcRenderer.on('clear-stack', () => (animeList.innerHTML = ''))

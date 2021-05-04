@@ -17,27 +17,27 @@ const stats = (el, scoreDesktop, scoreMobile, bgColorDesktop, bgColorMobile) => 
   const ctxOptions = {
     type: 'bar',
     data: {
-    labels: [ 'desktop', 'mobile' ],
-    datasets: [{
-      label: 'pagespeed',
-      data: [ scoreDesktop, scoreMobile ],
-      backgroundColor: [ bgColorDesktop, bgColorMobile ],
-      borderWidth: 1
-    }]
-  },
+      labels: ['desktop', 'mobile'],
+      datasets: [{
+        label: 'pagespeed',
+        data: [scoreDesktop, scoreMobile],
+        backgroundColor: [bgColorDesktop, bgColorMobile],
+        borderWidth: 1
+      }]
+    },
     options: {
       responsive: false,
       legend: {
         display: false
       },
       scales: {
-            xAxes: [{
-                stacked: true
-            }],
-            yAxes: [{
-                stacked: true
-            }]
-        },
+        xAxes: [{
+          stacked: true
+        }],
+        yAxes: [{
+          stacked: true
+        }]
+      },
       tooltips: {
         enabled: true
       },
@@ -49,7 +49,7 @@ const stats = (el, scoreDesktop, scoreMobile, bgColorDesktop, bgColorMobile) => 
 }
 
 // pagespeed function
-async function pageSpeed (url) {
+async function pageSpeed(url) {
   const resDesktop = await axios.get(
     `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0&strategy=desktop`
   )
@@ -60,7 +60,7 @@ async function pageSpeed (url) {
   try {
     const desktopScore = Math.round(resDesktop.data.lighthouseResult.categories.performance.score * 100)
     const phoneScore = Math.round(resMobile.data.lighthouseResult.categories.performance.score * 100)
-    
+
     let colorDesktop
     let colorMobile
 
@@ -78,7 +78,7 @@ async function pageSpeed (url) {
         colorDesktop = '#000'
         break
     }
-        switch (true) {
+    switch (true) {
       case (phoneScore === 1 || phoneScore <= 49):
         colorMobile = '#f00'
         break
@@ -92,7 +92,7 @@ async function pageSpeed (url) {
         colorMobile = '#000'
         break
     }
-    
+
     stats(speedResults, phoneScore, desktopScore, colorMobile, colorDesktop)
 
   } catch (err) {
@@ -116,4 +116,8 @@ From.addEventListener('submit', (e) => {
   From.reset()
 })
 
+// start Chart
 stats(speedResults, 0, 0, '#000', '#000')
+
+//
+ipcRenderer.on('clear-stack', () => stats(speedResults, 0, 0, '#000', '#000'))

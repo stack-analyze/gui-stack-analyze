@@ -1,14 +1,8 @@
+figure {
+  margin: 0;
+}
+
 .profile-github {
   height: 200px;
-  margin-top: 20%;
-  margin-left: 5%;
-}
-
-.card-container {
- margin: 1% auto;
-}
-
-.card {
- border: 1px solid #000;
- width: auto
+  width: 200px;
 }

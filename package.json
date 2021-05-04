@@ -1,6 +1,6 @@
 {
   "name": "gui-stack-analyze",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "GUI version inspired from npm module stack-analyze 1.0.5 and browser extension",
   "main": "app/main.js",
   "repository": {
@@ -29,7 +29,6 @@
     "start": "electron .",
     "lint": "eslint .",
     "electron:win": "electron-packager . stack-analyze  --icon=icon/icon.ico --overwrite --out=dist --platform=win32 --arch=x64",
-    "electron:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icon/icon.icns --prune=true --out=dist",
     "electron:linux": "electron-builder -l AppImage"
   },
   "keywords": [
@@ -41,11 +40,12 @@
   "author": "Intermachine Developers",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "chart.js": "^2.9.3",
     "html-validator": "^5.1.17",
     "material-design-icons": "^3.0.1",
     "materialize-css": "^1.0.0",
+    "systeminformation": "^5.6.12",
     "timeago.js": "^4.0.2",
     "wappalyzer": "^6.5.22"
   },

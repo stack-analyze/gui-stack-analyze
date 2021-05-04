@@ -18,8 +18,35 @@
 <body>
   <nav class="nav-wrapper navbar-fixed black">
     <header class="center brand-logo">
-      <h1 id="brand">stack-analyze</h1>
+      <h1 class="brand">tech stack</h1>
     </header>
+    <ul class="right hide-on-med-and-down">
+      <li>
+        <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+          show tools
+        </a>
+        <ul id="dropdown1" class="dropdown-content">
+          <li>
+            <a class="black-text" href="../index/index.html">tech stack</a>
+          </li>
+          <li>
+            <a class="black-text" href="../pagespeed/index.html">pagespeed</a>
+          </li>
+          <li>
+            <a class="black-text" href="../github-info/index.html">github info</a>
+          </li>
+          <li>
+            <a class="black-text" href="../anime-search/index.html">anime search</a>
+          </li>
+          <li>
+            <a class="black-text" href="../html-validator/index.html">html validator</a>
+          </li>
+          <li>
+            <a class="black-text" href="../hardware-information/index.html">hardware information</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </nav>
   <main class="row">
     <section class="col s12">
@@ -43,21 +70,7 @@
         </fieldset>
       </form>
     </section>
-    <section class="col s12">
-      <article class="table-fixed area scroll">
-        <table class="striped centered">
-          <thead class="black white-text">
-            <tr>
-              <th>name</th>
-              <th>website tech app</th>
-              <th>app icon</th>
-              <th>app categories</th>
-            </tr>
-          </thead>
-          <!-- render DOM tech stack -->
-          <tbody></tbody>
-        </table>
-      </article>
+    <section class="col s12 row content scroll" id="stack">
     </section>
   </main>
   <!-- render window script -->

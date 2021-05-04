@@ -4,14 +4,14 @@ const Wappalyzer = require('wappalyzer')
 const { toast } = require('materialize-css')
 
 // DOM elements
+const techStack = document.getElementById('stack')
 const From = document.getElementById('analyze')
 const webSite = document.getElementById('web')
-const techStack = document.querySelector('tbody')
 const analyzeLink = document.querySelector('.analyze-link')
 const analyzeButton = document.getElementById('analyze-button')
 
-// DOM fragment
-const fragment = document.createDocumentFragment()
+// DOM stackFragment
+const stackFragment = document.createDocumentFragment()
 
 // tech stack function
 const stack = async (url) => {
@@ -21,17 +21,22 @@ const stack = async (url) => {
   try {
     await wappalyzer.init()
 
-    const results = await wappalyzer.open(url).analyze()
+    const { technologies } = await wappalyzer.open(url).analyze()
 
-    results.technologies.map((app) => {
-      // row element
-      const row = document.createElement('tr')
+    technologies.map((app) => {
+      // column element
+      const column = document.createElement('section')
 
-      // column elements
-      const appName = document.createElement('td')
-      const webSite = document.createElement('td')
-      const imageLogo = document.createElement('td')
-      const categories = document.createElement('td')
+      // card elements
+      const cardContent = document.createElement('div')
+      const webSite = document.createElement('div')
+      const imageLogo = document.createElement('figure')
+      const cardTitle = document.createElement('h2')
+      const categories = document.createElement('div')
+
+      // card
+      cardContent.classList.add('card', 'medium')
+      imageLogo.classList.add('card-image')
 
       // link element
       const link = document.createElement('a')
@@ -39,33 +44,41 @@ const stack = async (url) => {
       // image element
       const logo = document.createElement('img')
 
-      appName.textContent = app.name
+      column.classList.add('col', 's4')
+
+      webSite.classList.add('card-action')
 
       link.href = app.website
       link.target = '_blank'
       link.textContent = `${app.name} website`
+      link.classList.add('black-text')
 
       logo.src = `../images/${app.icon}`
       logo.alt = app.name
       logo.classList.add('logo')
+      cardTitle.textContent = app.name
+      cardTitle.classList.add('card-title', 'flow-text', 'center')
 
-      categories.textContent = Object.values(app.categories)
-        .map((categorie) => categorie.name)
-        .join(' ')
+      categories.classList.add('card-content')
+      categories.textContent = app.categories.map((categorie) => categorie.name).join(', ')
 
       webSite.appendChild(link)
       imageLogo.appendChild(logo)
+      cardContent.appendChild(imageLogo)
+      cardContent.appendChild(cardTitle)
+      cardContent.appendChild(categories)
+      cardContent.appendChild(webSite)
 
-      row.appendChild(appName)
-      row.appendChild(webSite)
-      row.appendChild(imageLogo)
-      row.appendChild(categories)
+      column.appendChild(cardContent)
 
-      fragment.appendChild(row)
+      stackFragment.appendChild(column)
 
-      techStack.appendChild(fragment)
+      techStack.appendChild(stackFragment)
     })
-  } catch (error) { toast({ html: error, classes: 'rounded toast-bottom' }) }
+  } catch (err) {
+    console.error(err)
+    toast({ html: err, classes: 'rounded toast-bottom' })
+  }
 
   // finish check
   await wappalyzer.destroy()
@@ -93,6 +106,4 @@ From.addEventListener('submit', (e) => {
 })
 
 // clear analyze
-ipcRenderer.on('clear-stack', () => {
-  techStack.innerHTML = ''
-})
+ipcRenderer.on('clear-stack', () => (techStack.innerHTML = ''))

@@ -1,19 +1,11 @@
-.poster {
-  width: 100%;
-  height: 25%;
-}
-
 /* table */
-.table-fixed {
+.anime-list {
   scrollbar-width: thin;
   scrollbar-color: #fff #000;
-  overflow-y: scroll;
-  height: 450px;
-  border-collapse: collapse;
+  overflow: auto;
+  height: 60vh;
 }
 
-.table-fixed thead th {
-  position: sticky;
-  background: black;
-  top: 0;
+.info-time {
+  display: block;
 }

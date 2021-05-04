@@ -1,26 +1,13 @@
 /* class */
 .logo {
-  width: 32px;
-  height: 32px;
+  width: 200px;
+  height: 200px;
 }
 
-/* table */
-.table-fixed {
+/* info content */
+.content {
   scrollbar-width: thin;
   scrollbar-color: #fff #000;
-  overflow-y: scroll;
-  height: 424px;
-  border-collapse: collapse;
-}
-
-.table-fixed thead th {
-  position: sticky;
-  background: black;
-  top: 0;
-}
-
-/* tags */
-
-table tbody td {
-  font-size: 10pt;
+  overflow: auto;
+  height: 60vh;
 }

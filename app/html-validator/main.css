@@ -1,22 +1,3 @@
-/* tags */
-body {
-    margin: 0;
-}
-
-/* id */
-#title {
-    font-size: 24pt;
-    font-weight: 300;
-    text-align: center;
-    margin: 0.5% 0;
-}
-
-/* placeholder */
-.header, .footer, .submit-validate {
-    background-color: #000;
-    color: #fff;
-}
-
 .warn, .error {
   display: block;
   width: 99%;
@@ -25,62 +6,23 @@ body {
   border: 1px solid #000;
 }
 
-/* class */
-.header {
-    height: 50px;
-    width: 100%;
-    padding-top: 4px;
-}
-
-.form-validate {
-    margin: 5px 0;
-}
-
 .msg-details {
   display: block;
 }
 
-.link-validate {
-  background: none;
-  border: none;
-  border-bottom: 0.5px solid #808080;
-  width: 99%;
-}
-
-.link-validate:focus {
-  border: none;
-  border-bottom: 1px solid #26f0d8;
-  outline: none;
-}
-
-.submit-validate {
-  width: 100%;
-  height: 25px; 
-}
-
-.submit-validate:disabled {
-    background-color: #808080;
-    color: #000;
-}
-
-.results-validator{
-    scrollbar-width: thin;
-    scrollbar-color: #fff #000;
-    overflow-y: scroll;
-    width: 98%;
-    height: 434px;
-    margin: 0 auto;
-}
-
-.footer {
-    font-weight: 200;
-    margin-bottom: auto;
-}
-
 .code {
   font-weight: bolder;
+  white-space: pre-wrap;
+  word-wrap: break-word;
   display: block;
-  overflow-x:scroll;
+  overflow: auto;
+}
+
+.results-validator {
+  scrollbar-width: thin;
+  scrollbar-color: #fff #000;
+  overflow: auto;
+  height: 60vh;
 }
 
 .warn {

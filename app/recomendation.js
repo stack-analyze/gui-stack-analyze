@@ -1,43 +1,68 @@
+// elctron shell module
+const { shell } = require('electron')
+
 const recomendation = [
   {
     label: 'dev youtuber',
     submenu: [
       {
-        label: 'fazt',
-        async click() {
-          const { shell } = require('electron')
-          await shell.openExternal(
-            'https://www.youtube.com/channel/UCX9NJ471o7Wie1DQe94RVIg'
-          )
-        }
+        label: 'recommend',
+        submenu: [
+          {
+            label: 'fazt',
+            async click() {
+              await shell.openExternal(
+                'https://www.youtube.com/channel/UCX9NJ471o7Wie1DQe94RVIg'
+              )
+            }
+          },
+          {
+            label: 'doriandesings',
+            async click() {
+              await shell.openExternal(
+                'https://www.youtube.com/user/DorianDesigns'
+              )
+            }
+          },
+          {
+            label: 'bluuweb',
+            async click() {
+              await shell.openExternal(
+                'https://www.youtube.com/user/Bluuweb'
+              )
+            }
+          },
+          {
+            label: 'fernando herrera',
+            async click() {
+              await shell.openExternal(
+                'https://www.youtube.com/channel/UCuaPTYj15JSkETGnEseaFFg'
+              )
+            }
+          }
+        ]
       },
       {
-        label: 'doriandesings',
-        async click() {
-          const { shell } = require('electron')
-          await shell.openExternal(
-            'https://www.youtube.com/user/DorianDesigns'
-          )
-        }
+        label: 'neutral recommend',
+        submenu: [
+          {
+            label: 'leonidas esteban',
+            async click() {
+              await shell.openExternal(
+                'https://www.youtube.com/user/LeonidasEsteban'
+              )
+            }
+          },
+          {
+            label: 'soy dalto',
+            async click() {
+              await shell.openExternal(
+                'https://www.youtube.com/channel/UCtoo4_P6ilCj7jwa4FmA5lQ'
+              )
+            }
+          }
+        ]
       },
-      {
-        label: 'bluuweb',
-        async click() {
-          const { shell } = require('electron')
-          await shell.openExternal(
-            'https://www.youtube.com/user/Bluuweb'
-          )
-        }
-      },
-      {
-        label: 'leonidas esteban',
-        async click() {
-          const { shell } = require('electron')
-          await shell.openExternal(
-            'https://www.youtube.com/user/LeonidasEsteban'
-          )
-        }
-      }
     ]
   },
   {
@@ -45,19 +70,57 @@ const recomendation = [
     submenu: [
       {
         label: "⚔️GothspiceChann💰",
-        click: async () => {
-          const { shell } = require('electron')
+        async click() {
           await shell.openExternal(
             'https://www.nonolive.com/14278329'
           )
         }
       },
       {
-        label: 'JUJU جوهري🎵SS',
-        click: async () => {
-          const { shell } = require('electron')
+        label: '🎬JUJU#IDOL',
+        async click() {
           await shell.openExternal(
             'https://www.nonolive.com/17342980'
+          )
+        }
+      },
+      {
+        label: "Ly Pháp ❤️",
+        async click() {
+          await shell.openExternal(
+            'https://www.nonolive.com/33519748'
+          )
+        }
+      },
+      {
+        label: 'Seyyahi Solist',
+        async click() {
+          await shell.openExternal(
+            'https://www.nonolive.com/28525468'
+          )
+        }
+      },
+      {
+        label: 'AlpiCornioRex🦙🦄🦖',
+        async click() {
+          await shell.openExternal(
+            'https://www.nonolive.com/35874353'
+          )
+        }
+      },
+      {
+        label: "ᴹᴰToni😈🦇Stream",
+        async click() {
+          await shell.openExternal(
+            'https://www.nonolive.com/41145492'
+          )
+        }
+      },
+      {
+        label: 'ᴹᴰ🐰CELI🦄🦎',
+        async click() {
+          await shell.openExternal(
+            'https://www.nonolive.com/41135433'
           )
         }
       }
@@ -68,10 +131,9 @@ const recomendation = [
     submenu: [
       {
         label: "Doofy's Projects",
-        click: async () => {
-          const { shell } = require('electron')
+        async click() {
           await shell.openExternal(
-            'https://windowsminios.org'
+            'https://dprojects.org'
           )
         }
       }
@@ -82,8 +144,7 @@ const recomendation = [
     submenu: [
       {
         label: 'lunanny',
-        click: async () => {
-          const { shell } = require('electron')
+        async click() {
           await shell.openExternal(
             'https://www.twitch.tv/lunanny'
           )
@@ -91,8 +152,7 @@ const recomendation = [
       },
       {
         label: 'dannyaegyo',
-        click: async () => {
-          const { shell } = require('electron')
+        async click() {
           await shell.openExternal(
             'https://www.twitch.tv/dannyaegyo'
           )

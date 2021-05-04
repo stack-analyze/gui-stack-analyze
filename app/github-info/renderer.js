@@ -1,5 +1,5 @@
 // modules
-const { ipcRenderer } = require('electron')
+const { ipcRenderer, shell } = require('electron')
 const axios = require('axios')
 const { format } = require('timeago.js')
 const { toast } = require('materialize-css')
@@ -15,7 +15,6 @@ const twitter = document.getElementById('twitter')
 const repos = document.getElementById('repos')
 const gits = document.getElementById('gits')
 const created = document.getElementById('created')
-const updated = document.getElementById('updated')
 
 // function
 async function github(user) {
@@ -26,19 +25,39 @@ async function github(user) {
 
     // data print
     gitUser.textContent = res.data.login
-    fullName.textContent = res.data.name === null ? "no info": res.data.name
-    info.textContent = res.data.bio === null ? "no bio": res.data.bio
-    twitter.textContent = res.data.twitter_username === null ? "no info": `@${res.data.twitter_username}`
+
+    fullName.textContent = res.data.name === null ? "no info" : res.data.name
+
+    info.textContent = res.data.bio === null ? "no bio" : res.data.bio
+
     repos.textContent = res.data.public_repos
+
     gits.textContent = res.data.public_gists
+
     created.textContent = format(res.data.created_at)
-    updated.textContent = format(res.data.updated_at)
+    created.title = new Date(res.data.created_at).toDateString()
+
+    if (res.data.twitter_username === null) {
+      twitter.textContent = "no twitter info"
+      twitter.href = "#"
+    } else {
+      twitter.textContent = `${res.data.twitter_username} twitter`
+      twitter.href = `https://twitter.com/${res.data.twitter_username}`
+      twitter.target = "_blank"
+    }
   } catch (err) {
-    toast({html: err.message})
+    toast({ html: err.message })
   }
 }
 
 // events
+document.addEventListener('click', (e) => {
+  if (e.target.tagName === 'A' && e.target.href.startsWith('http')) {
+    e.preventDefault()
+    shell.openExternal(e.target.href)
+  }
+})
+
 gitInfo.addEventListener('submit', (e) => {
   github(user.value)
 
@@ -46,15 +65,17 @@ gitInfo.addEventListener('submit', (e) => {
   gitInfo.reset()
 })
 
-// clear analyze
-ipcRenderer.on('clear-info', () => {
+//
+ipcRenderer.on('clear-stack', () => {
   gitUser.textContent = ''
-  profile.src = ''
+  profile.src = '../images/no-found.jpg'
   fullName.textContent = ''
   info.textContent = ''
-  twitter.textContent = ''
+  twitter.textContent = 'no info'
+  twitter.href = '#'
+  twitter.removeAttribute('target')
   repos.textContent = ''
   gits.textContent = ''
   created.textContent = ''
-  updated.textContent = ''
+  created.title = new Date().toDateString()  
 })
