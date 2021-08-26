@@ -1,104 +1,99 @@
+// component
+require('../components/navbar_component.js')
+
 // modules
 const { ipcRenderer } = require('electron')
 const axios = require('axios')
-const { toast } = require('materialize-css')
 const Chart = require('chart.js')
+const toast = require('../scripts/toast')
 
 // DOM elements
-const speedResults = document.getElementById('pagespeed-results')
+const speedResults = document.getElementById('pagespeed-results').getContext('2d')
 const From = document.getElementById('pagespeed')
 const webSite = document.getElementById('web')
 const analyzeLink = document.querySelector('.analyze-link')
 const analyzeButton = document.getElementById('analyze-button')
 
-// chart pagespeed function
-const stats = (el, scoreDesktop, scoreMobile, bgColorDesktop, bgColorMobile) => {
-
-  const ctxOptions = {
-    type: 'bar',
-    data: {
-      labels: ['desktop', 'mobile'],
-      datasets: [{
-        label: 'pagespeed',
-        data: [scoreDesktop, scoreMobile],
-        backgroundColor: [bgColorDesktop, bgColorMobile],
-        borderWidth: 1
+const ctxOptions = {
+  type: 'bar',
+  data: {
+    labels: ['desktop', 'mobile'],
+    datasets: [{
+      label: 'pagespeed',
+      data: [0, 0],
+      backgroundColor: ['#000', '#000'],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    legend: {
+      display: false
+    },
+    scales: {
+      xAxes: [{
+        stacked: true
+      }],
+      yAxes: [{
+        stacked: true
       }]
     },
-    options: {
-      responsive: false,
-      legend: {
-        display: false
-      },
-      scales: {
-        xAxes: [{
-          stacked: true
-        }],
-        yAxes: [{
-          stacked: true
-        }]
-      },
-      tooltips: {
-        enabled: true
-      },
-      hover: { mode: null }
-    }
+    tooltips: {
+      enabled: true
+    },
+    hover: { mode: null }
   }
-
-  return new Chart(el, ctxOptions)
 }
+
+const chart = new Chart(speedResults, ctxOptions)
 
 // pagespeed function
 async function pageSpeed(url) {
-  const resDesktop = await axios.get(
+  try {
+    const resDesktop = await axios.get(
     `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0&strategy=desktop`
   )
+
   const resMobile = await axios.get(
     `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0&strategy=mobile`
   )
-
-  try {
-    const desktopScore = Math.round(resDesktop.data.lighthouseResult.categories.performance.score * 100)
-    const phoneScore = Math.round(resMobile.data.lighthouseResult.categories.performance.score * 100)
-
-    let colorDesktop
-    let colorMobile
+    
+    chart.data.datasets[0].data[0] = Math.round(resDesktop.data.lighthouseResult.categories.performance.score * 100)
+    chart.data.datasets[0].data[1] = Math.round(resMobile.data.lighthouseResult.categories.performance.score * 100)
 
     switch (true) {
-      case (desktopScore === 1 || desktopScore <= 49):
-        colorDesktop = '#f00'
+      case (chart.data.datasets[0].data[0] === 1 || chart.data.datasets[0].data[0] <= 49):
+        chart.data.datasets[0].backgroundColor[0] = '#f00'
         break
-      case (desktopScore === 50 || desktopScore <= 89):
-        colorDesktop = '#ff0'
+      case (chart.data.datasets[0].data[0] === 50 || chart.data.datasets[0].data[0] <= 89):
+        chart.data.datasets[0].backgroundColor[0] = '#ff0'
         break
-      case (desktopScore >= 90 || desktopScore === 100):
-        colorDesktop = '#0f0'
+      case (chart.data.datasets[0].data[0] >= 90 || chart.data.datasets[0].data[0] === 100):
+        chart.data.datasets[0].backgroundColor[0] = '#0f0'
         break
       default:
-        colorDesktop = '#000'
+        chart.data.datasets[0].backgroundColor[0] = '#000'
         break
     }
     switch (true) {
-      case (phoneScore === 1 || phoneScore <= 49):
-        colorMobile = '#f00'
+      case (chart.data.datasets[0].data[1] === 1 || chart.data.datasets[0].data[1] <= 49):
+        chart.data.datasets[0].backgroundColor[1] = '#f00'
         break
-      case (phoneScore === 50 || phoneScore <= 89):
-        colorMobile = '#ff0'
+      case (chart.data.datasets[0].data[1] === 50 || chart.data.datasets[0].data[1] <= 89):
+        chart.data.datasets[0].backgroundColor[1] = '#ff0'
         break
-      case (phoneScore >= 90 || phoneScore === 100):
-        colorMobile = '#0f0'
+      case (chart.data.datasets[0].data[1] >= 90 || chart.data.datasets[0].data[1] === 100):
+        chart.data.datasets[0].backgroundColor[1] = '#0f0'
         break
       default:
-        colorMobile = '#000'
+        chart.data.datasets[0].backgroundColor[1] = '#000'
         break
     }
 
-    stats(speedResults, phoneScore, desktopScore, colorMobile, colorDesktop)
-
+    chart.update();
+    toast(`finish analyze ${url}`)
   } catch (err) {
-    toast({
-      html: err.message,
-    })
+    toast(err.message)
   }
 }
 
@@ -116,8 +111,12 @@ From.addEventListener('submit', (e) => {
   From.reset()
 })
 
-// start Chart
-stats(speedResults, 0, 0, '#000', '#000')
+ipcRenderer.on('clear-stack', () => {
+  chart.data.datasets[0].data[0] = 0
+  chart.data.datasets[0].data[1] = 0
 
-//
-ipcRenderer.on('clear-stack', () => stats(speedResults, 0, 0, '#000', '#000'))
+  chart.data.datasets[0].backgroundColor[0] = '#000'
+  chart.data.datasets[0].backgroundColor[1] = '#000'
+  
+  chart.update();
+})

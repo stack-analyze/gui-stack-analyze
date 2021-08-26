@@ -1,28 +1,65 @@
-.tabs .tab a {
-  color: #000;
-}
-.tabs .tab a.active {
-  color: #000;
-}
-.tabs .tab a:hover {
-  color: #000;
-}
-.tabs .tab a:focus {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.tabs .tab a:focus.active {
-  background-color: rgba(0, 0, 0, 0.3);
+.tab {
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
 }
 
-.tabs .indicator {
-  background-color: #000;
+/* Style the buttons inside the tab */
+.tab-button {
+  background-color: inherit;
+  display: inline-block;
+  float: left;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
 }
 
-.hardware-list {
-  display: inline-block
+/* Change background color of buttons on hover */
+.tab-button:hover {
+  background-color: #ddd;
 }
 
-.disk-title {
-  font-size: 16pt;
-  font-weight: bolder;
+/* Create an active/current tablink class */
+.active {
+  background-color: rgba(204, 204, 204, .2);
+}
+
+/* Style the tab content */
+.tab-content {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.basic-info, .disk-info, hardware-list, .display-info, .bios-info {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.basic-info {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px; 
+  grid-template-areas: 
+    ". . ."; 
+}
+
+.display-info {
+  grid-template-columns: 1fr;
+  gap: 0 0; 
+  grid-template-areas: 
+    "."; 
+}
+
+.disk-info, .controller-info {
+  list-style: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px; 
+  grid-template-areas: 
+    ". ."; 
+}
+
+.card-title {
+  font-size: 26px;
 }

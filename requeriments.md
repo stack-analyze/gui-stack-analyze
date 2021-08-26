@@ -11,7 +11,7 @@ ram 350MB<br>
 disk 400MB<br>
 ***recommended***<br>
 ram 512MB or higher<br>
-disk 1GB
+disk 1GB or higher
 
 ## windows
 windows 8.1<br>
@@ -20,4 +20,4 @@ disk 400MB<br>
 ***recommended***<br>
 windows 10<br>
 ram 512MB or higher<br>
-disk 1GB
+disk 1GB or higher

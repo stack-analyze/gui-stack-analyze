@@ -2,6 +2,27 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## version 5.0.0
+### Added
+- new modules
+    - coingecko-api
+    - normalize.css
+- add new tools
+    - crypto market
+- new design languaje: glassmorphism
+- new background colors
+- add only webcomponents navbar and custom toast alert
+### Fixed
+- rewrite all tools
+- some render elements using el.append
+- reduce the navbar and header element for using webcomponents
+### Changed
+- remove the module materialize-css to css-plain, normalize.css as reset and js plain
+- redesign all tools except crypto market
+- add and remove recommends
+- change name in some recommends
+- modify menu minor changes
+
 ## version 4.0.0
 ### Added
 - add new module:

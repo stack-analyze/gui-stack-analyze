@@ -1,6 +1,6 @@
 {
   "name": "gui-stack-analyze",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "GUI version inspired from npm module stack-analyze 1.0.5 and browser extension",
   "main": "app/main.js",
   "repository": {
@@ -41,17 +41,18 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^3.5.0",
+    "coingecko-api": "^1.0.10",
     "html-validator": "^5.1.17",
     "material-design-icons": "^3.0.1",
-    "materialize-css": "^1.0.0",
-    "systeminformation": "^5.6.12",
+    "normalize.css": "^8.0.1",
+    "systeminformation": "^5.7.10",
     "timeago.js": "^4.0.2",
-    "wappalyzer": "^6.5.22"
+    "wappalyzer": "^6.7.11"
   },
   "devDependencies": {
-    "electron": "^11.0.2",
-    "electron-builder": "^22.8.1",
-    "eslint": "7.10.0"
+    "electron": "^13.1.7",
+    "electron-builder": "^22.11.7",
+    "eslint": "^7.31.0"
   }
 }

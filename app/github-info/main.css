@@ -1,8 +1,29 @@
-figure {
-  margin: 0;
-}
-
 .profile-github {
   height: 200px;
   width: 200px;
+}
+
+.card {
+  margin: 4vh auto 0;
+  height: 420px;
+  width: 40vw;
+  color: #fff;
+}
+
+.card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-paragram {
+  margin-left: 2vw;
+}
+
+.card-action {
+ text-align: center;
 }

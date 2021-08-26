@@ -1,9 +1,15 @@
 .warn, .error {
   display: block;
-  width: 99%;
+  width: 98%;
   height: auto;
   margin-bottom: 12px;
-  border: 1px solid #000;
+  border: 1px solid rgba(0, 0, 0, .5);
+  border-radius: 10px;
+}
+
+.code, .msg-details {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .msg-details {
@@ -11,10 +17,7 @@
 }
 
 .code {
-  font-weight: bolder;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  display: block;
+  font-weight: 200;
   overflow: auto;
 }
 

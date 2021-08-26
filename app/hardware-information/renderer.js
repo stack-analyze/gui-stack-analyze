@@ -1,3 +1,6 @@
+// component
+require('../components/navbar_component.js')
+
 // modules
 const { ipcRenderer } = require('electron')
 const {
@@ -10,7 +13,7 @@ const {
   baseboard,
   time
 } = require('systeminformation')
-const { Tabs, toast } = require('materialize-css')
+const toast = require('../scripts/toast')
 
 // DOM elements
 const cpuInfo = document.getElementById('cpu-info')
@@ -21,8 +24,23 @@ const controllersInfo = document.getElementById('controller-info')
 const displaysInfo = document.getElementById('display-info')
 const biosDetails = document.getElementById('bios-info')
 const boardInfo = document.getElementById('board-info')
-const elems = document.querySelectorAll('.tabs')
+const tabcontents = document.querySelectorAll('.tab-content')
+const tablinks = document.querySelectorAll('.tab-links')
 
+// tabs
+tablinks.forEach((tablink, i) => {
+  tablink.addEventListener('click', () => {
+    tablinks.forEach((tablink, i) => {
+      tablink.classList.remove('active')
+      tabcontents[i].style.display = "none";
+    })
+    
+    tabcontents[i].style.display = "block";
+    tablink.classList.add('active')
+  })
+})
+
+// functions
 async function cpuShow() {
   try {
     const {
@@ -37,18 +55,19 @@ async function cpuShow() {
       model
     } = await cpu();
     cpuInfo.textContent = `
-    manufacturer: ${manufacturer}
-    brand: ${brand}
-    speedMin: ${speed}
-    cores: ${cores}
-    physicalCores: ${physicalCores}
-    processors: ${processors}
-    vendor: ${vendor}
-    family: ${family}
-    model: ${model} 
+    - manufacturer: ${manufacturer}
+    - brand: ${brand}
+    - speedMin: ${speed}
+    - cores: ${cores}
+    - physicalCores: ${physicalCores}
+    - processors: ${processors}
+    - vendor: ${vendor}
+    - family: ${family}
+    - model: ${model} 
   `
   } catch (err) {
-    toast({ html: err })
+    toast(err.message)
+    console.error(err.message)
   }
 }
 
@@ -69,7 +88,8 @@ async function ramMem() {
       - available: ${(available / 1073741824).toFixed(2)} GB
     `
   } catch (err) {
-    toast({ html: err })
+    toast(err.message)
+    console.error(err.message)
   }
 }
 
@@ -95,7 +115,8 @@ async function osDetails() {
       - uefi: ${uefi ? 'uefi bios' : 'legacy bios'}
     `
   } catch (err) {
-    toast({ html: err })
+    toast(err.message)
+    console.error(err.message)
   }
 }
 
@@ -105,39 +126,35 @@ async function diskInfo() {
 
     // render disks info
     disks.map(({ type, name, vendor, size, interfaceType }) => {
-      // list
-      const diskList = document.createElement('ul')
-      diskList.classList.add('hardware-list', 'col', 's6')
 
       // items
-      const diskType = document.createElement('li')
-      const diskName = document.createElement('li')
+      const diskItem = document.createElement('li')
       const diskTitle = document.createElement('strong')
-      const diskVendor = document.createElement('li')
-      const diskSize = document.createElement('li')
-      const diskInterface = document.createElement('li')
+      const diskDesc = document.createElement('p')
+
 
       // text content
-      diskType.textContent = `disk type: ${type}`
-      diskTitle.classList.add('disk-title')
       diskTitle.textContent = name
-      diskVendor.textContent = `disk vendor: ${vendor}`
-      diskSize.textContent = `disk size: ${(size / 1073741824).toFixed(2)} GB`
-      diskInterface.textContent = `disk interface: ${interfaceType}`
-
-      // append elems
-      diskName.appendChild(diskTitle)
-      diskList.appendChild(diskName)
-      diskList.appendChild(diskType)
-      diskList.appendChild(diskVendor)
-      diskList.appendChild(diskSize)
-      diskList.appendChild(diskInterface)
+      diskTitle.classList.add('disk-title')
+      diskDesc.textContent = `
+        - disk type: ${type}
+        - disk vendor: ${vendor}
+        - disk size: ${(size / 1073741824).toFixed(2)} GB
+        - disk interface: ${interfaceType}
+      `
+      diskDesc.classList.add('description')
+      diskItem.classList.add('disk-item')
 
       // append main
-      disksInfo.appendChild(diskList)
+      diskItem.appendChild(diskTitle)
+      diskItem.appendChild(diskDesc)
+      
+      // append main
+      disksInfo.appendChild(diskItem)
     })
   } catch (err) {
-    toast({ html: err })
+    toast(err.message)
+    console.error(err.message)
   }
 }
 
@@ -153,33 +170,32 @@ async function ControllerInfo() {
       vram,
       bus
     }) => {
-      const controllerList = document.createElement('ul')
-      controllerList.classList.add('hardware-list', 'col', 's6')
 
       // items
-      const controllerName = document.createElement('li')
+      const controllerItem = document.createElement('li')
       const controllerTitle = document.createElement('strong')
-      const controllerVendor = document.createElement('li')
-      const controllerVram = document.createElement('li')
-      const controllerBus = document.createElement('li')
-
+      const controllerDesc = document.createElement('p')
+      
       controllerTitle.textContent = model
-      controllerVendor.textContent = `controller vendor: ${vendor}`
-      controllerVram.textContent = vram < 1024 ? `controller vram: ${vram} MB` : `controller vram: ${(vram / 1024).toFixed(2)} GB`
-      controllerBus.textContent = `controller bus: ${bus}`
+      
+      controllerDesc.textContent = `
+        - controller vendor: ${vendor}
+        - controller vram: ${vram < 1024 ? vram + ' MB' : (vram / 1024).toFixed(2) + ' GB'}
+        - controller bus: ${bus}
+      `
+      controllerDesc.classList.add('description')
+      controllerItem.classList.add('controller-item')
 
       // append
-      controllerName.appendChild(controllerTitle)
+      controllerItem.appendChild(controllerTitle)
 
-      controllerList.appendChild(controllerName)
-      controllerList.appendChild(controllerVendor)
-      controllerList.appendChild(controllerVram)
-      controllerList.appendChild(controllerBus)
+      controllerItem.appendChild(controllerDesc)
 
-      controllersInfo.appendChild(controllerList)
+      controllersInfo.appendChild(controllerItem)
     })
   } catch (err) {
-    toast({ html: err })
+    toast(err.message)
+    console.error(err.message)
   }
 }
 async function displayInfo() {
@@ -193,32 +209,30 @@ async function displayInfo() {
       resolutionX,
       resolutionY
     }) => {
-      const displayList = document.createElement('ul')
-      displayList.classList.add('hardware-list', 'col', 's6')
-
       // items
-      const displayName = document.createElement('li')
+      const displayItem = document.createElement('li')
       const displayTitle = document.createElement('strong')
-      const displayMain = document.createElement('li')
-      const displayConnection = document.createElement('li')
-      const displayResolution = document.createElement('li')
-
+      const displayDesc = document.createElement('p')
+      
       displayTitle.textContent = model
-      displayMain.textContent = `monitor type: ${main ? 'master monitor' : 'slave monitor'}`
-      displayConnection.textContent = `tpye: ${connection}`
-      displayResolution.textContent = `resolution: ${resolutionX} x ${resolutionY}`
+      
+      displayDesc.textContent = `
+        - monitor type: ${main ? 'master monitor' : 'slave monitor'}
+        - tpye: ${connection}
+        - resolution: ${resolutionX} x ${resolutionY}
+      `
+      displayDesc.classList.add('description')
+      displayDesc.classList.add('display-item')
 
-      // append
-      displayName.appendChild(displayTitle)
-      displayList.appendChild(displayName)
-      displayList.appendChild(displayMain)
-      displayList.appendChild(displayConnection)
-      displayList.appendChild(displayResolution)
+      // append 
+      displayItem.appendChild(displayTitle)
+      displayItem.appendChild(displayDesc)
 
-      displaysInfo.appendChild(displayList)
+      displaysInfo.appendChild(displayItem)
     })
   } catch (err) {
-    toast({ html: err })
+    toast(err.message)
+    console.error(err.message)
   }
 }
 async function biosInfo() {
@@ -237,7 +251,8 @@ async function biosInfo() {
       - bios version: ${version}
     `
   } catch (err) {
-    toast({ html: err })
+    toast(err.message)
+    console.error(err.message)
   }
 }
 
@@ -257,7 +272,7 @@ async function systemInfo() {
       - board serial: ${serial === '' ? 'no serial info' : serial}
     `
   } catch (err) {
-    toast({ html: err })
+    toast(err.message)
   }
 }
 
@@ -270,7 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
   displayInfo()
   biosInfo()
   systemInfo()
-  Tabs.init(elems)
 })
 
 // pc processes
@@ -280,7 +294,7 @@ ipcRenderer.on('clear-stack', async () => {
     alert(`delete analyze not available in this tool but you observer the current timezone is: ${timezone}
     `)
   } catch (err) {
-    alert(err)
+    alert(err.message)
   }
 })
 

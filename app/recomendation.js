@@ -69,7 +69,7 @@ const recomendation = [
     label: 'nonolive streamers',
     submenu: [
       {
-        label: "⚔️GothspiceChann💰",
+        label: '⚔️GothspiceChann💰',
         async click() {
           await shell.openExternal(
             'https://www.nonolive.com/14278329'
@@ -85,7 +85,7 @@ const recomendation = [
         }
       },
       {
-        label: "Ly Pháp ❤️",
+        label: 'Ly Pháp ❤️',
         async click() {
           await shell.openExternal(
             'https://www.nonolive.com/33519748'
@@ -101,15 +101,15 @@ const recomendation = [
         }
       },
       {
-        label: 'AlpiCornioRex🦙🦄🦖',
+        label: '🌼PAPATYA❣SS🌼',
         async click() {
           await shell.openExternal(
-            'https://www.nonolive.com/35874353'
+            'https://www.nonolive.com/28480328'
           )
         }
       },
       {
-        label: "ᴹᴰToni😈🦇Stream",
+        label: "ᴹᴰ🐺☣ToniD'Ale",
         async click() {
           await shell.openExternal(
             'https://www.nonolive.com/41145492'
@@ -117,10 +117,42 @@ const recomendation = [
         }
       },
       {
-        label: 'ᴹᴰ🐰CELI🦄🦎',
+        label: 'ᴹᴰ🐰CELI69🦄🦎',
         async click() {
           await shell.openExternal(
             'https://www.nonolive.com/41135433'
+          )
+        }
+      },
+      {
+        label: '🦎🌟Aidee💋🦜',
+        async click() {
+          await shell.openExternal(
+            'https://www.nonolive.com/31655138'
+          )
+        }
+      },
+      {
+        label: '🤡😻Piolinita💀',
+        async click() {
+          await shell.openExternal(
+            'https://www.nonolive.com/34109808'
+          )
+        }
+      },
+      {
+        label: '💋🧉Narki🐺Lili',
+        async click() {
+          await shell.openExternal(
+            'https://www.nonolive.com/28480328'
+          )
+        }
+      },
+      {
+        label: '🦎🌟GUANI🌻🍦',
+        async click() {
+          await shell.openExternal(
+            'https://www.nonolive.com/9330839'
           )
         }
       }
@@ -142,6 +174,14 @@ const recomendation = [
   {
     label: 'twitch streamers',
     submenu: [
+      {
+        label: 'lamua_',
+        async click() {
+          await shell.openExternal(
+            'https://www.twitch.tv/lamua_'
+          )
+        }
+      },
       {
         label: 'lunanny',
         async click() {

@@ -1,7 +1,10 @@
+// component
+require('../components/navbar_component.js')
+
 // modules
 const { ipcRenderer } = require('electron')
 const validator = require('html-validator')
-const { toast } = require('materialize-css')
+const toast = require('../scripts/toast')
 
 // DOM elements
 const form = document.getElementById('validator')
@@ -15,7 +18,6 @@ const fragment = document.createDocumentFragment()
 const htmlValidator = async (url) => {
   const options = {
     url,
-    validator: 'http://html5.validator.nu',
     format: 'json'
   }
 
@@ -52,8 +54,9 @@ const htmlValidator = async (url) => {
 
       resultValidator.appendChild(fragment)
     })
+    toast(`finish analyze ${url}`)
   } catch (err) {
-    toast({ html: err.message, classes: 'rounded toast-bottom' })
+    toast(err.message)
   }
 }
 

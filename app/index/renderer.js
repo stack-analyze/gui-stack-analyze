@@ -1,7 +1,10 @@
+// component
+require('../components/navbar_component')
+
 // modules
 const { ipcRenderer, shell } = require('electron')
 const Wappalyzer = require('wappalyzer')
-const { toast } = require('materialize-css')
+const toast = require('../scripts/toast')
 
 // DOM elements
 const techStack = document.getElementById('stack')
@@ -9,9 +12,6 @@ const From = document.getElementById('analyze')
 const webSite = document.getElementById('web')
 const analyzeLink = document.querySelector('.analyze-link')
 const analyzeButton = document.getElementById('analyze-button')
-
-// DOM stackFragment
-const stackFragment = document.createDocumentFragment()
 
 // tech stack function
 const stack = async (url) => {
@@ -24,18 +24,16 @@ const stack = async (url) => {
     const { technologies } = await wappalyzer.open(url).analyze()
 
     technologies.map((app) => {
-      // column element
-      const column = document.createElement('section')
 
       // card elements
-      const cardContent = document.createElement('div')
+      const cardContent = document.createElement('article')
       const webSite = document.createElement('div')
       const imageLogo = document.createElement('figure')
       const cardTitle = document.createElement('h2')
-      const categories = document.createElement('div')
+      const categories = document.createElement('p')
 
       // card
-      cardContent.classList.add('card', 'medium')
+      cardContent.classList.add('card', 'app-glass')
       imageLogo.classList.add('card-image')
 
       // link element
@@ -44,40 +42,33 @@ const stack = async (url) => {
       // image element
       const logo = document.createElement('img')
 
-      column.classList.add('col', 's4')
-
       webSite.classList.add('card-action')
 
       link.href = app.website
       link.target = '_blank'
       link.textContent = `${app.name} website`
-      link.classList.add('black-text')
+      link.classList.add('card-link')
 
       logo.src = `../images/${app.icon}`
       logo.alt = app.name
       logo.classList.add('logo')
+      
       cardTitle.textContent = app.name
-      cardTitle.classList.add('card-title', 'flow-text', 'center')
+      cardTitle.classList.add('card-title')
 
       categories.classList.add('card-content')
       categories.textContent = app.categories.map((categorie) => categorie.name).join(', ')
 
       webSite.appendChild(link)
       imageLogo.appendChild(logo)
-      cardContent.appendChild(imageLogo)
-      cardContent.appendChild(cardTitle)
-      cardContent.appendChild(categories)
-      cardContent.appendChild(webSite)
+      
+      cardContent.append(imageLogo, cardTitle, categories, webSite)
 
-      column.appendChild(cardContent)
-
-      stackFragment.appendChild(column)
-
-      techStack.appendChild(stackFragment)
+      techStack.appendChild(cardContent)
     })
+    toast(`finish analyze ${url}`)
   } catch (err) {
-    console.error(err)
-    toast({ html: err, classes: 'rounded toast-bottom' })
+    toast(err.message)
   }
 
   // finish check

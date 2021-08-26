@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>hardware information</title>
-  <!-- materialize -->
-  <link rel="stylesheet" href="../../node_modules/materialize-css/dist/css/materialize.min.css">
+  <!-- normalize -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css">
   <!-- material icons -->
   <link rel="stylesheet" href="../../node_modules/material-design-icons/iconfont/material-icons.css">
   <!-- global stylesheet-->
@@ -14,124 +14,85 @@
   <link rel="stylesheet" href="main.css">
 </head>
 
-<body class="scroll">
-  <nav class="nav-wrapper navbar-fixed black">
-    <header class="center brand-logo">
-      <h1 class="brand">hardware information</h1>
-    </header>
-    <ul class="right">
-      <li>
-        <a class="dropdown-trigger" href="#!" data-target="dropdown1">
-          show tools
-        </a>
-        <ul id="dropdown1" class="dropdown-content">
-          <li>
-            <a class="black-text" href="../index/index.html">tech stack</a>
-          </li>
-          <li>
-            <a class="black-text" href="../pagespeed/index.html">pagespeed</a>
-          </li>
-          <li>
-            <a class="black-text" href="../github-info/index.html">github info</a>
-          </li>
-          <li>
-            <a class="black-text" href="../anime-search/index.html">anime search</a>
-          </li>
-          <li>
-            <a class="black-text" href="../html-validator/index.html">html validator</a>
-          </li>
-          <li>
-            <a class="black-text" href="../hardware-information/index.html">hardware information</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-  <main class="row">
-    <section class="col s12">
-      <ul class="tabs tabs-fixed-width black-text">
-        <li class="tab col s2">
-          <a href="#cpu-ram" class="active">basic info</a>
-        </li>
-        <li class="tab col s2">
-          <a href="#disk">disk info</a>
-        </li>
-        <li class="tab col s2">
-          <a href="#controller">controller info</a>
-        </li>
-        <li class="tab col s2">
-          <a href="#display">display info</a>
-        </li>
-        <li class="tab col s2">
-          <a href="#bios">bios info</a>
-        </li>
+<body>
+  <navbar-stack title="hardware information"></navbar-stack>
+  <main class="container class=" scroll"">
+    <section class="app-glass">
+      <ul class="tab">
+        <li class="tab-button tab-links">basic info</li>
+        <li class="tab-button tab-links">disk info</li>
+        <li class="tab-button tab-links">controller info</li>
+        <li class="tab-button tab-links">display info</li>
+        <li class="tab-button tab-links">bios info</li>
       </ul>
-    </section>
-    <section id="cpu-ram" class="col s12">
-      <article class="col s4 section">
-        <section class="card">
-          <h2 class="card-title flow-text">cpu info</h2>
-          <section class="card-content">
+      
+      <section class="tab-content">
+        <article class="basic-info">
+        
+        <section class="card-container card">
+          <h2 class="card-title">cpu info</h2>
+          <div class="card-content">
             <p class="description" id="cpu-info"></p>
-          </section>
+          </div>
         </section>
-      </article>
-      <article class="col s4 section">
-        <section class="card">
-          <h2 class="card-title flow-text">ram memory info</h2>
-          <section class="card-content">
+        
+        <section class="card-container card">
+          <h2 class="card-title">ram memory info</h2>
+          <div class="card-content">
             <p class="description" id="ram-info"></p>
-          </section>
+          </div>
         </section>
-      </article>
-      <article class="col s4 section">
-        <section class="card">
-          <h2 class="card-title flow-text">os info</h2>
-          <section class="card-content">
+        
+        <section class="card-container card">
+          <h2 class="card-title">os info</h2>
+          <div class="card-content">
             <p class="description" id="os-info"></p>
-          </section>
+          </div>
         </section>
-      </article>
-    </section>
-    <section id="disk" class="col s12">
-      <article class="card horizontal">
-        <section class="card-content" id="disks-info">
+        </article>
+      </section>
+      
+      <section class="tab-content">
+        <article class="card-content">
           <h2 class="card-title flow-text">disks info</h2>
-        </section>
-      </article>
-    </section>
-    <section id="controller" class="col s12">
-      <article class="card horizontal">
-        <section class="card-content" id="controller-info">
-          <h2 class="card-title flow-text">controllers info</h2>
-        </section>
-      </article>
-    </section>
-    <section id="display" class="col s12">
-      <article class="card horizontal">
-        <section class="card-content" id="display-info">
-          <h2 class="card-title flow-text">displays info</h2>
-        </section>
-      </article>
-    </section>
-    <section id="bios" class="col s12">
-      <article class="col s6">
+          <ul class="disk-info" id="disks-info"></ul>
+        </article>
+      </section>
+      
+      <section class="tab-content">
+        <article class="card horizontal">
+          <div class="card-content">
+            <h2 class="card-title flow-text">controllers info</h2>
+            <ul class="controller-info" id="controller-info"></ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="tab-content">
+        <article class="card horizontal">
+          <div class="card-content">
+            <h2 class="card-title flow-text">displays info</h2>
+            <ul class="display-info" id="display-info"></ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="tab-content">
+        <article class="bios-info">
         <section class="card">
           <h2 class="card-title flow-text">bios info</h2>
           <div class="card-content">
             <p class="description" id="bios-info"></p>
           </div>
         </section>
-      </article>
-      <article class="col s6">
         <section class="card">
           <h2 class="card-title flow-text">motherboard info</h2>
           <div class="card-content">
             <p class="description" id="board-info"></p>
           </div>
         </section>
-      </article>
-    </section>
+        </article>
+      </section>
   </main>
   <script src="renderer.js"></script>
 </body>

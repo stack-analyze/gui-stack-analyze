@@ -1,17 +1,34 @@
-/* fallback */
-body {
-  font-display: block;
+/* fonts */
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Regular.woff');
+  unicode-range: U+0370-03FF;
 }
 
-fieldset {
+/* fallback */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-display: block;
+  background: linear-gradient(to right, #2B32B2, #1488CC);
+}
+
+fieldset, .input-field, .input-field-text {
   border: none;
 }
 
-/* brand */
-.brand {
-  text-transform: capitalize;
-  margin: 5% 0;
-  font-size: 26pt;
+.container {
+  margin-top: 3vh;
+  margin-left: 25%; /* Same as the width of the sidenav */
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.app-glass {
+  background: rgba( 255, 255, 255, 0.10 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 30px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 /* scrollbar*/
@@ -34,11 +51,131 @@ fieldset {
   background: linear-gradient(to right, #000000, #434343);
 }
 
+/* buttons */
+
+.btn-submit {
+   display: inline-block;
+   padding: 6px 8px;
+   border: 0;
+   text-decoration: none;
+   border-radius: 15px;
+   background-color: rgba(0, 0, 0, 0.6);
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   backdrop-filter: blur(30px);
+   color: rgba(255,255, 255, 0.8);
+   font-size: 14px;
+   cursor: pointer;
+   text-transform: capitalizable;
+}
+
+.btn-submit:disabled {
+   display: inline-block;
+   padding: 6px 8px;
+   border: 0;
+   text-decoration: none;
+   border-radius: 15px;
+   background-color: rgba(204, 204, 204, 0.6);
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   backdrop-filter: blur(30px);
+   color: rgba(255,255, 255, 0.8);
+   font-size: 14px;
+   cursor: pointer;
+   text-transform: capitalizable;
+}
+
+.btn-submit:hover {
+   background-color: rgba(0, 0, 0, 0.2);
+ }
+
+.btn-submit[disabled] {
+   display: inline-block;
+   padding: 6px 8px;
+   border: 0;
+   text-decoration: none;
+   border-radius: 15px;
+   background-color: rgba(204, 204, 204, 0.6);
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   backdrop-filter: blur(30px);
+   color: rgba(255,255, 255, 0.8);
+   font-size: 14px;
+}
+
 .full-btn {
   width: 100%;
 }
 
+/* info */
 .description {
   border-left: 5px solid #000;
   white-space: pre;
 }
+
+/* inputs */
+
+.input-field-text, .prefix {
+    display: inline-block;
+    color: #fff;
+}
+
+.input-field-text {
+    width: 85%;
+    background: transparent;
+    outline: none;
+    border-bottom: 1px solid white;
+    padding: 10px;
+}
+
+.input-field-text::placeholder {
+    color: #fff;
+}
+
+.prefix {
+ font-size: 36px;
+ margin: auto;
+}
+
+/* glass */
+.glass {
+background: rgba( 255, 255, 255, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+/* toast */
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  background: rgba( 246, 0, 0, 0.30 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 20.0px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  right: 5%;
+  bottom: 10vh;
+  font-size: 17px;
+}
+
+.show {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+

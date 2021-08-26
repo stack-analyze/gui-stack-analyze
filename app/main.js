@@ -49,7 +49,7 @@ const createWindow = () => {
       ]
     },
     {
-      label: 'View',
+      label: 'Option',
       submenu: [
         {
           label: 'delete analyzer',

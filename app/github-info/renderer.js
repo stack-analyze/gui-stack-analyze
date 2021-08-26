@@ -1,8 +1,11 @@
+// component
+require('../components/navbar_component.js')
+
 // modules
-const { ipcRenderer, shell } = require('electron')
+const { ipcRenderer } = require('electron')
 const axios = require('axios')
 const { format } = require('timeago.js')
-const { toast } = require('materialize-css')
+const toast = require('../scripts/toast')
 
 // DOM elements
 const gitInfo = document.getElementById('git-info')
@@ -10,7 +13,6 @@ const user = document.getElementById('user')
 const gitUser = document.getElementById('git-user')
 const profile = document.getElementById('profile')
 const fullName = document.getElementById('fullname')
-const info = document.getElementById('info')
 const twitter = document.getElementById('twitter')
 const repos = document.getElementById('repos')
 const gits = document.getElementById('gits')
@@ -28,8 +30,6 @@ async function github(user) {
 
     fullName.textContent = res.data.name === null ? "no info" : res.data.name
 
-    info.textContent = res.data.bio === null ? "no bio" : res.data.bio
-
     repos.textContent = res.data.public_repos
 
     gits.textContent = res.data.public_gists
@@ -37,27 +37,16 @@ async function github(user) {
     created.textContent = format(res.data.created_at)
     created.title = new Date(res.data.created_at).toDateString()
 
-    if (res.data.twitter_username === null) {
-      twitter.textContent = "no twitter info"
-      twitter.href = "#"
-    } else {
-      twitter.textContent = `${res.data.twitter_username} twitter`
-      twitter.href = `https://twitter.com/${res.data.twitter_username}`
-      twitter.target = "_blank"
-    }
+    twitter.textContent = res.data.twitter_username === null ? 'no twitter info' : res.data.twitter_username
+    
+    toast(res.status)
+    console.log(res.status)
   } catch (err) {
-    toast({ html: err.message })
+    toast(err.message)
   }
 }
 
 // events
-document.addEventListener('click', (e) => {
-  if (e.target.tagName === 'A' && e.target.href.startsWith('http')) {
-    e.preventDefault()
-    shell.openExternal(e.target.href)
-  }
-})
-
 gitInfo.addEventListener('submit', (e) => {
   github(user.value)
 
@@ -65,15 +54,12 @@ gitInfo.addEventListener('submit', (e) => {
   gitInfo.reset()
 })
 
-//
+// delete analyzer
 ipcRenderer.on('clear-stack', () => {
   gitUser.textContent = ''
   profile.src = '../images/no-found.jpg'
-  fullName.textContent = ''
-  info.textContent = ''
-  twitter.textContent = 'no info'
-  twitter.href = '#'
-  twitter.removeAttribute('target')
+  fullName.textContent = 'no info'
+  twitter.textContent = ''
   repos.textContent = ''
   gits.textContent = ''
   created.textContent = ''
