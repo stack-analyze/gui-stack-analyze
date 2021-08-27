@@ -33,7 +33,7 @@
   border-top: none;
 }
 
-.basic-info, .disk-info, hardware-list, .display-info, .bios-info {
+.basic-info, .disk-info, .hardware-list, .display-info, .bios-info {
   display: grid;
   grid-template-rows: 1fr;
 }
