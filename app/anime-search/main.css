@@ -1,0 +1,11 @@
+/* table */
+.anime-list {
+  scrollbar-width: thin;
+  scrollbar-color: #fff #000;
+  overflow: auto;
+  height: 60vh;
+}
+
+.info-time {
+  display: block;
+}

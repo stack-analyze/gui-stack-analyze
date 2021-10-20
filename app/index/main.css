@@ -1,0 +1,13 @@
+/* class */
+.logo {
+  width: 200px;
+  height: 200px;
+}
+
+/* info content */
+.content {
+  scrollbar-width: thin;
+  scrollbar-color: #fff #000;
+  overflow: auto;
+  height: 60vh;
+}

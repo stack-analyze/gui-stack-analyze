@@ -1,0 +1,35 @@
+.warn, .error {
+  display: block;
+  width: 99%;
+  height: auto;
+  margin-bottom: 12px;
+  border: 1px solid #000;
+}
+
+.msg-details {
+  display: block;
+}
+
+.code {
+  font-weight: bolder;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  display: block;
+  overflow: auto;
+}
+
+.results-validator {
+  scrollbar-width: thin;
+  scrollbar-color: #fff #000;
+  overflow: auto;
+  height: 60vh;
+}
+
+.warn {
+  background-color: #ff0;
+}
+
+.error {
+  background-color: #f00;
+}
+

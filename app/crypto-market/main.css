@@ -1,0 +1,13 @@
+.logo {
+  height: 250px;
+  width: 250px;
+  object-fit: contain;
+}
+
+.crypto-list {
+  height: 78vh;
+  scrollbar-width: thin;
+  scrollbar-color: #fff #000;
+  overflow: auto;
+  margin-top: 2vh
+}

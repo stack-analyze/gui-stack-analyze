@@ -1,0 +1,28 @@
+.tabs .tab a {
+  color: #000;
+}
+.tabs .tab a.active {
+  color: #000;
+}
+.tabs .tab a:hover {
+  color: #000;
+}
+.tabs .tab a:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.tabs .tab a:focus.active {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.tabs .indicator {
+  background-color: #000;
+}
+
+.hardware-list {
+  display: inline-block
+}
+
+.disk-title {
+  font-size: 16pt;
+  font-weight: bolder;
+}
