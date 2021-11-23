@@ -45,7 +45,7 @@ const createWindow = () => {
       label: 'File',
       submenu: [
         { role: 'minimize' },
-        isMac ? { role: 'close' } : { role: 'quit' }
+        isMac ? { role: 'close' } : { role: 'quit' },
       ]
     },
     {

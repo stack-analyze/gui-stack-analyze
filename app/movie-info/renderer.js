@@ -1,28 +1,29 @@
-// modules
 const { ipcRenderer } = require('electron')
 const axios = require('axios')
 const { toast } = require('materialize-css')
-const { format } = require('timeago.js')
 
 // DOM elements
-const movieList = document.getElementById('movie-cards')
-const search = document.getElementById('movie')
-const sendSearch = document.getElementById('movie-search')
+const movieQuery = document.getElementById('movie')
+const movieToken = document.getElementById('token')
+const movieSearch = document.getElementById('movie-search')
+const movieResults = document.getElementById('movie-cards')
 
-// DOM fragment
-const fragment = document.createDocumentFragment()
-
-// movie search function
-async function movieTool(query) {
+// movie funcition
+const movieInfo = async () => {
   try {
-    // call api
-    const res = await axios.get("https://api.jikan.moe/v3/search/movie", {
+    const { data } = await axios.get('https://api.themoviedb.org/3/search/movie', {
       params: {
-        q: query
+        api_key: movieToken.value,
+        query: movieQuery.value,
+        page: 1,
       }
     })
 
-    res.data.results.map((movieData) => {
+    data.results.map((result) => {
+      const pathImg = result.poster_path === null
+        ? 'No-image-found.jpg'
+        : `http://image.tmdb.org/t/p/w500/${result.poster_path}`
+
       // row element
       const row = document.createElement('section')
       const card = document.createElement('article')
@@ -40,8 +41,7 @@ async function movieTool(query) {
       const RevealTitle = document.createElement('h2')
       const movieSynopsis = document.createElement('p')
       const movieDesc = document.createElement('blockquote')
-      const movieDebut = document.createElement('a')
-      const movieFinish = document.createElement('a')
+      const movieDate = document.createElement('a')
       const iconClose = document.createElement('i')
       const iconMore = document.createElement('i')
 
@@ -57,32 +57,25 @@ async function movieTool(query) {
       // title
       iconMore.textContent = 'more_vert'
       iconMore.classList.add('material-icons', 'right')
-      movieTitle.textContent = movieData.title
+      movieTitle.textContent = result.title
       movieTitle.classList.add('card-title', 'flow-text', 'activator')
       movieTitle.appendChild(iconMore)
 
-      movieSynopsis.textContent = movieData.synopsis
-      movieDesc.textContent = `type: ${movieData.type} \n episodes: ${movieData.episodes} \n rated: ${movieData.rated}`
-      movieDesc.classList.add('description')
+      movieSynopsis.textContent = result.overview
 
-      movieDebut.href = '#!'
-      movieDebut.classList.add('info-time')
-      movieDebut.textContent = `debut time: ${format(movieData.start_date)}`
-
-      movieFinish.href = '#!'
-      movieFinish.classList.add('info-time')
+      movieDate.href = '#!'
+      movieDate.classList.add('info-time')
+      movieDate.textContent = `release date: ${result.release_date}`
 
       iconClose.textContent = 'close'
       iconClose.classList.add('material-icons', 'right')
 
       RevealTitle.textContent = 'Synopsis'
       RevealTitle.classList.add('card-title', 'flow-text', 'grey-text', 'text-darken-4')
-      RevealTitle.appendChild(iconClose)
+      RevealTitle.append(iconClose)
 
-      movieData.end_date === null ? movieFinish.textContent = 'Current Date' : movieFinish.textContent = `finish time: ${format(movieData.end_date)}`
-
-      poster.src = movieData.image_url
-      poster.alt = `poster ${movieData.title}`
+      poster.src = pathImg
+      poster.alt = `poster ${result.title}`
       poster.classList.add('responsive-img', 'center')
 
       movieSynopsisContent.classList.add('card-reveal')
@@ -94,36 +87,28 @@ async function movieTool(query) {
       movieContent.appendChild(movieDesc)
       movieContent.classList.add('card-content')
 
-      movieTime.appendChild(movieDebut)
-      movieTime.appendChild(movieFinish)
+      movieTime.appendChild(movieDate)
 
-      card.appendChild(moviePoster)
-      card.appendChild(movieTitle)
-      card.appendChild(movieContent)
-      card.appendChild(movieSynopsisContent)
-      card.appendChild(movieTime)
+      card.append(moviePoster, movieTitle, movieContent, movieSynopsisContent, movieTime)
 
-      row.appendChild(card)
+      row.append(card)
 
-      fragment.appendChild(row)
-
-      movieList.appendChild(fragment)
+      movieResults.append(row)
     })
-
   } catch (err) {
-    toast({ html: err.message })
+    toast({html: err.message})
+    console.error(err.message)
   }
 }
 
-// events
-sendSearch.addEventListener('submit', (e) => {
-  movieList.innerHTML = ''
-
-  movieTool(search.value)
-
+// submit
+movieSearch.addEventListener('submit', (e) => {
+  movieResults.innerHTML = ''
+  movieInfo()
+  
   e.preventDefault()
-  sendSearch.reset()
+  movieSearch.reset()
 })
 
-// movie clear
-ipcRenderer.on('clear-stack', () => (movieList.innerHTML = ''))
+// movie results clear
+ipcRenderer.on('clear-stack', () => (movieResults.innerHTML = ''))

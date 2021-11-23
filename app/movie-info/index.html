@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>movie info</title>
   <!-- materialize css -->
   <link rel="stylesheet" href="../../node_modules/materialize-css/dist/css/materialize.min.css" />
   <!-- material icons -->
@@ -12,13 +13,12 @@
   <link rel="stylesheet" href="../styles/global.css" />
   <!-- main css -->
   <link rel="stylesheet" href="main.css" />
-  <title>pagespeed tool</title>
 </head>
 
 <body>
   <nav class="nav-wrapper navbar-fixed black">
     <header class="center brand-logo">
-      <h1 class="brand">pagespeed</h1>
+      <h1 class="brand">movie info</h1>
     </header>
     <ul class="right hide-on-med-and-down">
       <li>
@@ -57,33 +57,33 @@
       </li>
     </ul>
   </nav>
+
   <main class="row">
     <section class="col s12">
-      <form id="pagespeed" class="row">
-        <fieldset class="input-field col s12">
-          <i class="material-icons prefix">web</i>
-          <input 
-            type="url" 
-            name="url" 
-            id="web" 
-            class="analyze-link"
-            pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
-            required 
-          />
-          <label for="web">enter a website</label>
+      <form id="movie-search" class="row">
+        <fieldset class="col s12 row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">search</i>
+          <input type="search" id="movie" autocomplete="off" required />
+          <label for="movie">enter a movie title</label>
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">visibility_off</i>
+            <input type="password" name="token" id="token" class="input-field-text" required />
+            <label for="token">enter a movie token</label>
+          </div>
         </fieldset>
         <fieldset class="col s12">
-          <button id="analyze-button" class="btn waves-effect black full-btn" type="submit" disabled>
-            start pagespeed
+          <button id="analyze-button" class="btn waves-effect black full-btn" type="submit">
+            start movie search
           </button>
         </fieldset>
       </form>
     </section>
-    <section class="col s12">
-      <canvas id="pagespeed-results" class="canvas"></canvas>
+    <section class="col s12 row">
+      <article class="col s12 row movie-list scroll" id="movie-cards"></article>
     </section>
   </main>
-  <!-- render window script -->
   <script src="renderer.js"></script>
 </body>
 
