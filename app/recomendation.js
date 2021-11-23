@@ -77,18 +77,10 @@ const recomendation = [
         }
       },
       {
-        label: '🎬JUJU#IDOL',
+        label: '🎬Sailormoon🌙',
         async click() {
           await shell.openExternal(
             'https://www.nonolive.com/17342980'
-          )
-        }
-      },
-      {
-        label: 'Ly Pháp ❤️',
-        async click() {
-          await shell.openExternal(
-            'https://www.nonolive.com/33519748'
           )
         }
       },
@@ -133,10 +125,10 @@ const recomendation = [
         }
       },
       {
-        label: '🤡😻Piolinita💀',
+        label: '💲💋Lili🧉🌟',
         async click() {
           await shell.openExternal(
-            'https://www.nonolive.com/34109808'
+            'https://www.nonolive.com/31925565'
           )
         }
       },
@@ -164,9 +156,7 @@ const recomendation = [
       {
         label: "Doofy's Projects",
         async click() {
-          await shell.openExternal(
-            'https://dprojects.org'
-          )
+          await shell.openExternal('https://dprojects.org')
         }
       }
     ]
@@ -175,31 +165,30 @@ const recomendation = [
     label: 'twitch streamers',
     submenu: [
       {
-        label: 'lamua_',
-        async click() {
-          await shell.openExternal(
-            'https://www.twitch.tv/lamua_'
-          )
-        }
-      },
-      {
         label: 'lunanny',
         async click() {
-          await shell.openExternal(
-            'https://www.twitch.tv/lunanny'
-          )
+          await shell.openExternal('https://www.twitch.tv/lunanny')
         }
       },
       {
         label: 'dannyaegyo',
         async click() {
-          await shell.openExternal(
-            'https://www.twitch.tv/dannyaegyo'
-          )
+          await shell.openExternal('https://www.twitch.tv/dannyaegyo')
         }
       }
     ]
-  }
+  },
+  {
+    label: 'ideas',
+    submenu: [
+      {
+        label: "verguiskarime",
+        async click() {
+          await shell.openExternal('https://instagram.com/verguiskarime')
+        }
+      }
+    ]
+  },
 ]
 
 module.exports = recomendation;

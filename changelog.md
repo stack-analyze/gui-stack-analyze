@@ -2,6 +2,19 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## version 6.0.0
+### Added
+- new tools
+    - bitly info
+    - movie info
+    *note: similar to cli*
+- add ideas lineup
+### fixed
+- change script blocking to script defer
+### changed
+- rewrite some nonolive recomends
+- redesign webcomponents
+
 ## version 5.0.0
 ### Added
 - new modules

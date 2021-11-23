@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>bitly info</title>
+  <!-- normalize css -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css" />
+  <!-- material icons -->
+  <link rel="stylesheet" href="../../node_modules/material-design-icons/iconfont/material-icons.css" />
+  <!-- scrollbar css -->
+  <link rel="stylesheet" href="../styles/global.css" />
+  <!-- main css -->
+  <link rel="stylesheet" href="main.css" />
+  <script defer src="renderer.js"></script>
+</head>
+<body>
+  <navbar-stack title="bitly-info"></navbar-stack>
+  <main class="container">
+    <section class="app-glass">
+      <form id="analyze">
+        <fieldset class="input-field">
+          <i class="material-icons prefix">web</i>
+          <input
+            name="url"
+            id="url"
+            class="analyze-link input-field-text"
+            pattern="(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+            placeholder="enter a bitly url"
+            required
+          />
+        </fieldset>
+        <fieldset class="input-field">
+          <i class="material-icons prefix">visibility_off</i>
+          <input
+            type="password"
+            name="token"
+            id="token"
+            class="input-field-text"
+            placeholder="enter a bitly token"
+            required
+          />
+        </fieldset>
+        <fieldset class="input-field">
+          <button id="analyze-button" class="btn-submit full-btn" type="submit" disabled>
+            analyze bitly url
+          </button>
+        </fieldset>
+      </form>
+    </section>
+    <table class="glass bitly-info">
+      <thead class="fields">
+        <tr>
+          <th class="field">created date</th>
+          <th class="field">bitly link</th>
+          <th class="field">long link</th>
+        </tr>
+      </thead>
+      <tbody class="fields">
+        <tr>
+          <td id="created-date" class="field"></td>
+          <td id="bitly-link" class="field"></td>
+          <td id="link" class="field"></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

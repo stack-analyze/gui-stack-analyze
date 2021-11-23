@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>movie info</title>
+  <!-- normalize -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css" />
+  <!-- material icons -->
+  <link rel="stylesheet" href="../../node_modules/material-design-icons/iconfont/material-icons.css" />
+  <!-- global styles -->
+  <link rel="stylesheet" href="../styles/global.css" />
+  <!-- main css -->
+  <link rel="stylesheet" href="main.css" />
+  <script defer src="renderer.js"></script>
+</head>
+
+<body>
+  <navbar-stack title="movie info"></navbar-stack>
+  <main class="container">
+    <section class="app-glass">
+      <form id="movie-search">
+        <fieldset class="input-field col s12">
+          <i class="material-icons prefix">search</i>
+          <input type="search" id="movie" class="input-field-text" autocomplete="off" placeholder="enter a movie title"
+            required />
+          <fieldset class="input-field">
+            <i class="material-icons prefix">visibility_off</i>
+            <input type="password" name="token" id="token" class="analyze-link input-field-text"
+              placeholder="enter a token" required />
+          </fieldset>
+        </fieldset>
+        <fieldset>
+          <button class="btn-submit full-btn" type="submit">
+            search movie
+          </button>
+        </fieldset>
+      </form>
+    </section>
+
+    <section class="movie-list scroll" id="movie-cards"></section>
+  </main>
+</body>
+
+</html>

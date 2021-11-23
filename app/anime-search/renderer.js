@@ -66,7 +66,7 @@ async function animeTool(query) {
 
       card.append(animePoster, animeTitle, animeContent)
 
-      animeList.appendChild(card)
+      animeList.append(card)
     })
   } catch (err) {
     toast(err.message)

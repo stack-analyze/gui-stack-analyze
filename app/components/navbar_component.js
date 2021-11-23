@@ -1,3 +1,6 @@
+// links
+const links = require('./links')
+
 // navbar component
 class NavBarStack extends HTMLElement {
   constructor() {
@@ -13,9 +16,9 @@ class NavBarStack extends HTMLElement {
     // element
     const shadowRoot = this.attachShadow({ mode: 'open' })
 
-    shadowRoot.innerHTML = `
-    <!-- styles component -->
-    <style>
+    const styles = document.createElement('style')
+
+    styles.textContent = `
       /* glass style*/
       .glass {
         background: rgba( 255, 255, 255, 0.10 );
@@ -66,37 +69,41 @@ class NavBarStack extends HTMLElement {
       .sidenav-menu-button:hover {
         color: #111;
       }
-    </style>
-    <!-- component navbar -->
-    <header class="glass">
-      <h1 class="brand">${this.title}</h1>
-    </header>
-    <nav class="sidenav glass">
-      <ul class="sidenav-menu">
-        <li>
-          <a class="sidenav-menu-button" href="../index/index.html" title="techstack tool">tech-stack</a>
-        </li>
-        <li>
-          <a class="sidenav-menu-button" href="../pagespeed/index.html" title="pagespeed tool">pagespeed</a>
-        </li>
-        <li>
-          <a class="sidenav-menu-button" href="../html-validator/index.html" title="html validator tool">HTML validator</a>
-        </li>
-        <li>
-          <a class="sidenav-menu-button" href="../github-info/index.html" title="github search tool">github info</a>
-        </li>
-        <li>
-          <a class="sidenav-menu-button" href="../anime-search/index.html" title="anime search tool">anime search</a>
-        </li>
-        <li>
-          <a class="sidenav-menu-button" href="../hardware-information/index.html" title="hardware information tool">hardware information</a>
-        </li>
-        <li>
-        <a class="sidenav-menu-button" href="../crypto-market/index.html" title="crypto market tool">crypto market</a>
-        </li>
-      </ul>
-    </nav>
     `
+
+    const headerComponent = document.createElement('header')
+    headerComponent.classList.add('glass')
+
+    const TitleComponent = document.createElement('h1')
+    TitleComponent.classList.add('brand')
+    TitleComponent.textContent = this.title
+
+    headerComponent.appendChild(TitleComponent)
+
+    const navbarComponent = document.createElement('nav')
+    navbarComponent.classList.add('sidenav', 'glass')
+
+    const listComponent = document.createElement('ul')
+    listComponent.classList.add('sidenav-menu')
+
+    links.forEach(link => {
+      const itemComponent = document.createElement('li')
+      
+      const linkComponent = document.createElement('a')
+      linkComponent.classList.add('sidenav-menu-button')
+      
+      linkComponent.href = link.page
+      linkComponent.title = link.title
+      linkComponent.textContent = link.title
+
+      itemComponent.append(linkComponent)
+      
+      listComponent.append(itemComponent)
+    })
+
+    navbarComponent.appendChild(listComponent)
+
+    shadowRoot.append(styles, headerComponent, navbarComponent)
   }
 }
 

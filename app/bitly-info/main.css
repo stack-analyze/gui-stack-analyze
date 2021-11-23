@@ -1,0 +1,17 @@
+.bitly-info {
+  margin: 40px auto;
+}
+
+.fields {
+  display: inline-block;
+}
+
+.field {
+  display: block;
+  padding-block: 10px;
+}
+
+thead {
+  border-right: 1px solid #000;
+  margin-right: 4px;
+}
