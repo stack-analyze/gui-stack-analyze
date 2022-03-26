@@ -13,14 +13,14 @@
   <link rel="stylesheet" href="../styles/global.css">
   <!-- main stylesheet-->
   <link rel="stylesheet" href="main.css">
-  <script defer src="renderer.js"></script>
+  <script async src="renderer.js"></script>
 </head>
 
 <body>
-  <navbar-stack title="HTML validator"></navbar-stack>
+  <navbar-stack></navbar-stack>
 
-  <main class="container app-glass">
-    <section>
+  <main class="container">
+    <section class="app-glass">
       <form id="validator">
         <fieldset class="input-field">
           <i class="material-icons prefix">web</i>
@@ -33,7 +33,7 @@
             required
           >
         </fieldset>
-        <fieldset>
+        <fieldset class="input-field">
           <button id="submit-validate" class="btn-submit full-btn" type="submit" disabled>
             validate
           </button>
@@ -42,7 +42,7 @@
     </section>
 
     <!-- render results -->
-    <section id="html-results" class="results-validator scroll"></section>
+    <section id="html-results" class="app-glass results-validator scroll"></section>
   </main>
 </body>
 

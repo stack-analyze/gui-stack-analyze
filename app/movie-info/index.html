@@ -13,25 +13,25 @@
   <link rel="stylesheet" href="../styles/global.css" />
   <!-- main css -->
   <link rel="stylesheet" href="main.css" />
-  <script defer src="renderer.js"></script>
+  <script async src="renderer.js"></script>
 </head>
 
 <body>
-  <navbar-stack title="movie info"></navbar-stack>
+  <navbar-stack></navbar-stack>
   <main class="container">
     <section class="app-glass">
       <form id="movie-search">
-        <fieldset class="input-field col s12">
+        <fieldset class="input-field">
           <i class="material-icons prefix">search</i>
           <input type="search" id="movie" class="input-field-text" autocomplete="off" placeholder="enter a movie title"
             required />
-          <fieldset class="input-field">
+        </fieldset>
+        <fieldset class="input-field">
             <i class="material-icons prefix">visibility_off</i>
             <input type="password" name="token" id="token" class="analyze-link input-field-text"
               placeholder="enter a token" required />
           </fieldset>
-        </fieldset>
-        <fieldset>
+        <fieldset class="input-field">
           <button class="btn-submit full-btn" type="submit">
             search movie
           </button>

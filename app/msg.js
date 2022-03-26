@@ -1,6 +1,6 @@
 // modules for message
-const { author, license } = require('../package.json')
 const { app } = require('electron')
+const { author, license } = require('../package.json')
 
 // export message
 module.exports = `
@@ -11,5 +11,5 @@ module.exports = `
 
     main development: Julian David Cordoba torres (omega5300).
 
-    community: ${author}, license: ${license}
+    community: ${author} now stack-analyze, license: ${license}
 `

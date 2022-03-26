@@ -1,0 +1,64 @@
+.fields {
+  display: grid;
+  grid-template-areas: "header header"
+  "left right"
+  "footer footer";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.user {
+  grid-area: header;
+}
+
+.pass-token {
+  grid-area: left;
+}
+
+.pass-client {
+  grid-area: right;
+}
+
+.btn-field {
+  grid-area: footer;
+}
+
+.pass {
+  display: inline-block;
+  width: 50%;
+}
+
+.profile-twitch {
+  height: 200px;
+  width: 200px;
+}
+
+.card {
+  margin: 4vh auto 0;
+  height: 45vh;
+  width: 70vw;
+  color: #fff;
+  columns: 2 1vw;
+}
+
+.card-image {
+  margin-inline: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-content {
+  padding-block: 5vh;
+}
+
+.card-paragram {
+  margin-left: .5vw;
+}

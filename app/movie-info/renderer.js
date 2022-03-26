@@ -57,7 +57,7 @@ const movieInfo = async () => {
       // image
       const poster = document.createElement('img')
       const pathImg = result.poster_path === null
-        ? 'No-image-found.jpg'
+        ? '../images/No-image-found.jpg'
         : `http://image.tmdb.org/t/p/w500/${result.poster_path}`
       poster.src = pathImg
       poster.alt = `poster ${result.title}`

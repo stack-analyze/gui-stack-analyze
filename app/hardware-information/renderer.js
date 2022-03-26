@@ -276,16 +276,14 @@ async function systemInfo() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  cpuShow()
-  ramMem()
-  osDetails()
-  diskInfo()
-  ControllerInfo()
-  displayInfo()
-  biosInfo()
-  systemInfo()
-})
+cpuShow()
+ramMem()
+osDetails()
+diskInfo()
+ControllerInfo()
+displayInfo()
+biosInfo()
+systemInfo()
 
 // pc processes
 ipcRenderer.on('clear-stack', async () => {

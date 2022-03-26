@@ -2,6 +2,17 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## version 7.0.0
+### Added
+- new tools
+ - twitch info
+- replace nonolive recomends to instagram recomends
+### fixed
+- change script defer to script async
+### changed
+- delete header bar
+- renove sidebar
+
 ## version 6.0.0
 ### Added
 - new tools

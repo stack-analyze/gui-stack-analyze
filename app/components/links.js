@@ -34,5 +34,9 @@ module.exports = [
   {
     page: '../movie-info/index.html',
     title: 'movie info'
+  },
+  {
+    page: '../twitch-info/index.html',
+    title: 'twitch info'
   }
 ]

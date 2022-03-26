@@ -5,11 +5,6 @@ const links = require('./links')
 class NavBarStack extends HTMLElement {
   constructor() {
     super()
-    this.title
-  }
-
-  static get observedAttributes() {
-    return ['title'];
   }
 
   connectedCallback() {
@@ -28,25 +23,28 @@ class NavBarStack extends HTMLElement {
         border: 1px solid rgba( 255, 255, 255, 0.18 );
       }
       
-      /* toolbar title tool*/
-      .brand {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-        color: #fff;
-        user-select: none;
-      }
-      
       /* sidenav*/
       .sidenav {
-        height: 70vh;
+        height: auto;
         width: 200px;
-        z-index: 1;
         position: fixed;
         overflow-x: hidden;
-        padding-top: 20px;
-        margin-top: 3vh;
+        margin-left: 5px;
+      }
+      
+      .sidenav-title {
+        padding-block: .5em;
+        margin-inline: .6em;
+        color: #fff;
+      }
+      
+      .sidenav-logo {
+        width: 128px;
+        height: 128px;
+        display: block;
+        padding-top: .5em;
+        margin-inline: auto;
+        filter: drop-shadow(2px 4px 6px #000);
       }
       
       .sidenav-menu {
@@ -71,17 +69,24 @@ class NavBarStack extends HTMLElement {
       }
     `
 
-    const headerComponent = document.createElement('header')
-    headerComponent.classList.add('glass')
-
-    const TitleComponent = document.createElement('h1')
-    TitleComponent.classList.add('brand')
-    TitleComponent.textContent = this.title
-
-    headerComponent.appendChild(TitleComponent)
-
     const navbarComponent = document.createElement('nav')
     navbarComponent.classList.add('sidenav', 'glass')
+
+    // header
+    const headerComponent = document.createElement('header')
+    const titleComponent = document.createElement('h1')
+    const logo = document.createElement('img')
+    
+    // logo
+    logo.src = '../logo.png'
+    logo.alt = 'brand logo'
+    logo.classList.add('sidenav-logo')
+    
+    // title
+    titleComponent.textContent = 'menu Tools'
+    titleComponent.classList.add('sidenav-title')
+
+    headerComponent.append(logo, titleComponent)
 
     const listComponent = document.createElement('ul')
     listComponent.classList.add('sidenav-menu')
@@ -101,9 +106,9 @@ class NavBarStack extends HTMLElement {
       listComponent.append(itemComponent)
     })
 
-    navbarComponent.appendChild(listComponent)
+    navbarComponent.append(headerComponent, listComponent)
 
-    shadowRoot.append(styles, headerComponent, navbarComponent)
+    shadowRoot.append(styles, navbarComponent)
   }
 }
 

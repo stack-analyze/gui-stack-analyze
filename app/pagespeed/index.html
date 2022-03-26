@@ -14,11 +14,11 @@
   <link rel="stylesheet" href="main.css" />
   <title>pagespeed tool</title>
   <!-- render window script -->
-  <script defer src="renderer.js"></script>
+  <script async src="renderer.js"></script>
 </head>
 
 <body>
-  <navbar-stack title="pagespeed"></navbar-stack>
+  <navbar-stack></navbar-stack>
   <main class="container">
     <section class="app-glass">
       <form id="pagespeed" class="row">
@@ -34,7 +34,7 @@
             required 
           />
         </fieldset>
-        <fieldset>
+        <fieldset class="input-field">
           <button id="analyze-button" class="btn-submit full-btn" type="submit" disabled>
             start pagespeed
           </button>

@@ -66,88 +66,26 @@ const recomendation = [
     ]
   },
   {
-    label: 'nonolive streamers',
+    label: 'instagram',
     submenu: [
       {
-        label: '⚔️GothspiceChann💰',
+        label: 'seyyahikaktus',
         async click() {
-          await shell.openExternal(
-            'https://www.nonolive.com/14278329'
-          )
+          await shell.openExternal('https://www.instagram.com/seyyahikaktus')
         }
       },
       {
-        label: '🎬Sailormoon🌙',
+        label: 'papatyakaktuss',
         async click() {
-          await shell.openExternal(
-            'https://www.nonolive.com/17342980'
-          )
+          await shell.openExternal('https://www.instagram.com/papatyakaktuss')
         }
       },
       {
-        label: 'Seyyahi Solist',
+        label: 'juju_juhariah1995',
         async click() {
-          await shell.openExternal(
-            'https://www.nonolive.com/28525468'
-          )
+          await shell.openExternal('https://www.instagram.com/juju_juhariah1995')
         }
       },
-      {
-        label: '🌼PAPATYA❣SS🌼',
-        async click() {
-          await shell.openExternal(
-            'https://www.nonolive.com/28480328'
-          )
-        }
-      },
-      {
-        label: "ᴹᴰ🐺☣ToniD'Ale",
-        async click() {
-          await shell.openExternal(
-            'https://www.nonolive.com/41145492'
-          )
-        }
-      },
-      {
-        label: 'ᴹᴰ🐰CELI69🦄🦎',
-        async click() {
-          await shell.openExternal(
-            'https://www.nonolive.com/41135433'
-          )
-        }
-      },
-      {
-        label: '🦎🌟Aidee💋🦜',
-        async click() {
-          await shell.openExternal(
-            'https://www.nonolive.com/31655138'
-          )
-        }
-      },
-      {
-        label: '💲💋Lili🧉🌟',
-        async click() {
-          await shell.openExternal(
-            'https://www.nonolive.com/31925565'
-          )
-        }
-      },
-      {
-        label: '💋🧉Narki🐺Lili',
-        async click() {
-          await shell.openExternal(
-            'https://www.nonolive.com/28480328'
-          )
-        }
-      },
-      {
-        label: '🦎🌟GUANI🌻🍦',
-        async click() {
-          await shell.openExternal(
-            'https://www.nonolive.com/9330839'
-          )
-        }
-      }
     ]
   },
   {
