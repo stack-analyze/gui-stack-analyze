@@ -77,5 +77,5 @@ ipcRenderer.on('clear-stack', () => {
   repos.textContent = ''
   gits.textContent = ''
   created.textContent = ''
-  created.title = new Date().toDateString()  
+  created.title = new Date().toDateString()
 })

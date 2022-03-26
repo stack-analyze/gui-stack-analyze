@@ -46,10 +46,12 @@ const createWindow = () => {
       submenu: [
         { role: 'minimize' },
         isMac ? { role: 'close' } : { role: 'quit' },
+        { role: 'forceReload' },
+        { role: 'toggleDevTools' }
       ]
     },
     {
-      label: 'View',
+      label: 'Option',
       submenu: [
         {
           label: 'delete analyzer',
@@ -70,9 +72,12 @@ const createWindow = () => {
               icon: join(__dirname, '../icons/icon.png'),
               type: 'info',
               buttons: ['OK'],
-              title: 'tech stack and pagespeed',
+              title: 'stack analyze tools',
               detail: 'all stack analyze tools',
-              message: 'developers and design: omega5300'
+              message: `
+               developers and design: omega5300
+               bitly info idea: verguiskarime??
+              `
             })
           }
         },

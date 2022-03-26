@@ -21,7 +21,7 @@ const movieInfo = async () => {
 
     data.results.map((result) => {
       const pathImg = result.poster_path === null
-        ? 'No-image-found.jpg'
+        ? '../images/No-image-found.jpg'
         : `http://image.tmdb.org/t/p/w500/${result.poster_path}`
 
       // row element
