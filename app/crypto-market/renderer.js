@@ -15,6 +15,11 @@ const coinList = document.getElementById('coin-list')
 
 // function
 const coinData = async () => {
+  const currency = Intl.NumberFormat('en-us', { 
+    style: 'currency', 
+    currency: 'USD' 
+  })
+  
   try {
     // start crypto
     const coinData = await CoinGeckoClient.coins.markets();
@@ -50,7 +55,7 @@ const coinData = async () => {
       // description and balance
       cardDescription.innerHTML = `
         symbol: ${coin.symbol.toUpperCase()} <br>
-        price: ${coin.current_price} USD <br>
+        price: ${currency.format(coin.current_price)} USD <br>
         last updated: ${format(coin.last_updated)} <br>
       `
 

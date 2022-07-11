@@ -1,0 +1,70 @@
+.title {
+  color: #fff;
+}
+
+.scraping-select {
+  border: none;
+  outline: none;
+  font: inherit;
+  width: 100%;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0);
+  padding-inline: 1em;
+}
+
+.scraping-select:focus {
+  outline: none;
+}
+
+.scraping-select:-internal-list-box {
+  display: flex;
+  white-space: wrap;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.shell::after, .shell-results {
+  color: #fff;
+}
+
+.shell {
+  background-color: rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border-radius: 10px;
+  margin: 1vh;
+  height: 60vh;
+  font-size: 1.2em;
+  overflow: auto;
+}
+
+.shell::after {
+  content: "_";
+  animation: blinkCursor 0.8s infinite;
+}
+
+.shell-results::before {
+  content: "web scraping results: \A";
+  color: #0f0;
+}
+
+.shell-msg::before {
+  content: "welcome to web scraping tool: \A";
+  color: #ff0;
+}
+
+.shell-msg {
+  color: #0ff;
+}
+
+@keyframes blinkCursor {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

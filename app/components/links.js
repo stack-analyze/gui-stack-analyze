@@ -38,5 +38,9 @@ module.exports = [
   {
     page: '../twitch-info/index.html',
     title: 'twitch info'
+  },
+  {
+    page: '../scraping/index.html',
+    title: 'web scraping'
   }
 ]

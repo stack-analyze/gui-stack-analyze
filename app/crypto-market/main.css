@@ -1,13 +1,11 @@
 .crypto-list {
-  height: 72vh;
+  height: 90vh;
   scrollbar-width: thin;
   scrollbar-color: #fff #000;
   overflow: auto;
   display: grid;
   gap: 12px 10px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: ". .";
+  grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
 }
 
 .card {

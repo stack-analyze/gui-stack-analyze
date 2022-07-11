@@ -2,6 +2,16 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## version 8.0.0
+### Added
+- new tool web scraping (using fetch)
+### fixed
+- add currency in cryto market
+- replace array join for Intl list format
+- now using auto-fill grid to tech-stack and cryto market tools
+### changed
+- change tabs for grid in hardware information
+- remove ideas lineup
 ## version 7.0.0
 ### Added
 - new tools

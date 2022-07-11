@@ -1,63 +1,51 @@
-.tab {
-  overflow: hidden;
-  list-style: none;
-  margin: 0;
+.container {
+    height: 85vh;
+    overflow: auto;
+    display: grid;
+    grid-template-areas: "cpu ram"
+        "os bios"
+        "disk disk"
+        "controller controller"
+        "display display"
+        "board board";
+    gap: 0.5rem;
 }
 
-/* Style the buttons inside the tab */
-.tab-button {
-  background-color: inherit;
-  display: inline-block;
-  float: left;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
+.card {
+  width: fit-content;
+  padding: 8px;
 }
 
-/* Change background color of buttons on hover */
-.tab-button:hover {
-  background-color: #ddd;
+.cpu {
+    grid-area: "cpu";
 }
 
-/* Create an active/current tablink class */
-.active {
-  background-color: rgba(204, 204, 204, .2);
+.ram {
+    grid-area: "ram";
 }
 
-/* Style the tab content */
-.tab-content {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
+.os {
+    grid-area: "os";
 }
 
-.basic-info, .disk-info, .hardware-list, .display-info, .bios-info {
-  display: grid;
-  grid-template-rows: 1fr;
+.bios {
+    grid-area: "bios";
 }
 
-.basic-info {
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 15px; 
-  grid-template-areas: 
-    ". . ."; 
+.disk {
+    grid-area: "disk";
 }
 
-.display-info {
-  grid-template-columns: 1fr;
-  gap: 0 0; 
-  grid-template-areas: 
-    "."; 
+.controller {
+    grid-area: "controller";
 }
 
-.disk-info, .controller-info {
-  list-style: none;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px; 
-  grid-template-areas: 
-    ". ."; 
+.display {
+    grid-area: "display";
+}
+
+.board {
+    grid-area: "board";
 }
 
 .card-title {

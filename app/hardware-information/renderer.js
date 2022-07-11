@@ -24,21 +24,6 @@ const controllersInfo = document.getElementById('controller-info')
 const displaysInfo = document.getElementById('display-info')
 const biosDetails = document.getElementById('bios-info')
 const boardInfo = document.getElementById('board-info')
-const tabcontents = document.querySelectorAll('.tab-content')
-const tablinks = document.querySelectorAll('.tab-links')
-
-// tabs
-tablinks.forEach((tablink, i) => {
-  tablink.addEventListener('click', () => {
-    tablinks.forEach((tablink, i) => {
-      tablink.classList.remove('active')
-      tabcontents[i].style.display = "none";
-    })
-    
-    tabcontents[i].style.display = "block";
-    tablink.classList.add('active')
-  })
-})
 
 // functions
 async function cpuShow() {
@@ -125,10 +110,9 @@ async function diskInfo() {
     const disks = await diskLayout()
 
     // render disks info
-    disks.map(({ type, name, vendor, size, interfaceType }) => {
+    disks.forEach(({ type, name, vendor, size, interfaceType }) => {
 
       // items
-      const diskItem = document.createElement('li')
       const diskTitle = document.createElement('strong')
       const diskDesc = document.createElement('p')
 
@@ -143,14 +127,9 @@ async function diskInfo() {
         - disk interface: ${interfaceType}
       `
       diskDesc.classList.add('description')
-      diskItem.classList.add('disk-item')
 
       // append main
-      diskItem.appendChild(diskTitle)
-      diskItem.appendChild(diskDesc)
-      
-      // append main
-      disksInfo.appendChild(diskItem)
+      disksInfo.append(diskTitle, diskDesc)
     })
   } catch (err) {
     toast(err.message)
@@ -164,7 +143,7 @@ async function ControllerInfo() {
 
 
 
-    controllers.map(({
+    controllers.forEach(({
       model,
       vendor,
       vram,
@@ -172,26 +151,20 @@ async function ControllerInfo() {
     }) => {
 
       // items
-      const controllerItem = document.createElement('li')
       const controllerTitle = document.createElement('strong')
       const controllerDesc = document.createElement('p')
-      
+
       controllerTitle.textContent = model
-      
+
       controllerDesc.textContent = `
         - controller vendor: ${vendor}
         - controller vram: ${vram < 1024 ? vram + ' MB' : (vram / 1024).toFixed(2) + ' GB'}
         - controller bus: ${bus}
       `
       controllerDesc.classList.add('description')
-      controllerItem.classList.add('controller-item')
 
       // append
-      controllerItem.appendChild(controllerTitle)
-
-      controllerItem.appendChild(controllerDesc)
-
-      controllersInfo.appendChild(controllerItem)
+      controllersInfo.append(controllerTitle, controllerDesc)
     })
   } catch (err) {
     toast(err.message)
@@ -202,7 +175,7 @@ async function displayInfo() {
   try {
     const { displays } = await graphics()
 
-    displays.map(({
+    displays.forEach(({
       model,
       main,
       connection,
@@ -210,12 +183,11 @@ async function displayInfo() {
       resolutionY
     }) => {
       // items
-      const displayItem = document.createElement('li')
       const displayTitle = document.createElement('strong')
       const displayDesc = document.createElement('p')
-      
+
       displayTitle.textContent = model
-      
+
       displayDesc.textContent = `
         - monitor type: ${main ? 'master monitor' : 'slave monitor'}
         - tpye: ${connection}
@@ -223,12 +195,8 @@ async function displayInfo() {
       `
       displayDesc.classList.add('description')
       displayDesc.classList.add('display-item')
-
-      // append 
-      displayItem.appendChild(displayTitle)
-      displayItem.appendChild(displayDesc)
-
-      displaysInfo.appendChild(displayItem)
+      
+      displaysInfo.append(displayTitle, displayDesc)
     })
   } catch (err) {
     toast(err.message)
@@ -247,7 +215,7 @@ async function biosInfo() {
     biosDetails.textContent = `
       - bios release date: ${releaseDate}
       - bios vendor: ${vendor}
-      - bios revision: ${revision === "" ? "no info": revision}
+      - bios revision: ${revision === "" ? "no info" : revision}
       - bios version: ${version}
     `
   } catch (err) {
@@ -295,4 +263,3 @@ ipcRenderer.on('clear-stack', async () => {
     alert(err.message)
   }
 })
-

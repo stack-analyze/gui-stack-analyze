@@ -51,12 +51,12 @@ const chart = new Chart(speedResults, ctxOptions)
 async function pageSpeed(url) {
   try {
     const resDesktop = await axios.get(
-    `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0&strategy=desktop`
-  )
+      `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0&strategy=desktop`
+    )
 
-  const resMobile = await axios.get(
-    `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0&strategy=mobile`
-  )
+    const resMobile = await axios.get(
+      `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0&strategy=mobile`
+    )
     
     chart.data.datasets[0].data[0] = Math.round(resDesktop.data.lighthouseResult.categories.performance.score * 100)
     chart.data.datasets[0].data[1] = Math.round(resMobile.data.lighthouseResult.categories.performance.score * 100)

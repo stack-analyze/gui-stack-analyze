@@ -116,17 +116,6 @@ const recomendation = [
       }
     ]
   },
-  {
-    label: 'ideas',
-    submenu: [
-      {
-        label: "verguiskarime",
-        async click() {
-          await shell.openExternal('https://instagram.com/verguiskarime')
-        }
-      }
-    ]
-  },
 ]
 
 module.exports = recomendation;

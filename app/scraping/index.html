@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>web scraping</title>
+  <!-- normalize css -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css">
+  <!-- material icons  -->
+  <link rel="stylesheet" href="../../node_modules/material-design-icons/iconfont/material-icons.css">
+  <!-- scrollbar and global css -->
+  <link rel="stylesheet" href="../styles/global.css">
+  <!-- main css  -->
+  <link rel="stylesheet" href="main.css">
+  <script async src="renderer.js"></script>
+</head>
+
+<body>
+  <navbar-stack></navbar-stack>
+  <main class="container">
+    <form id="scraping" class="app-glass">
+      <fieldset class="input-field fields">
+        <div>
+          <i class="material-icons prefix">web</i>
+          <input id="link-scraping" class="input-field-text" type="url" placeholder="enter a url for scraping" required>
+        </div>
+        <div>
+          <label class="title" for="selector-scraping">select a scraping option:</label>
+          <select id="selector-scraping" class="scraping-select scroll" size="4" required>
+            <option class="scraping-opt" value="title">title page</option>
+            <option class="scraping-opt" value="metadata">metadata page</option>
+            <option class="scraping-opt" value="images">images page</option>
+            <option class="scraping-opt" value="headings">page headings</option>
+            <option class="scraping-opt" value="links">links pages</option>
+            <option class="scraping-opt" value="table_heading">table heading</option>
+            <option class="scraping-opt" value="table_data">table data</option>
+            <option class="scraping-opt" value="cites">cites</option>
+          </select>
+        </div>
+      </fieldset>
+      <fieldset class="input-field">
+        <button id="analyze-button" class="btn-submit full-btn" type="submit" disabled>start scraping</button>
+      </fieldset>
+    </form>
+    <pre id="results-scraping" class="shell shell-msg scroll">wait scraping results</pre>
+  </main>
+</body>
+
+</html>

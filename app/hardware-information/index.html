@@ -17,84 +17,67 @@
 
 <body>
   <navbar-stack></navbar-stack>
-  <main class="container class=" scroll"">
-    <section class="app-glass">
-      <ul class="tab">
-        <li class="tab-button tab-links">basic info</li>
-        <li class="tab-button tab-links">disk info</li>
-        <li class="tab-button tab-links">controller info</li>
-        <li class="tab-button tab-links">display info</li>
-        <li class="tab-button tab-links">bios info</li>
-      </ul>
-      
-      <section class="tab-content">
-        <article class="basic-info">
-        
-        <section class="card-container card">
-          <h2 class="card-title">cpu info</h2>
-          <div class="card-content">
-            <p class="description" id="cpu-info"></p>
-          </div>
+  <main class="container scroll">
+        <section class="cpu card-container card glass">
+            <h2 class="card-title">cpu info</h2>
+            <div class="card-content">
+                <p class="description" id="cpu-info"></p>
+            </div>
         </section>
-        
-        <section class="card-container card">
-          <h2 class="card-title">ram memory info</h2>
-          <div class="card-content">
-            <p class="description" id="ram-info"></p>
-          </div>
-        </section>
-        
-        <section class="card-container card">
-          <h2 class="card-title">os info</h2>
-          <div class="card-content">
-            <p class="description" id="os-info"></p>
-          </div>
-        </section>
-        </article>
-      </section>
-      
-      <section class="tab-content">
-        <article class="card-content">
-          <h2 class="card-title flow-text">disks info</h2>
-          <ul class="disk-info" id="disks-info"></ul>
-        </article>
-      </section>
-      
-      <section class="tab-content">
-        <article class="card horizontal">
-          <div class="card-content">
-            <h2 class="card-title flow-text">controllers info</h2>
-            <ul class="controller-info" id="controller-info"></ul>
-          </div>
-        </article>
-      </section>
 
-      <section class="tab-content">
-        <article class="card horizontal">
-          <div class="card-content">
-            <h2 class="card-title flow-text">displays info</h2>
-            <ul class="display-info" id="display-info"></ul>
-          </div>
-        </article>
-      </section>
+        <section class="ram card-container card glass">
+            <h2 class="card-title">ram memory info</h2>
+            <div class="card-content">
+                <p class="description" id="ram-info"></p>
+            </div>
+        </section>
 
-      <section class="tab-content">
-        <article class="bios-info">
-        <section class="card">
-          <h2 class="card-title flow-text">bios info</h2>
-          <div class="card-content">
-            <p class="description" id="bios-info"></p>
-          </div>
+        <section class="os card-container card glass">
+            <h2 class="card-title">os info</h2>
+            <div class="card-content">
+                <p class="description" id="os-info"></p>
+            </div>
         </section>
-        <section class="card">
-          <h2 class="card-title flow-text">motherboard info</h2>
-          <div class="card-content">
-            <p class="description" id="board-info"></p>
-          </div>
+
+        <section class="disks tab-content">
+            <article class="card-content glass">
+                <h2 class="card-title flow-text">disks info</h2>
+                <div class="disk-info" id="disks-info"></div>
+            </article>
         </section>
-        </article>
-      </section>
-  </main>
+
+        <section class="controllers tab-content glass">
+            <article class="card horizontal">
+                <div class="card-content">
+                    <h2 class="card-title flow-text">controllers info</h2>
+                    <div class="controller-info" id="controller-info"></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="display tab-content glass">
+            <article class="card horizontal">
+                <div class="card-content">
+                    <h2 class="card-title flow-text">displays info</h2>
+                    <div class="display-info" id="display-info"></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="bios card glass">
+            <h2 class="card-title flow-text">bios info</h2>
+            <div class="card-content">
+                <p class="description" id="bios-info"></p>
+            </div>
+        </section>
+        
+        <section class="board card glass">
+            <h2 class="card-title flow-text">motherboard info</h2>
+            <div class="card-content">
+                <p class="description" id="board-info"></p>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>

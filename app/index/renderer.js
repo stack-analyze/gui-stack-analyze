@@ -15,6 +15,7 @@ const analyzeButton = document.getElementById('analyze-button')
 
 // tech stack function
 const stack = async (url) => {
+  const formatter = new Intl.ListFormat('en', { style: 'short', type: 'unit' });
   const wappalyzer = await new Wappalyzer()
 
   // check stack
@@ -23,7 +24,7 @@ const stack = async (url) => {
 
     const { technologies } = await wappalyzer.open(url).analyze()
 
-    technologies.map((app) => {
+    technologies.forEach((app) => {
 
       // card elements
       const cardContent = document.createElement('article')
@@ -57,7 +58,7 @@ const stack = async (url) => {
       cardTitle.classList.add('card-title')
 
       categories.classList.add('card-content')
-      categories.textContent = app.categories.map((categorie) => categorie.name).join(', ')
+      categories.textContent = formatter.format(app.categories.map((categorie) => categorie.name))
 
       webSite.appendChild(link)
       imageLogo.appendChild(logo)

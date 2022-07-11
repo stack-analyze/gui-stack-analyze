@@ -1,5 +1,5 @@
 // modules
-const { join } = require('path')
+const { join } = require('node:path')
 const { app, BrowserWindow, Menu, dialog, shell } = require('electron')
 
 // message
