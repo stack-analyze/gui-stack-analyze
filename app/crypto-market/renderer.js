@@ -1,100 +1,66 @@
-// component
-require('../components/navbar_component.js')
-
 // modules
-const { ipcRenderer, shell } = require('electron')
-const { format } = require('timeago.js')
-const CoinGecko = require('coingecko-api');
+const { ipcRenderer } = require('electron')
+const axios = require('axios')
 const toast = require('../scripts/toast')
 
-// init coingecko
-const CoinGeckoClient = new CoinGecko();
+// component
+require('../components/cryptoItem')
 
 // DOM elements
 const coinList = document.getElementById('coin-list')
+const searchCoin = document.getElementById('search-coin')
+
+let coins, filterCoins
+
+const renderList = coins => {
+  coinList.innerHTML = ''
+  
+  coins.forEach((coin) => {
+    const cryptoInfo = document.createElement('crypto-info')
+  
+    cryptoInfo.name = coin.name
+    cryptoInfo.symbol = coin.symbol
+    cryptoInfo.image = coin.image
+    cryptoInfo.price = coin.current_price
+    cryptoInfo.percentage = coin.price_change_percentage_24h
+      
+    coinList.append(cryptoInfo)
+  })
+}
 
 // function
 const coinData = async () => {
-  const currency = Intl.NumberFormat('en-us', { 
-    style: 'currency', 
-    currency: 'USD' 
-  })
+  coinList.innerHTML = ''
   
   try {
     // start crypto
-    const coinData = await CoinGeckoClient.coins.markets();
+    const { data } = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
+      params: { vs_currency: 'usd' }
+    });
+
+    [coins, filterCoins] = [data, data]
 
     // render crypto data
-    coinData.data.map((coin) => {
-      //
-      const cardBackground = coin.price_change_percentage_24h >= 0 ? 'coin-positive' : 'coin-negative'
-      const cardBalanceResult = coin.price_change_percentage_24h >= 0 ? 'coin-balance-positive' : 'coin-balance-negative'
-
-      // DOM card elements
-      const cardBody = document.createElement('article')
-      const cardHeader = document.createElement('figure')
-      const cardImage = document.createElement('img')
-      const cardTitle = document.createElement('h2')
-      const cardDescription = document.createElement('p')
-      const cardBalance = document.createElement('strong')
-
-      // add class
-      cardBody.classList.add(cardBackground, 'card')
-      cardImage.classList.add('card-image')
-      cardTitle.classList.add('card-title')
-      cardDescription.classList.add('card-description')
-      cardBalance.classList.add(cardBalanceResult)
-
-      // img
-      cardImage.src = coin.image
-      cardImage.alt = coin.name
-
-      // title
-      cardTitle.textContent = coin.name
-
-      // description and balance
-      cardDescription.innerHTML = `
-        symbol: ${coin.symbol.toUpperCase()} <br>
-        price: ${currency.format(coin.current_price)} USD <br>
-        last updated: ${format(coin.last_updated)} <br>
-      `
-
-      cardBalance.textContent = `balance: ${coin.price_change_percentage_24h}`
-
-      // append
-      cardHeader.appendChild(cardImage)
-      cardDescription.appendChild(cardBalance)
-
-      cardBody.append(cardHeader, cardTitle, cardDescription)
-      coinList.append(cardBody)
-
-      /* coinList.innerHTML += `
-        <article class="${coin.price_change_percentage_24h >= 0 ? 'coin-positive' : 'coin-negative'} card">
-          <figure>
-            <img class="card-image" src="${coin.image}" alt="${coin.name}">
-          </figure>
-          <h2 class="card-title">${coin.name}</h2>
-          <p class="card-description">
-            symbol: ${coin.symbol.toUpperCase()} <br>
-            price: ${coin.current_price} USD <br>
-            last updated: ${format(coin.last_updated)} <br>
-            <strong
-              class="${coin.price_change_percentage_24h >= 0 ? 'coin-balance-positive' : 'coin-balance-negative'}"
-            >
-              balance: ${coin.price_change_percentage_24h}
-            </strong>
-          </p>
-
-        </article>
-      ` */
-    })
+    renderList(filterCoins)
   } catch (err) {
     toast(err.message)
   }
 }
 
+searchCoin.addEventListener('keyup', e => {
+  const query = e.target.value.toLowerCase()
+  
+  filterCoins = coins.filter(
+    d => d.name.toLowerCase().includes(query) || d.symbol.includes(query)
+  )
+
+  renderList(filterCoins)
+})
+
 // call function
 coinData()
 
 // delete analyzer
-ipcRenderer.on('clear-stack', () => shell.openExternal('https://lolwallpapers.net'))
+ipcRenderer.on('clear-stack', () => {
+  coinData()
+})

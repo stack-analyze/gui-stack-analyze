@@ -2,6 +2,16 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## version 9.0.0
+### Added
+- new tool password generator from stack-analyze delta 2.0.0 and npm 1.2.0 - 1.2.1
+### fixed
+- add regex in bitly info
+### changed
+- navabar component is global in preload script
+- in some tools change from DOM js to webcompoents DOM
+- twitch info is now twitch query now is multiple search soon in npm version 1.2.2
+
 ## version 8.0.0
 ### Added
 - new tool web scraping (using fetch)
@@ -12,6 +22,7 @@ stack-analyze desktop all version and notable changes, fixed, remove and new add
 ### changed
 - change tabs for grid in hardware information
 - remove ideas lineup
+
 ## version 7.0.0
 ### Added
 - new tools

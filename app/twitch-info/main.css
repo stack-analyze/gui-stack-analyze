@@ -1,64 +1,33 @@
 .fields {
   display: grid;
-  grid-template-areas: "header header"
-  "left right"
-  "footer footer";
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "users users"
+  "token client"
+  "submit submit";
 }
 
 .user {
-  grid-area: header;
+  grid-area: users;
 }
 
 .pass-token {
-  grid-area: left;
+  grid-area: token;
 }
 
 .pass-client {
-  grid-area: right;
+  grid-area: client;
 }
 
 .btn-field {
-  grid-area: footer;
+  grid-area: submit;
 }
 
-.pass {
-  display: inline-block;
-  width: 50%;
-}
-
-.profile-twitch {
-  height: 200px;
-  width: 200px;
-}
-
-.card {
-  margin: 4vh auto 0;
-  height: 45vh;
-  width: 70vw;
-  color: #fff;
-  columns: 2 1vw;
-}
-
-.card-image {
-  margin-inline: 0;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  margin-inline: auto;
-}
-
-.card-title {
-  text-align: center;
-}
-
-.card-content {
-  padding-block: 5vh;
-}
-
-.card-paragram {
-  margin-left: .5vw;
+.twitch-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  height: 60vh;
+  margin-top: 1vh;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #fff #000;
 }

@@ -1,6 +1,3 @@
-// component
-require('../components/navbar_component')
-
 // module
 const { ipcRenderer } = require('electron')
 const toast = require('../scripts/toast')
@@ -38,7 +35,7 @@ const createScraping = async () => {
       },
       metadata() {
         results = [...page.querySelectorAll('meta')]
-          .filter(({ name }) => name !== '')
+          .filter(({ name }) => !name)
           .map(item => ({
             metaType: item.name,
             metaValue: item.content
@@ -66,22 +63,26 @@ const createScraping = async () => {
       headings() {
         results = [...page.querySelectorAll('h1, h2, h3, h4, h5, h6')]
           .map(item => ({
-            headingElement: item.tagName,
-            text: item.textContent
+            headingTag: item.tagName,
+            headingText: item.textContent
           }))
 
-        resultScraping.textContent = JSON.stringify(results, null, 2)
+        resultScraping.textContent = results.length === 0
+          ? 'no found heafing tags' 
+          : JSON.stringify(results, null, 2)
       },
       links() {
         results = [...page.querySelectorAll('a')]
-          .filter((item) => item.href !== "")
+          .filter((item) => !item.href)
           .map(item => ({
-            url: item.href.replaceAll(location.origin, ''),
-            text: item.textContent
+            linkPath: item.href.replaceAll(location.origin, ''),
+            linkText: item.textContent
           }))
           .shift()
 
-        resultScraping.textContent = JSON.stringify(results, null, 2)
+        resultScraping.textContent = results.length === 0
+          ? 'no found links' 
+          : JSON.stringify(results, null, 2)
       },
       cites() {
         results = [...page.querySelectorAll('q, blockquote')]
@@ -96,9 +97,9 @@ const createScraping = async () => {
           : JSON.stringify(results, null, 2)
       },
       table_heading() {
-        results = [...page.querySelectorAll('th')].map((i, item) => ({
-          headingRow: i++,
-          text: item.textContent
+        results = [...page.querySelectorAll('th')].map((item) => ({
+          thCol: item.cellIndex,
+          thData: item.textContent
         }))
 
         resultScraping.textContent = results.length === 0
@@ -106,7 +107,15 @@ const createScraping = async () => {
           : JSON.stringify(results, null, 2)
       },
       table_data() {
-        results = [...page.querySelectorAll('td')].map(item => item.textContent)
+        results = [...page.querySelectorAll('td')].map(item => {
+          const parentItem = item.parentElement
+          
+          return {
+            rowID: parentItem.rowIndex,
+            colID: item.cellIndex,
+            colData: item.textContent
+          }
+        })
 
         resultScraping.textContent = results.length === 0
           ? "no found td tags"

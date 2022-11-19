@@ -1,6 +1,3 @@
-// component
-require('../components/navbar_component.js')
-
 // modules
 const { ipcRenderer } = require('electron')
 const validator = require('html-validator')
@@ -46,13 +43,11 @@ const htmlValidator = async (url) => {
 
       msgContent.appendChild(msgDetails)
 
-      row.appendChild(msg)
-      row.appendChild(msgContent)
-      row.appendChild(details)
+      row.append(msg, msgContent, details)
 
-      fragment.appendChild(row)
+      fragment.append(row)
 
-      resultValidator.appendChild(fragment)
+      resultValidator.append(fragment)
     })
     toast(`finish analyze ${url}`)
   } catch (err) {

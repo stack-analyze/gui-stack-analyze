@@ -1,10 +1,7 @@
-// component
-require('../components/navbar_component.js')
-
 // modules
 const { ipcRenderer } = require('electron')
-const axios = require('axios')
 const Chart = require('chart.js')
+const pagespeedApi = require('./pagespeedApi')
 const toast = require('../scripts/toast')
 
 // DOM elements
@@ -21,7 +18,7 @@ const ctxOptions = {
     datasets: [{
       label: 'pagespeed',
       data: [0, 0],
-      backgroundColor: ['#000', '#000'],
+      backgroundColor: ['rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.2)'],
       borderWidth: 1
     }]
   },
@@ -47,48 +44,35 @@ const ctxOptions = {
 
 const chart = new Chart(speedResults, ctxOptions)
 
+const colorBarChart = score => {
+  switch(true) {
+    case score === 0:
+      return 'rgba(0, 0, 0, 0.2)'
+      break
+    case score === 1 || score <= 49:
+      return 'rgba(255, 0, 0, 0.2)'
+      break
+    case score === 50 || score <= 89:
+      return 'rgba(255, 255, 0, 0.2)'
+      break
+    case score >= 90 || score === maxScore:
+      return 'rgba(0, 255, 0, 0.2)'
+      break
+  }
+}
+
 // pagespeed function
 async function pageSpeed(url) {
   try {
-    const resDesktop = await axios.get(
-      `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0&strategy=desktop`
-    )
+    const resDesktop = await pagespeedApi(url, 'desktop')
 
-    const resMobile = await axios.get(
-      `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0&strategy=mobile`
-    )
+    const resMobile = await pagespeedApi(url, 'mobile')
     
-    chart.data.datasets[0].data[0] = Math.round(resDesktop.data.lighthouseResult.categories.performance.score * 100)
-    chart.data.datasets[0].data[1] = Math.round(resMobile.data.lighthouseResult.categories.performance.score * 100)
-
-    switch (true) {
-      case (chart.data.datasets[0].data[0] === 1 || chart.data.datasets[0].data[0] <= 49):
-        chart.data.datasets[0].backgroundColor[0] = '#f00'
-        break
-      case (chart.data.datasets[0].data[0] === 50 || chart.data.datasets[0].data[0] <= 89):
-        chart.data.datasets[0].backgroundColor[0] = '#ff0'
-        break
-      case (chart.data.datasets[0].data[0] >= 90 || chart.data.datasets[0].data[0] === 100):
-        chart.data.datasets[0].backgroundColor[0] = '#0f0'
-        break
-      default:
-        chart.data.datasets[0].backgroundColor[0] = '#000'
-        break
-    }
-    switch (true) {
-      case (chart.data.datasets[0].data[1] === 1 || chart.data.datasets[0].data[1] <= 49):
-        chart.data.datasets[0].backgroundColor[1] = '#f00'
-        break
-      case (chart.data.datasets[0].data[1] === 50 || chart.data.datasets[0].data[1] <= 89):
-        chart.data.datasets[0].backgroundColor[1] = '#ff0'
-        break
-      case (chart.data.datasets[0].data[1] >= 90 || chart.data.datasets[0].data[1] === 100):
-        chart.data.datasets[0].backgroundColor[1] = '#0f0'
-        break
-      default:
-        chart.data.datasets[0].backgroundColor[1] = '#000'
-        break
-    }
+    chart.data.datasets[0].data[0] = Math.round(resDesktop.lighthouseResult.categories.performance.score * 100)
+    chart.data.datasets[0].data[1] = Math.round(resMobile.lighthouseResult.categories.performance.score * 100)
+    
+    chart.data.datasets[0].backgroundColor[0] = colorBarChart(chart.data.datasets[0].data[0])
+    chart.data.datasets[0].backgroundColor[1] = colorBarChart(chart.data.datasets[0].data[1])
 
     chart.update();
     toast(`finish analyze ${url}`)

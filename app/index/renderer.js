@@ -1,5 +1,5 @@
-// component
-require('../components/navbar_component')
+// delta card component
+require('../components/stackCard');
 
 // modules
 const { ipcRenderer, shell } = require('electron')
@@ -16,7 +16,7 @@ const analyzeButton = document.getElementById('analyze-button')
 // tech stack function
 const stack = async (url) => {
   const formatter = new Intl.ListFormat('en', { style: 'short', type: 'unit' });
-  const wappalyzer = await new Wappalyzer()
+  const wappalyzer = new Wappalyzer()
 
   // check stack
   try {
@@ -25,47 +25,19 @@ const stack = async (url) => {
     const { technologies } = await wappalyzer.open(url).analyze()
 
     technologies.forEach((app) => {
-
-      // card elements
-      const cardContent = document.createElement('article')
-      const webSite = document.createElement('div')
-      const imageLogo = document.createElement('figure')
-      const cardTitle = document.createElement('h2')
-      const categories = document.createElement('p')
-
-      // card
-      cardContent.classList.add('card', 'app-glass')
-      imageLogo.classList.add('card-image')
-
-      // link element
-      const link = document.createElement('a')
-
-      // image element
-      const logo = document.createElement('img')
-
-      webSite.classList.add('card-action')
-
-      link.href = app.website
-      link.target = '_blank'
-      link.textContent = `${app.name} website`
-      link.classList.add('card-link')
-
-      logo.src = `../images/${app.icon}`
-      logo.alt = app.name
-      logo.classList.add('logo')
+      // create categories array
+      const categories = app.categories.map(({ name }) => name);
       
-      cardTitle.textContent = app.name
-      cardTitle.classList.add('card-title')
-
-      categories.classList.add('card-content')
-      categories.textContent = formatter.format(app.categories.map((categorie) => categorie.name))
-
-      webSite.appendChild(link)
-      imageLogo.appendChild(logo)
+      // create web component
+      const stackCard = document.createElement('stack-card');
       
-      cardContent.append(imageLogo, cardTitle, categories, webSite)
-
-      techStack.appendChild(cardContent)
+      stackCard.cardTitle = app.name;
+      stackCard.image = `../images/${app.icon}`;
+      stackCard.alt = app.name;
+      stackCard.link = app.website;
+      stackCard.categories = formatter.format(categories);
+      
+      techStack.append(stackCard)
     })
     toast(`finish analyze ${url}`)
   } catch (err) {

@@ -1,46 +1,70 @@
 module.exports = [
   {
-    page: '../index/index.html',
-    title: 'tech-stack'
+    title: 'web',
+    tools: [
+      {
+        page: '../index/index.html',
+        title: 'tech-stack'
+      },
+      {
+        page: '../pagespeed/index.html',
+        title: 'pagespeed'
+      },
+      {
+        page: '../html-validator/index.html',
+        title: 'HTML validator'
+      },
+      {
+        page: '../scraping/index.html',
+        title: 'web scraping'
+      }
+    ]
   },
   {
-    page: '../pagespeed/index.html',
-    title: 'pagespeed'
+    title: 'info',
+    tools: [
+      {
+        page: '../github-info/index.html',
+        title: 'github info'
+      },
+      {
+        page: '../bitly-info/index.html',
+        title: 'bitly info'
+      },
+      {
+        page: '../crypto-market/index.html',
+        title: 'crypto market'
+      },
+    ]
   },
   {
-    page: '../html-validator/index.html',
-    title: 'HTML validator'
+    title: 'query',
+    tools: [
+      {
+        page: '../anime-search/index.html',
+        title: 'anime search'
+      },
+      {
+        page: '../movie-info/index.html',
+        title: 'movie search'
+      },
+      {
+        page: '../twitch-info/index.html',
+        title: 'twitch search'
+      },
+    ]
   },
   {
-    page: '../github-info/index.html',
-    title: 'github info'
-  },
-  {
-    page: '../anime-search/index.html',
-    title: 'anime search'
-  },
-  {
-    page: '../hardware-information/index.html',
-    title: 'hardware information'
-  },
-  {
-    page: '../crypto-market/index.html',
-    title: 'crypto market'
-  },
-  {
-    page: '../bitly-info/index.html',
-    title: 'bitly info'
-  },
-  {
-    page: '../movie-info/index.html',
-    title: 'movie info'
-  },
-  {
-    page: '../twitch-info/index.html',
-    title: 'twitch info'
-  },
-  {
-    page: '../scraping/index.html',
-    title: 'web scraping'
+    title: 'utility',
+    tools: [
+      {
+        page: '../hardware-information/index.html',
+        title: 'hardware information',
+      },
+      {
+        page: '../password-generator/index.html',
+        title: 'password generator',
+      }
+    ]
   }
 ]

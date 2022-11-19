@@ -24,40 +24,31 @@
     <section class="app-glass">
       <form id="twitch-info" class="fields">
         <fieldset class="input-field user">
-          <i class="material-icons prefix">search</i>
-          <input type="text" id="twitch-user" class="input-field-text" autocomplete="off" placeholder="enter a twitch user"
-            required />
+          <input 
+            type="text" 
+            id="twitch-user"
+            class="input-field-text"
+            autocomplete="off"
+            placeholder="enter a twitch users (a,b,c)"
+            required 
+          />
         </fieldset>
         <fieldset class="input-field pass-token">
-            <i class="material-icons prefix">visibility_off</i>
             <input type="password" name="token" id="twitch-token" class="input-field-text"
               placeholder="enter a twitch token" required />
           </fieldset>
           <fieldset class="input-field pass-client">
-            <i class="material-icons prefix">assignment_ind</i>
             <input type="password" name="token" id="twitch-client" class="input-field-text"
               placeholder="enter a twitch client" required />
           </fieldset>
-        <fieldset class="input-field btn-col btn-field">
+          <fieldset class="input-field btn-col btn-field">
           <button type="submit" class="btn-submit full-btn">
             search twitch user
           </button>
         </fieldset>
       </form>
     </section>
-    <section class="card app-glass">
-      <figure class="card-image">
-        <img id="profile-twitch" class="profile-twitch" src="../images/no-found.jpg" alt="profile twitch">
-      </figure>
-      <article class="card-content">
-        <h2 id="user" class="card-title">no-info</h2>
-        <p class="card-paragram">
-          view count: <span id="count"></span> 
-          created: <span id="created"></span>
-        </p>
-        <p id="description" class="card-paragram"></p>
-      </article>
-    </section>
+    <section id="twitch-list" class="twitch-list scroll"></section>
   </main>
 </body>
 

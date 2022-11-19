@@ -1,0 +1,78 @@
+:root {
+  --primary: #042e8e;
+  --light: #f4f5f8;
+  --dark: #222428;
+}
+
+body {
+  color: #fff;
+}
+
+.neon {
+  font-family: monospace;
+  font-size: 3em;
+  text-align: center;
+  animation: neon 2s infinite;
+}
+
+.pass {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-around;
+  margin-inline: 8px;
+}
+
+.btn {
+  all: unset;
+  outline: 2px solid #3fc6ab;
+  border-radius: 15px;
+  text-align: center;
+  height: 5vh;
+}
+
+.btn-generator, .btn-copy {
+  width: 40%;
+}
+
+.btn-generator {
+  outline: 2px solid var(--dark);
+}
+
+.btn-copy {
+  outline: 2px solid var(--light);
+  color: var(--dark);
+}
+
+@media(hover: hover) {
+  .btn:hover {
+    outline: none;
+  }
+  
+  .btn-generator:hover {
+    background-color: var(--light);
+    color: var(--dark);
+  }
+
+  .btn-copy:hover {
+    background-color: var(--dark);
+    color: var(--light);
+  }
+}
+
+@keyframes neon {
+  0%, 39%, 41%, 59%, 61%, 100% {
+    text-shadow: 
+    #fff 0 0 12px,
+    var(--primary) 0 0 24px,
+    var(--primary) 0 0 36px;
+  }
+  
+  40%, 60% {
+    text-shadow: none;
+  }
+}

@@ -1,3 +1,5 @@
+require('./components/navbar_component')
+
 // events
 document.addEventListener('keypress', (e) => {
   if (e.code === "Enter") {

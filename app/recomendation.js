@@ -96,6 +96,12 @@ const recomendation = [
         async click() {
           await shell.openExternal('https://dprojects.org')
         }
+      },
+      {
+        label: 'black metal promotions',
+        async click() {
+          await shell.openExternal('https://www.youtube.com/bmpromotion')
+        }
       }
     ]
   },

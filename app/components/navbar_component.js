@@ -30,6 +30,7 @@ class NavBarStack extends HTMLElement {
         position: fixed;
         overflow-x: hidden;
         margin-left: 5px;
+        padding: 1rem;
       }
       
       .sidenav-title {
@@ -67,6 +68,17 @@ class NavBarStack extends HTMLElement {
       .sidenav-menu-button:hover {
         color: #111;
       }
+      
+      .menu-tool:not(:last-child) {
+        margin-bottom: 12px
+      }
+      
+      .menu-tille {
+        color: #f1f1f1;
+        font-weight: bold;
+        font-size: 1.2em;
+        cursor: pointer;
+      }
     `
 
     const navbarComponent = document.createElement('nav')
@@ -88,20 +100,38 @@ class NavBarStack extends HTMLElement {
 
     headerComponent.append(logo, titleComponent)
 
-    const listComponent = document.createElement('ul')
-    listComponent.classList.add('sidenav-menu')
+    const listComponent = document.createDocumentFragment();
 
-    links.forEach(link => {
-      const itemComponent = document.createElement('li')
+    links.forEach(({ title, tools }) => {
+      const itemComponent = document.createElement('details')
+      itemComponent.classList.add('menu-tool')
       
-      const linkComponent = document.createElement('a')
-      linkComponent.classList.add('sidenav-menu-button')
+      // title item
+      const titleTools = document.createElement('summary')
+      titleTools.classList.add('menu-tille')
+      titleTools.textContent = title
       
-      linkComponent.href = link.page
-      linkComponent.title = link.title
-      linkComponent.textContent = link.title
-
-      itemComponent.append(linkComponent)
+      // menu item
+      const menuTools = document.createElement('menu')
+      menuTools.classList.add('sidenav-menu')
+      
+      tools.forEach(tool => {
+        const menuItem = document.createElement('li')
+        
+        const menuLink = document.createElement('a')
+        menuLink.classList.add('sidenav-menu-button')
+        
+        menuLink.href = tool.page
+        menuLink.textContent = tool.title
+        menuLink.title = `go to ${tool.title}`
+        
+        // append to menu tools
+        menuItem.append(menuLink)
+        
+        menuTools.append(menuItem)
+      })
+      
+      itemComponent.append(titleTools, menuTools)
       
       listComponent.append(itemComponent)
     })
@@ -109,6 +139,18 @@ class NavBarStack extends HTMLElement {
     navbarComponent.append(headerComponent, listComponent)
 
     shadowRoot.append(styles, navbarComponent)
+    
+    const collapseList = shadowRoot.querySelectorAll('.menu-tool')
+    
+    collapseList.forEach((collapse, i) => {
+      collapse.addEventListener('click', () => {
+        collapseList.forEach(item => {
+          if(item !== collapse) {
+            item.open = false
+          }
+        })
+      })
+    })
   }
 }
 

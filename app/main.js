@@ -5,6 +5,9 @@ const { app, BrowserWindow, Menu, dialog, shell } = require('electron')
 // message
 const msg = require('./msg')
 
+// about tools
+const aboutTools  = require('./aboutTools')
+
 // recomendation
 const recomendation = require('./recomendation')
 
@@ -45,9 +48,7 @@ const createWindow = () => {
       label: 'File',
       submenu: [
         { role: 'minimize' },
-        isMac ? { role: 'close' } : { role: 'quit' },
-        { role: 'forceReload' },
-        { role: 'toggleDevTools' }
+        isMac ? { role: 'close' } : { role: 'quit' }
       ]
     },
     {
@@ -65,22 +66,7 @@ const createWindow = () => {
     {
       label: 'Help',
       submenu: [
-        {
-          label: 'About tool',
-          click() {
-            dialog.showMessageBoxSync({
-              icon: join(__dirname, '../icons/icon.png'),
-              type: 'info',
-              buttons: ['OK'],
-              title: 'stack analyze tools',
-              detail: 'all stack analyze tools',
-              message: `
-               developers and design: omega5300
-               bitly info idea: verguiskarime??
-              `
-            })
-          }
-        },
+        aboutTools,
         {
           label: 'About App',
           accelerator: 'F1',

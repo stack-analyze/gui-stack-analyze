@@ -1,6 +1,3 @@
-// web components
-require('../components/navbar_component')
-
 // modules
 const { ipcRenderer } = require('electron')
 const toast = require('../scripts/toast')
@@ -33,10 +30,8 @@ const bitly = async () => {
     })
 
     const data = await res.json()
-    
-    console.table(data)
 
-    bitlyDate.textContent = new Date(data.created_at).toDateString()
+    bitlyDate.textContent = new Date(data.created_at).toLocaleDateString()
     bitlyLink.textContent = data.link;
     link.textContent = data.long_url
   } catch(err) {
@@ -57,14 +52,14 @@ From.addEventListener('submit', (e) => {
 
 // reset
 ipcRenderer.on('clear-stack', () => {
-  bitlyDate.textContent = new Date().toDateString()
+  bitlyDate.textContent = new Date().toLocaleDateString()
   bitlyLink.textContent = "no url"
   link.textContent = "no long url"
 })
 
 // loading DOM data
 document.addEventListener('DOMContentLoaded', () => {
-  bitlyDate.textContent = new Date().toDateString()
+  bitlyDate.textContent = new Date().toLocaleDateString()
   bitlyLink.textContent = "no url"
   link.textContent = "no long url"
 })

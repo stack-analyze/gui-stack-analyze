@@ -18,66 +18,19 @@
 <body>
   <navbar-stack></navbar-stack>
   <main class="container scroll">
-        <section class="cpu card-container card glass">
-            <h2 class="card-title">cpu info</h2>
-            <div class="card-content">
-                <p class="description" id="cpu-info"></p>
-            </div>
-        </section>
-
-        <section class="ram card-container card glass">
-            <h2 class="card-title">ram memory info</h2>
-            <div class="card-content">
-                <p class="description" id="ram-info"></p>
-            </div>
-        </section>
-
-        <section class="os card-container card glass">
-            <h2 class="card-title">os info</h2>
-            <div class="card-content">
-                <p class="description" id="os-info"></p>
-            </div>
-        </section>
-
-        <section class="disks tab-content">
-            <article class="card-content glass">
-                <h2 class="card-title flow-text">disks info</h2>
-                <div class="disk-info" id="disks-info"></div>
-            </article>
-        </section>
-
-        <section class="controllers tab-content glass">
-            <article class="card horizontal">
-                <div class="card-content">
-                    <h2 class="card-title flow-text">controllers info</h2>
-                    <div class="controller-info" id="controller-info"></div>
-                </div>
-            </article>
-        </section>
-
-        <section class="display tab-content glass">
-            <article class="card horizontal">
-                <div class="card-content">
-                    <h2 class="card-title flow-text">displays info</h2>
-                    <div class="display-info" id="display-info"></div>
-                </div>
-            </article>
-        </section>
-
-        <section class="bios card glass">
-            <h2 class="card-title flow-text">bios info</h2>
-            <div class="card-content">
-                <p class="description" id="bios-info"></p>
-            </div>
-        </section>
-        
-        <section class="board card glass">
-            <h2 class="card-title flow-text">motherboard info</h2>
-            <div class="card-content">
-                <p class="description" id="board-info"></p>
-            </div>
-        </section>
-    </main>
+    <cpu-info></cpu-info>
+    <ram-info></ram-info>
+    <disk-info></disk-info>
+    <os-info></os-info>
+    <controller-info></controller-info>
+    <display-info></display-info>
+  </main>
+  <dialog id="modal" class="modal glass">
+    <section class="modal-body">
+      <board-info></board-info>
+      <bios-info></bios-info>
+    </section>
+  </dialog>
 </body>
 
 </html>

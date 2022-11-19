@@ -1,10 +1,10 @@
-// web components
-require('../components/navbar_component')
-
 // modules
 const { ipcRenderer } = require('electron')
 const axios = require('axios')
 const toast = require('../scripts/toast')
+
+// component
+require('../components/movieCard')
 
 // DOM elements
 const movieQuery = document.getElementById('movie')
@@ -23,53 +23,31 @@ const movieInfo = async () => {
       }
     })
 
-    data.results.map((result) => {
-      
-      const card = document.createElement('article')
-      card.classList.add('card')
+    data.results
+      .sort((x, y) => {
+        const primaryDate = new Date(x.release_date)
+        const secondaryDate = new Date(y.release_date)
 
-      // card elements
-      const moviePoster = document.createElement('figure')
-      moviePoster.classList.add('card-header')
+        return primaryDate.getTime() - secondaryDate.getTime()
+      })
+      .filter((data) => data?.release_date)
+      .forEach((result) => {
+        const movieCard = document.createElement('movie-card')
 
-      const movieContent = document.createElement('div')
-      movieContent.classList.add('card-content')
-      
-      const movieTitle = document.createElement('h2')
-      movieTitle.textContent = result.title
+        const pathImg = result?.poster_path
+          ? `http://image.tmdb.org/t/p/w500/${result.poster_path}`
+          : '../images/not-found.jpg'
 
-      const movieSynopsis = document.createElement('p')
-      movieSynopsis.textContent = result.overview
+        movieCard.name = result.title
+        movieCard.poster = pathImg
+        movieCard.sypnosis = result.overview
+        movieCard.date = result.release_date
+        movieCard.language = result.original_language
+        movieCard.average = result.vote_average
+        movieCard.count = result.vote_count
 
-      const movieDate = document.createElement('time')
-      movieDate.dateTime = result.release_date
-      movieDate.textContent = result.release_date
-
-      const movieDesc = document.createElement('p')
-      movieDesc.innerHTML = `
-        language: ${result.original_language} <br>
-        vote average: ${result.vote_average} <br>
-        vote count: ${result.vote_count}
-      `
-
-      movieContent.append(movieSynopsis, movieDate, movieDesc)
-
-      // image
-      const poster = document.createElement('img')
-      const pathImg = result.poster_path === null
-        ? '../images/No-image-found.jpg'
-        : `http://image.tmdb.org/t/p/w500/${result.poster_path}`
-      poster.src = pathImg
-      poster.alt = `poster ${result.title}`
-      poster.classList.add('card-image')
-      moviePoster.appendChild(poster)
-
-      // append to card
-      card.append(moviePoster, movieTitle, movieContent)
-
-      // append to list
-      movieResults.append(card)
-    })
+        movieResults.append(movieCard)
+      })
   } catch (err) {
     toast(err.message)
   }
@@ -79,7 +57,7 @@ const movieInfo = async () => {
 movieSearch.addEventListener('submit', (e) => {
   movieResults.innerHTML = ''
   movieInfo()
-  
+
   e.preventDefault()
   movieSearch.reset()
 })

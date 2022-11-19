@@ -1,6 +1,6 @@
 {
   "name": "gui-stack-analyze",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "description": "GUI version inspired from npm module stack-analyze 1.0.5 and browser extension",
   "main": "app/main.js",
   "repository": {
@@ -40,19 +40,18 @@
   "author": "Intermachine Developers",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.27.2",
-    "chart.js": "^3.8.0",
-    "coingecko-api": "^1.0.10",
+    "axios": "^1.1.3",
+    "chart.js": "^3.9.1",
     "html-validator": "^6.0.1",
     "material-design-icons": "^3.0.1",
     "normalize.css": "^8.0.1",
-    "systeminformation": "^5.11.22",
+    "systeminformation": "^5.12.14",
     "timeago.js": "^4.0.2",
-    "wappalyzer": "^6.10.37"
+    "wappalyzer": "^6.10.47"
   },
   "devDependencies": {
-    "electron": "^19.0.8",
-    "electron-builder": "^23.1.0",
-    "eslint": "^8.19.0"
+    "electron": "^21.2.3",
+    "electron-builder": "^23.6.0",
+    "eslint": "^8.27.0"
   }
 }

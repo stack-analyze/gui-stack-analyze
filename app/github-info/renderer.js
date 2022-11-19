@@ -1,6 +1,3 @@
-// component
-require('../components/navbar_component.js')
-
 // modules
 const { ipcRenderer } = require('electron')
 const axios = require('axios')

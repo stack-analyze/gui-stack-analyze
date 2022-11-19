@@ -14,10 +14,6 @@ ram 512MB or higher<br>
 disk 1GB or higher
 
 ## windows
-windows 8.1<br>
-ram 350MB
-disk 400MB<br>
-***recommended***<br>
 windows 10 and windows 11<br>
 ram 512MB or higher<br>
 disk 1GB or higher

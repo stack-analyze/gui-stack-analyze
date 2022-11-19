@@ -1,53 +1,49 @@
 .container {
-    height: 85vh;
-    overflow: auto;
-    display: grid;
-    grid-template-areas: "cpu ram"
-        "os bios"
-        "disk disk"
-        "controller controller"
-        "display display"
-        "board board";
-    gap: 0.5rem;
+  height: 85vh;
+  overflow: auto;
+  display: grid;
+  grid-template-areas: "cpu os ram"
+    "disk controller controller"
+    "disk display display";
+  gap: 0.5rem;
 }
 
-.card {
-  width: fit-content;
-  padding: 8px;
+.modal {
+  --background-glass: rgba(255, 255, 255, 0.18);
+  max-width: 80%;
+  margin-inline: auto;
 }
 
-.cpu {
-    grid-area: "cpu";
+disk-info, controller-info, display-info {
+  overflow: auto;
 }
 
-.ram {
-    grid-area: "ram";
+.modal-body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }
 
-.os {
-    grid-area: "os";
+cpu-info {
+  grid-area: cpu;
 }
 
-.bios {
-    grid-area: "bios";
+ram-info {
+  grid-area: ram;
 }
 
-.disk {
-    grid-area: "disk";
+disk-info {
+  grid-area: disk;
 }
 
-.controller {
-    grid-area: "controller";
+os-info {
+  grid-area: os;
 }
 
-.display {
-    grid-area: "display";
+controller-info {
+  grid-area: controller;
 }
 
-.board {
-    grid-area: "board";
-}
-
-.card-title {
-  font-size: 26px;
+display-info {
+  grid-area: display;
 }

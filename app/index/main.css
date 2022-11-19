@@ -1,14 +1,10 @@
-/* class */
-.logo, .card-link{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.logo {
-  width: 200px;
-  height: 200px;
-  image-rendering: crisp-edges;
+/* component */
+stack-card {
+  --image-shadow: #fff;
+  --card-btn-width: 40%;
+  --card-btn-height: 50px;
+  --card-btn: #000;
+  --background-glass: rgba(255, 255, 255, 0.2);
 }
 
 /* info content */
@@ -18,48 +14,7 @@
   overflow: auto;
   height: 60vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: ". .";
-  gap: 12px 10px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 8px;
   margin-top: 1vh;
-}
-
-.card, .card-link {
-  color: #fff;
-}
-
-.card {
-  background: rgba(97, 4, 4, 0.25);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 4px );
-  border-radius: 15px;
-  border: 1px solid rgba( 97, 4, 4, 0.18 );
-}
-
-.card-content, .card-action, .card-title {
-  margin-left: 2%;
-}
-
-.card-action {
-  margin-bottom: 2%;
-}
-
-.card-title {
-  font-size: 20px;
-}
-
-.card-link {
-  text-decoration: none;
-  text-align: center;
-  padding: 5px;
-  width: 50%;
-  border: 1px solid #000;
-  border-radius: 50px;
-  font-size: medium;
-}
-
-.card-link:hover {
-  background-color: rgba(0, 0, 0, .5);
-  text-decoration: underline;
 }

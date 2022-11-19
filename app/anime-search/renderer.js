@@ -1,12 +1,11 @@
-// component
-require('../components/navbar_component.js')
-
 // modules
 const { ipcRenderer } = require('electron')
 const axios = require('axios')
-const { format } = require('timeago.js')
 
 const toast = require('../scripts/toast')
+
+// component
+require('../components/animeCard')
 
 // DOM elements
 const animeList = document.getElementById('anime-cards')
@@ -17,56 +16,30 @@ const sendSearch = document.getElementById('anime-search')
 async function animeTool(query) {
   try {
     // call api
-    const res = await axios.get("https://api.jikan.moe/v3/search/anime", {
-      params: {
-        q: query
-      }
+    const { data: animeData } = await axios.get("https://api.jikan.moe/v4/anime", {
+      params: { q: query }
     })
 
-    res.data.results.map((animeData) => {
+    animeData.data.map((anime) => {
       // row element
-      const card = document.createElement('article')
+      const animeCard = document.createElement('anime-card')
 
-      card.classList.add('card')
+      animeCard.name = anime.title
+      animeCard.altername = anime.title_japanese
+      animeCard.type = anime.type
+      animeCard.image = anime.images.webp.image_url
+      animeCard.rating = anime.rating
+      animeCard.episodes = anime.episodes
+      animeCard.debut = anime.aired.from
+      animeCard.sypnosis = anime.synopsis
+      
+      if(anime.aired?.to) {
+        animeCard.finish = anime.aired.to
+      } else {
+        animeCard.status = anime.status
+      }
 
-      // card elements
-      const animePoster = document.createElement('figure')
-      const animeContent = document.createElement('div')
-      const animeTitle = document.createElement('h2')
-      const animeSynopsis = document.createElement('p')
-      const animeTime = document.createElement('p')
-
-      // poster class
-      animePoster.classList.add('card-header')
-
-      // image
-      const poster = document.createElement('img')
-
-      // title
-      animeTitle.textContent = `${animeData.title}: ${animeData.episodes === 0 ? 'making' : animeData.episodes} episodes`
-      animeTitle.classList.add('card-title')
-
-      animeSynopsis.textContent = `synopsis: ${animeData.synopsis}`
-      animeSynopsis.classList.add('anime-synopsis')
-
-      poster.src = animeData.image_url
-      poster.alt = `poster ${animeData.title}`
-      poster.classList.add('card-image')
-
-      animePoster.appendChild(poster)
-
-      animeContent.append(animeSynopsis, animeTime)
-      animeContent.classList.add('card-content')
-
-      animeTime.textContent = `
-        debut: ${format(animeData.start_date)}
-        final: ${animeData.end_date === null ? 'Current Date' : format(animeData.end_date) }
-      `
-      animeTime.classList.add('anime-time')
-
-      card.append(animePoster, animeTitle, animeContent)
-
-      animeList.append(card)
+      animeList.append(animeCard)
     })
   } catch (err) {
     toast(err.message)
