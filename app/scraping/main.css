@@ -10,9 +10,9 @@
   cursor: pointer;
   color: #fff;
   border-radius: 0.25rem;
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-  background: rgba(0, 0, 0, 0);
-  padding-inline: 1em;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 0.2);
+  background: rgb(0 0 0 / 0.5);
+  padding: .7em;
 }
 
 .scraping-select:focus {

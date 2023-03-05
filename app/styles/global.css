@@ -102,11 +102,6 @@ body {
   color: #fff;
 }
 
-.prefix {
-  font-size: 36px;
-  margin: auto;
-}
-
 /* glass */
 .glass {
   background: rgba(255, 255, 255, 0.25);

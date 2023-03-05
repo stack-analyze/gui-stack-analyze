@@ -31,7 +31,6 @@ async function animeTool(query) {
       animeCard.rating = anime.rating
       animeCard.episodes = anime.episodes
       animeCard.debut = anime.aired.from
-      animeCard.sypnosis = anime.synopsis
       
       if(anime.aired?.to) {
         animeCard.finish = anime.aired.to

@@ -1,6 +1,6 @@
 // modules
 const { ipcRenderer } = require('electron')
-const Chart = require('chart.js')
+const Chart = require('chart.js/auto')
 const pagespeedApi = require('./pagespeedApi')
 const toast = require('../scripts/toast')
 
@@ -22,24 +22,6 @@ const ctxOptions = {
       borderWidth: 1
     }]
   },
-  options: {
-    responsive: true,
-    legend: {
-      display: false
-    },
-    scales: {
-      xAxes: [{
-        stacked: true
-      }],
-      yAxes: [{
-        stacked: true
-      }]
-    },
-    tooltips: {
-      enabled: true
-    },
-    hover: { mode: null }
-  }
 }
 
 const chart = new Chart(speedResults, ctxOptions)

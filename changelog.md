@@ -2,6 +2,19 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## version 10.0.0
+### Added
+- new tool bundlephobia info
+### changed
+- update modules
+- change select options in web scraping tool
+### fixed
+- fixed tech-stack problem function
+### removed
+- remove material-design-icons module
+- remove css class icon
+- remove sypnosis in anime search tool
+
 ## version 9.0.0
 ### Added
 - new tool password generator from stack-analyze delta 2.0.0 and npm 1.2.0 - 1.2.1

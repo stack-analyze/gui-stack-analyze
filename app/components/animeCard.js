@@ -9,14 +9,13 @@ class AnimeCard extends HTMLElement {
     this.name
     this.subname
     this.episodes
-    this.sypnosis
     this.debut
     this.finish
     this.status
   }
 
   static get observedAttributes() {
-    return ['image', 'type', 'rating', 'name', 'subname', 'episodes', 'sypnosis', 'debut', 'finish', 'status']
+    return ['image', 'type', 'rating', 'name', 'subname', 'episodes', 'debut', 'finish', 'status']
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -103,10 +102,6 @@ class AnimeCard extends HTMLElement {
     const cardSubtitle = document.createElement('strong')
     cardSubtitle.textContent = this.subname
 
-    const cardSypnosis = document.createElement('p')
-    cardSypnosis.classList.add('card-sypnosis')
-    cardSypnosis.textContent = this.sypnosis
-
     const cardFooter = document.createElement('footer')
     cardFooter.classList.add('card-footer')
 
@@ -135,7 +130,7 @@ class AnimeCard extends HTMLElement {
       cardFooter.append(finishDate)
     }
 
-    cardContainer.append(cardHeader, cardTitle, cardSubtitle, cardSypnosis, cardFooter)
+    cardContainer.append(cardHeader, cardTitle, cardSubtitle, cardFooter)
 
     shadowRoot.append(styles, cardContainer)
   }

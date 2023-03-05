@@ -22,7 +22,8 @@ const stack = async (url) => {
   try {
     await wappalyzer.init()
 
-    const { technologies } = await wappalyzer.open(url).analyze()
+    const site = await wappalyzer.open(url)
+    const { technologies } = await site.analyze()
 
     technologies.forEach((app) => {
       // create categories array

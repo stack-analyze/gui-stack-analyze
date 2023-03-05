@@ -35,6 +35,10 @@ module.exports = [
         page: '../crypto-market/index.html',
         title: 'crypto market'
       },
+      {
+        page: '../bundlephobia/index.html',
+        title: 'bundlephobia info'
+      },
     ]
   },
   {

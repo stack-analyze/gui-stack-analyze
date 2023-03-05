@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bundlephobia info</title>
+  <!-- normalize -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css" />
+  <!-- global styles -->
+  <link rel="stylesheet" href="../styles/global.css" />
+  <!-- main css -->
+  <link rel="stylesheet" href="main.css" />
+  <script defer src="renderer.js"></script>
+</head>
+
+<body>
+  <navbar-stack></navbar-stack>
+  <main class="container">
+    <section class="app-glass">
+      <form id="bundlephobia-search">
+        <fieldset class="input-field col s12">
+          <input 
+            type="search" 
+            id="pkg-name" 
+            class="input-field-text"
+            autocomplete="off" 
+            placeholder="enter a npm pkg name"
+            required 
+          />
+        </fieldset>
+        <fieldset class="input-field">
+          <button class="btn-submit full-btn" type="submit">
+            search pkg
+          </button>
+        </fieldset>
+      </form>
+    </section>
+    
+    <section class="glass module">
+      <h2 class="module-title">
+       <span id="module_name">no module</span> - <span id="module_ver"></span>
+      </h2>
+      
+      <p id="module_description" class="module-description">
+        no description
+      </p>
+      
+      <ul class="module-details">
+        <li>
+         size: <span id="module_size"></span>
+        </li>
+        <li>
+          gzip: <span id="module_gzip"></span>
+        </li>
+      </ul>
+      
+      <a id="module_repo" class="btn" href="#">
+        no repo
+      </a>
+    </section>
+  </main>
+</body>
+
+</html>

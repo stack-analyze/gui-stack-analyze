@@ -1,0 +1,39 @@
+.module {
+  margin-block: 10px;
+  padding: 12px;
+}
+
+.module-title {
+  text-align: center;	
+}
+
+.module-description {}
+
+.module-details {
+ list-style: none;
+ display: flex;
+ justify-content: space-around;
+}
+
+.btn {
+   all: unset;
+   cursor: pointer;
+   display: block;
+   font-weight: bold;
+   max-width: 100%;
+   width: 96%;
+   height: 2%;
+   padding: 2px;
+   border-radius: 15px;
+   text-align: center;
+   outline: 2px solid #00f;
+   margin-inline: auto;
+}
+
+@media(hover: hover) {
+  .btn:hover {
+    background-color: #00f;
+    color: #fff;
+    text-decoration: underline;
+  }
+}

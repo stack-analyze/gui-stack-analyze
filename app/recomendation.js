@@ -75,15 +75,9 @@ const recomendation = [
         }
       },
       {
-        label: 'papatyakaktuss',
-        async click() {
-          await shell.openExternal('https://www.instagram.com/papatyakaktuss')
-        }
-      },
-      {
         label: 'juju_juhariah1995',
         async click() {
-          await shell.openExternal('https://www.instagram.com/juju_juhariah1995')
+          await shell.openExternal('https://www.instagram.com/chun_li1995')
         }
       },
     ]
@@ -115,9 +109,9 @@ const recomendation = [
         }
       },
       {
-        label: 'dannyaegyo',
+        label: 'dannyagii',
         async click() {
-          await shell.openExternal('https://www.twitch.tv/dannyaegyo')
+          await shell.openExternal('https://www.twitch.tv/dannyagii')
         }
       }
     ]
