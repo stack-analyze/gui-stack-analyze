@@ -53,6 +53,10 @@ module.exports = [
         title: 'movie search'
       },
       {
+      	page: '../pokemon-info/index.html',
+      	title: 'pokemon info'
+      },
+      {
         page: '../twitch-info/index.html',
         title: 'twitch search'
       },

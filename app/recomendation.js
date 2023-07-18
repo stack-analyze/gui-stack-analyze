@@ -12,7 +12,7 @@ const recomendation = [
             label: 'fazt',
             async click() {
               await shell.openExternal(
-                'https://www.youtube.com/channel/UCX9NJ471o7Wie1DQe94RVIg'
+                'https://www.youtube.com/@FaztTech'
               )
             }
           },
@@ -20,7 +20,7 @@ const recomendation = [
             label: 'doriandesings',
             async click() {
               await shell.openExternal(
-                'https://www.youtube.com/user/DorianDesigns'
+                'https://www.youtube.com/@DorianDesings'
               )
             }
           },
@@ -28,7 +28,7 @@ const recomendation = [
             label: 'bluuweb',
             async click() {
               await shell.openExternal(
-                'https://www.youtube.com/user/Bluuweb'
+                'https://www.youtube.com/@Bluuweb'
               )
             }
           },
@@ -49,18 +49,10 @@ const recomendation = [
             label: 'leonidas esteban',
             async click() {
               await shell.openExternal(
-                'https://www.youtube.com/user/LeonidasEsteban'
+                'https://www.youtube.com/@LeonidasEsteban'
               )
             }
           },
-          {
-            label: 'soy dalto',
-            async click() {
-              await shell.openExternal(
-                'https://www.youtube.com/channel/UCtoo4_P6ilCj7jwa4FmA5lQ'
-              )
-            }
-          }
         ]
       },
     ]
@@ -75,9 +67,9 @@ const recomendation = [
         }
       },
       {
-        label: 'juju_juhariah1995',
+        label: 'melodikaktus',
         async click() {
-          await shell.openExternal('https://www.instagram.com/chun_li1995')
+          await shell.openExternal('https://www.instagram.com/melodikaktus')
         }
       },
     ]
@@ -94,7 +86,7 @@ const recomendation = [
       {
         label: 'black metal promotions',
         async click() {
-          await shell.openExternal('https://www.youtube.com/bmpromotion')
+          await shell.openExternal('https://www.youtube.com/@bmpromotion')
         }
       }
     ]
@@ -112,6 +104,12 @@ const recomendation = [
         label: 'dannyagii',
         async click() {
           await shell.openExternal('https://www.twitch.tv/dannyagii')
+        }
+      },
+      {
+        label: 'dannyagii',
+        async click() {
+          await shell.openExternal('https://www.twitch.tv/japon_hr')
         }
       }
     ]

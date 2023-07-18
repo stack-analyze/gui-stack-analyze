@@ -11,19 +11,23 @@
   <link rel="stylesheet" href="../styles/global.css">
   <!-- main css  -->
   <link rel="stylesheet" href="main.css">
-  <script async src="renderer.js"></script>
 </head>
 
 <body>
   <navbar-stack></navbar-stack>
   <main class="container">
-    <form id="scraping" class="app-glass">
+    <section class="app-glass">
       <fieldset class="input-field fields">
         <div>
-          <input id="link-scraping" class="input-field-text" type="url" placeholder="enter a url for scraping" required>
+          <input 
+          	id="link-scraping" 
+          	class="input-field-text" 
+          	type="url" 
+          	placeholder="enter a url for scraping"
+          >
         </div>
+        
         <div>
-          <!-- <label class="title" for="selector-scraping">select a scraping option:</label> -->
           <select id="selector-scraping" class="scraping-select scroll" required>
             <option class="scraping-opt" value="">select a scraping option:</option>
             <option class="scraping-opt" value="title">title page</option>
@@ -37,12 +41,16 @@
           </select>
         </div>
       </fieldset>
+      
       <fieldset class="input-field">
-        <button id="analyze-button" class="btn-submit full-btn" type="submit" disabled>start scraping</button>
+        <button id="analyze-button" class="btn-submit full-btn">start scraping</button>
       </fieldset>
-    </form>
+    </section>
+    
     <pre id="results-scraping" class="shell shell-msg scroll">wait scraping results</pre>
   </main>
+  
+  <script async src="renderer.js"></script>
 </body>
 
 </html>

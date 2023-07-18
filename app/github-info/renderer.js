@@ -37,7 +37,6 @@ async function github(user) {
     twitter.textContent = res.data.twitter_username === null ? 'no twitter info' : res.data.twitter_username
     
     toast(res.status)
-    console.log(res.status)
   } catch (err) {
     toast(err.message)
   }

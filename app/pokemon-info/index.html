@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- normalize css -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css" />
+  <!-- scrollbar css -->
+  <link rel="stylesheet" href="../styles/global.css" />
+  <!-- main css -->
+  <link rel="stylesheet" href="main.css" />
+  <title>tech-stack analyze</title>
+</head>
+
+<body>
+  <navbar-stack></navbar-stack>
+  
+  <main class="container">
+    <section class="app-glass">
+      <fieldset class="input-field">
+          <input 
+            name="pokemon info" 
+            id="pokemon" 
+            class="input-field-text"
+            placeholder="enter a pokemon"
+          />
+        </fieldset>
+        
+        <fieldset class="input-field search-opt">
+        	<select id="pokemon-opt" class="pokemon-opts">
+        		<option class="pokemon-opt" value="name">name</option>
+        		<option class="pokemon-opt" value="id">id</option>
+        	</select>
+        </fieldset>
+        
+        <fieldset class="input-field">
+          <button id="analyze-button" class="btn-submit full-btn">
+            search pokemon
+          </button>
+        </fieldset>
+    </section>
+    
+    <section class="pokemon-card">
+    	<figure>
+    		<img 
+    			id="pokemon-sprite" 
+    			class="pokemon-sprite" 
+    			src="no-found.jpg"
+    			alt="sprites" 
+    		/>
+    		
+    		<figcaption id="pokemon-name" class="pokemon-card-title">
+    			#0 - no pokemon
+    		</figcaption>
+    	</figure>
+    	
+    	<ul id="pokemon-types" class="pokemon-types"></ul>
+    	
+    	<div>
+    		<canvas 
+    			id="pokemon-stats" 
+    			class="poke-stats"
+    		></canvas>
+    	</div>
+    </section>
+  </main>
+  
+  <script async src="renderer.js"></script>
+</body>
+
+</html>

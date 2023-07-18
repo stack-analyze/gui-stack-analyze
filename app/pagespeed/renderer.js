@@ -3,13 +3,14 @@ const { ipcRenderer } = require('electron')
 const Chart = require('chart.js/auto')
 const pagespeedApi = require('./pagespeedApi')
 const toast = require('../scripts/toast')
+const { webRegexp } = require('../scripts/regex')
 
 // DOM elements
-const speedResults = document.getElementById('pagespeed-results').getContext('2d')
-const From = document.getElementById('pagespeed')
-const webSite = document.getElementById('web')
-const analyzeLink = document.querySelector('.analyze-link')
-const analyzeButton = document.getElementById('analyze-button')
+const speedResults = document.querySelector('#pagespeed-results')
+const website = document.querySelector('#web')
+const analyzeButton = document.querySelector('#analyze-button')
+
+speedResults.getContext('2d')
 
 const ctxOptions = {
   type: 'bar',
@@ -18,9 +19,22 @@ const ctxOptions = {
     datasets: [{
       label: 'pagespeed',
       data: [0, 0],
-      backgroundColor: ['rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.2)'],
+      backgroundColor: ['#000', '#000'],
       borderWidth: 1
     }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: false,
+      title: {
+        display: true,
+        text: 'pagespeed'
+      }
+    },
+    scales: {
+    	y: { min: 0, max: 100 }
+    }
   },
 }
 
@@ -29,26 +43,26 @@ const chart = new Chart(speedResults, ctxOptions)
 const colorBarChart = score => {
   switch(true) {
     case score === 0:
-      return 'rgba(0, 0, 0, 0.2)'
+      return '#000'
       break
     case score === 1 || score <= 49:
-      return 'rgba(255, 0, 0, 0.2)'
+      return '#f00'
       break
     case score === 50 || score <= 89:
-      return 'rgba(255, 255, 0, 0.2)'
+      return '#ff0'
       break
     case score >= 90 || score === maxScore:
-      return 'rgba(0, 255, 0, 0.2)'
+      return '#0f0'
       break
   }
 }
 
 // pagespeed function
-async function pageSpeed(url) {
+async function pageSpeed() {
   try {
-    const resDesktop = await pagespeedApi(url, 'desktop')
+    const resDesktop = await pagespeedApi(website.value, 'desktop')
 
-    const resMobile = await pagespeedApi(url, 'mobile')
+    const resMobile = await pagespeedApi(website.value, 'mobile')
     
     chart.data.datasets[0].data[0] = Math.round(resDesktop.lighthouseResult.categories.performance.score * 100)
     chart.data.datasets[0].data[1] = Math.round(resMobile.lighthouseResult.categories.performance.score * 100)
@@ -57,24 +71,22 @@ async function pageSpeed(url) {
     chart.data.datasets[0].backgroundColor[1] = colorBarChart(chart.data.datasets[0].data[1])
 
     chart.update();
-    toast(`finish analyze ${url}`)
+    toast(`finish analyze ${website.value}`)
   } catch (err) {
     toast(err.message)
   }
+  
+  website.value = ''
 }
 
 
 // events
-analyzeLink.addEventListener('keyup', () => {
-  analyzeButton.disabled = !analyzeLink.validity.valid
-})
+analyzeButton.addEventListener('click', (e) => {
+  !webRegexp.test(website.value) 
+  	? toast('https:// or https:// is required') 
+  	: pageSpeed()
 
-From.addEventListener('submit', (e) => {
-  pageSpeed(webSite.value)
-
-  analyzeButton.disabled = true
   e.preventDefault()
-  From.reset()
 })
 
 ipcRenderer.on('clear-stack', () => {

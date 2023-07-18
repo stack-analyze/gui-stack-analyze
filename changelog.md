@@ -2,6 +2,14 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## verion 11.0.0
+### Added
+- new tool pokemon info
+### changed
+-	pagespeed tool remove legend in chart bars
+### fixed
+- some tool remove form & script tag change in body tag
+
 ## version 10.0.0
 ### Added
 - new tool bundlephobia info

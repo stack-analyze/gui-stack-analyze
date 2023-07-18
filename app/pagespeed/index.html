@@ -11,37 +11,37 @@
   <!-- main css -->
   <link rel="stylesheet" href="main.css" />
   <title>pagespeed tool</title>
-  <!-- render window script -->
-  <script async src="renderer.js"></script>
 </head>
 
 <body>
   <navbar-stack></navbar-stack>
+  
   <main class="container">
-    <section class="app-glass">
-      <form id="pagespeed" class="row">
-        <fieldset class="input-field">
-          <input 
-            type="url" 
-            name="url" 
-            id="web" 
-            class="analyze-link input-field-text"
-            pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
-            placeholder="enter a website"
-            required 
-          />
-        </fieldset>
-        <fieldset class="input-field">
-          <button id="analyze-button" class="btn-submit full-btn" type="submit" disabled>
-            start pagespeed
-          </button>
-        </fieldset>
-      </form>
+    <section class="app-glass row">
+      <fieldset class="input-field">
+        <input 
+          type="url" 
+          name="url" 
+          id="web" 
+          class="analyze-link input-field-text"
+          placeholder="enter a website"
+        />
+      </fieldset>
+        
+      <fieldset class="input-field">
+        <button id="analyze-button" class="btn-submit full-btn">
+          start pagespeed
+        </button>
+      </fieldset>
     </section>
+    
     <section class="graph">
       <canvas id="pagespeed-results" class="canva-glass canvas"></canvas>
     </section>
   </main>
+  
+  <!-- render window script -->
+  <script async src="renderer.js"></script>
 </body>
 
 </html>

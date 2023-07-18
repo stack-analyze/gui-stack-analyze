@@ -11,34 +11,34 @@
   <!-- main css -->
   <link rel="stylesheet" href="main.css" />
   <title>tech-stack analyze</title>
-  <script async src="renderer.js"></script>
 </head>
 
 <body>
   <navbar-stack></navbar-stack>
+  
   <main class="container">
     <section class="app-glass">
-      <form id="analyze">
-        <fieldset class="input-field">
-          <input 
-            type="url" 
-            name="url" 
-            id="web" 
-            class="analyze-link input-field-text"
-            placeholder="enter a website"
-            pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
-            required 
-          />
-        </fieldset>
-        <fieldset class="input-field">
-          <button id="analyze-button" class="btn-submit full-btn" type="submit" disabled>
-            analyze website
-          </button>
-        </fieldset>
-      </form>
+      <fieldset class="input-field">
+        <input 
+          type="url" 
+          name="url" 
+          id="web" 
+          class="analyze-link input-field-text"
+          placeholder="enter a website"
+        />
+      </fieldset>
+      
+      <fieldset class="input-field">
+        <button id="analyze-button" class="btn-submit full-btn">
+          analyze website
+        </button>
+      </fieldset>
     </section>
+    
     <section class="content scroll" id="stack"></section>
   </main>
+  
+  <script async src="renderer.js"></script>
 </body>
 
 </html>

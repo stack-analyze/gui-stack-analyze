@@ -1,0 +1,8 @@
+appId: com.stack-analyze
+productName: stack-analyze
+asar: false
+files:
+  - 'app/**/*'
+  - 'icons'
+  - 'package.json'
+copyright: stack-analyze

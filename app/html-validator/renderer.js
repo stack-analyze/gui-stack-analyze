@@ -2,19 +2,16 @@
 const { ipcRenderer } = require('electron')
 const validator = require('html-validator')
 const toast = require('../scripts/toast')
+const { webRegexp } = require('../scripts/regex')
 
 // DOM elements
-const form = document.getElementById('validator')
 const website = document.getElementById('website')
 const validatorBtn = document.getElementById('submit-validate')
 const resultValidator = document.getElementById('html-results')
 
-// DOM fragment element
-const fragment = document.createDocumentFragment()
-
-const htmlValidator = async (url) => {
+const htmlValidator = async () => {
   const options = {
-    url,
+    url: website.value,
     format: 'json'
   }
 
@@ -45,28 +42,26 @@ const htmlValidator = async (url) => {
 
       row.append(msg, msgContent, details)
 
-      fragment.append(row)
-
-      resultValidator.append(fragment)
+      resultValidator.append(row)
     })
-    toast(`finish analyze ${url}`)
+    toast(`finish analyze ${website.value}`)
   } catch (err) {
     toast(err.message)
   }
+  
+  website.value = ''
 }
 
 // events
-website.addEventListener('keyup', () => (validatorBtn.disabled = !website.validity.valid))
-
-form.addEventListener('submit', (e) => {
+validatorBtn.addEventListener('click', (e) => {
   // restart validator
   resultValidator.innerHTML = ''
 
-  htmlValidator(website.value)
-  validatorBtn.disabled = true
+  !webRegexp.test(website.value)
+  	? toast('https:// or https:// is required')
+  	: htmlValidator()
 
   e.preventDefault()
-  form.reset()
 })
 
 ipcRenderer.on('clear-stack', () => (resultValidator.innerHTML = ''))

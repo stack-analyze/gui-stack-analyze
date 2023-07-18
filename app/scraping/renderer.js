@@ -3,11 +3,11 @@ const { ipcRenderer } = require('electron')
 
 const scraping = require('./scrapingOpt')
 
-// toast
+// scripts
 const toast = require('../scripts/toast')
+const { webRegexp } = require('../scripts/regex')
 
 // DOM elements
-const form = document.getElementById('scraping')
 const linkScraping = document.getElementById('link-scraping')
 const selectorScraping = document.getElementById('selector-scraping')
 const resultScraping = document.getElementById('results-scraping')
@@ -15,7 +15,9 @@ const analyzeButton = document.getElementById('analyze-button')
 
 /* web  */
 const createScraping = async () => {
- const opt = selectorScraping.value
+ if(!selectorScraping.value) {
+   toast('the scraping opt is required')
+ }
  
  try {
     const res = await fetch(linkScraping.value)
@@ -23,23 +25,22 @@ const createScraping = async () => {
 
     resultScraping.classList.replace('shell-msg', 'shell-results')
 
-    scraping(data, resultScraping, opt)
+    scraping(data, resultScraping, selectorScraping.value)
     toast(res.status)
   } catch (err) {
     toast(err.message)
   }
+  
+  linkScraping.value = ''
+  selectorScraping.value = ''
 }
 
-linkScraping.addEventListener('keyup', () => {
-  analyzeButton.disabled = !linkScraping.validity.valid
-})
-
-form.addEventListener('submit', e => {
-  createScraping()
+analyzeButton.addEventListener('click', e => {
+  !webRegexp.test(linkScraping.value)
+  	? toast('https:// or https:// is required') 
+  	:createScraping()
   
-  analyzeButton.disabled = true
   e.preventDefault()
-  form.reset()
 })
 
 ipcRenderer.on('clear-stack', () => {

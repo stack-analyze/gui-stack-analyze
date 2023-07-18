@@ -10,25 +10,33 @@
   <link rel="stylesheet" href="../styles/global.css">
   <!-- main stylesheet-->
   <link rel="stylesheet" href="main.css">
-  <script async src="renderer.js"></script>
 </head>
 
 <body>
   <navbar-stack></navbar-stack>
+  
   <main class="container scroll">
     <cpu-info></cpu-info>
+    
     <ram-info></ram-info>
+    
     <disk-info></disk-info>
+    
     <os-info></os-info>
+    
     <controller-info></controller-info>
+    
     <display-info></display-info>
   </main>
+  
   <dialog id="modal" class="modal glass">
     <section class="modal-body">
       <board-info></board-info>
       <bios-info></bios-info>
     </section>
   </dialog>
+  
+  <script async src="renderer.js"></script>
 </body>
 
 </html>

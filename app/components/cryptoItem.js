@@ -59,6 +59,7 @@ class CryptoInfo extends HTMLElement {
         padding: 16px;
         margin: 16px 8px;
         display: flex;
+        align-items: center;
       }
       
       .container strong {
@@ -70,6 +71,7 @@ class CryptoInfo extends HTMLElement {
         margin-right: 20px;
         border-radius: 50%;
         width: 90px;
+        height: 90px;
       }
       
       .coin-neutral, .coin-positive, .coin-negative {

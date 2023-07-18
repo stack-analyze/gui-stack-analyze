@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="../styles/global.css" />
   <!-- main css -->
   <link rel="stylesheet" href="main.css" />
-  <script defer src="renderer.js"></script>
 </head>
 <body>
   <navbar-stack></navbar-stack>
+
   <main class="container">
     <section class="app-glass">
       <form id="analyze">
@@ -27,6 +27,7 @@
             required
           />
         </fieldset>
+
         <fieldset class="input-field">
           <input
             type="password"
@@ -37,6 +38,7 @@
             required
           />
         </fieldset>
+
         <fieldset class="input-field">
           <button id="analyze-button" class="btn-submit full-btn" type="submit" disabled>
             analyze bitly url
@@ -44,6 +46,7 @@
         </fieldset>
       </form>
     </section>
+
     <table class="glass bitly-info">
       <thead class="fields">
         <tr>
@@ -52,6 +55,7 @@
           <th class="field">long link</th>
         </tr>
       </thead>
+
       <tbody class="fields">
         <tr>
           <td id="created-date" class="field"></td>
@@ -61,5 +65,7 @@
       </tbody>
     </table>
   </main>
+  
+  <script defer src="renderer.js"></script>
 </body>
 </html>
