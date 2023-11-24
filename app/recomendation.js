@@ -107,7 +107,7 @@ const recomendation = [
         }
       },
       {
-        label: 'dannyagii',
+        label: 'japon hr',
         async click() {
           await shell.openExternal('https://www.twitch.tv/japon_hr')
         }

@@ -35,7 +35,7 @@ const stack = async () => {
       const stackCard = document.createElement('stack-card');
       
       stackCard.cardTitle = app.name;
-      stackCard.image = `../images/${app.icon}`;
+      stackCard.image = `../images/logos/${app.icon}`;
       stackCard.alt = app.name;
       stackCard.link = app.website;
       stackCard.categories = formatter.format(categories);

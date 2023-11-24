@@ -2,6 +2,10 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## version 12.0.0
+### Added wallpapers download Sol, moon & dimensions
+> note dimensions wallpapers download for npm version 1.2.8 & pwa 2.0.0
+
 ## verion 11.0.0
 ### Added
 - new tool pokemon info

@@ -16,6 +16,8 @@ const recomendation = require('./recomendation')
 // mac os
 const isMac = process.platform === 'dawin'
 
+app.disableHardwareAcceleration()
+
 const createWindow = () => {
   // Create the browser window.
   const win = new BrowserWindow({
@@ -62,7 +64,7 @@ const createWindow = () => {
           click() {
             win.webContents.send('clear-stack')
           }
-        }
+        },
       ]
     },
     {

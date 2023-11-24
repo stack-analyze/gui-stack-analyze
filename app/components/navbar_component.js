@@ -101,6 +101,13 @@ class NavBarStack extends HTMLElement {
     headerComponent.append(logo, titleComponent)
 
     const listComponent = document.createDocumentFragment();
+    
+    // wallpapers item
+    const wallpaperLink = document.createElement('a')
+    wallpaperLink.classList.add('sidenav-menu-button')
+    wallpaperLink.textContent = 'wallpapers'
+    wallpaperLink.href = '../wallpapers/index.html'
+    wallpaperLink.title = 'go to wallpapers'
 
     links.forEach(({ title, tools }) => {
       const itemComponent = document.createElement('details')
@@ -135,6 +142,8 @@ class NavBarStack extends HTMLElement {
       
       listComponent.append(itemComponent)
     })
+    
+    listComponent.append(wallpaperLink)
 
     navbarComponent.append(headerComponent, listComponent)
 

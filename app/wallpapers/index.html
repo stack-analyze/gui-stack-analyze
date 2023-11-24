@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>stack-analyze wallpapers</title>
+  <!-- normalize -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css">
+  <!-- global stylesheet-->
+  <link rel="stylesheet" href="../styles/global.css">
+  <!-- main stylesheet-->
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <navbar-stack></navbar-stack>
+  
+  <main class="container">
+  	<fieldset class="input-field fields">
+  		<select id="wallpaper-selector" class="wallpaper-select">
+  			<option class="wallpaper-opt" value="">select a wallpapers option:</option>
+  			<option class="wallpaper-opt" value="sol-moon">sol, moon</option>
+  			<option class="wallpaper-opt" value="dimensions">dimensions</option>
+  		</select>
+  	</fieldset>
+  	
+  	<section class="content scroll">
+  		<article id="wallpapers" class="wallpapers"></article>
+  	</section>
+  	
+  	<dialog id="stack" class="stack glass">
+  		<img class="stack-img" src="../images/stack-special.jpeg" alt="stack-analyze">
+  		<figcaption>
+  			<a class="download-btn" href="../images/stack-special.jpeg" download>download stack-analyze image</a>
+  		</dialog>
+  	</dialog>
+  </main>
+  
+  <script async src="renderer.js"></script>
+</body>
+
+</html>
