@@ -1,6 +1,4 @@
 .crypto-list {
   height: 70vh;
-  scrollbar-width: thin;
-  scrollbar-color: #fff #000;
   overflow: auto;
 }

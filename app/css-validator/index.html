@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- normalize css -->
+  <meta charset="UTF-8">
+  <title>Css validator</title>
+  <!-- normalize -->
   <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css" />
   <!-- scrollbar css -->
   <link rel="stylesheet" href="../styles/global.css" />
-  <!-- main css -->
+  <!-- local css -->
   <link rel="stylesheet" href="main.css" />
-  <title>tech-stack analyze</title>
 </head>
-
 <body>
   <navbar-stack></navbar-stack>
-  
   <main class="container">
     <section class="app-glass">
       <fieldset class="input-field">
-        <input 
-          type="url" 
-          name="url" 
-          id="web" 
-          class="analyze-link input-field-text"
-          placeholder="enter a website"
-        />
+      	<input
+      		type="url"
+      		id="website"
+      		class="input-field-text"
+      		placeholder="enter a url to validate"
+      	>
       </fieldset>
       
       <fieldset class="input-field">
-        <button id="analyze-button" class="btn-submit full-btn">
-          analyze website
-        </button>
+      	<button id="css-validate" class="btn-submit full-btn">
+      		validate
+      	</button>
       </fieldset>
     </section>
     
-    <section class="content" id="stack"></section>
+    <pre id="css-results" class="app-glass results-validator"></pre>
+    <div class="warn">some websites is slow charge</div>
   </main>
   
   <script async src="renderer.js"></script>
 </body>
-
 </html>

@@ -3,7 +3,7 @@ require('../components/stackCard');
 
 // modules
 const { ipcRenderer, shell } = require('electron')
-const Wappalyzer = require('wappalyzer')
+const Wappalyzer = require('wapalyzer')
 const toast = require('../scripts/toast')
 const { webRegexp } = require('../scripts/regex')
 

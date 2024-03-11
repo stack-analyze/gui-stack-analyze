@@ -2,6 +2,10 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## version 13.0.0
+### Added css validator
+> npm version 1.2.9 & pwa 2.1.0
+
 ## version 12.0.0
 ### Added wallpapers download Sol, moon & dimensions
 > note dimensions wallpapers download for npm version 1.2.8 & pwa 2.0.0

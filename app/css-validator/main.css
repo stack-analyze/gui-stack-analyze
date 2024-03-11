@@ -1,0 +1,51 @@
+.warn, .error {
+	height: auto;
+	backdrop-filter: blur(8px);
+	margin: 8px;
+	padding: 4px;
+}
+
+.results-validator {
+  overflow: auto;
+  height: 60vh;
+  margin-top: 8px;
+}
+
+.validate-opts {
+	display: flex;
+	justify-content: space-between;
+}
+
+.validate-opt {
+	cursor: pointer;
+}
+
+.warn {
+	background-color: rgb(255 255 0 / 0.35);
+}
+
+.error {
+	background-color: rgb(255 0 0 / 0.35);
+}
+
+.css-select {
+  border: none;
+  outline: none;
+  font: inherit;
+  width: 100%;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 0.2);
+  background: rgb(0 0 0 / 0.5);
+  padding: .7em;
+}
+
+.css-select:focus {
+  outline: none;
+}
+
+.css-select:-internal-list-box {
+  display: flex;
+  white-space: wrap;
+}

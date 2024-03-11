@@ -111,6 +111,7 @@ class NavBarStack extends HTMLElement {
 
     links.forEach(({ title, tools }) => {
       const itemComponent = document.createElement('details')
+      itemComponent.name = "tools"
       itemComponent.classList.add('menu-tool')
       
       // title item
@@ -148,18 +149,6 @@ class NavBarStack extends HTMLElement {
     navbarComponent.append(headerComponent, listComponent)
 
     shadowRoot.append(styles, navbarComponent)
-    
-    const collapseList = shadowRoot.querySelectorAll('.menu-tool')
-    
-    collapseList.forEach((collapse, i) => {
-      collapse.addEventListener('click', () => {
-        collapseList.forEach(item => {
-          if(item !== collapse) {
-            item.open = false
-          }
-        })
-      })
-    })
   }
 }
 

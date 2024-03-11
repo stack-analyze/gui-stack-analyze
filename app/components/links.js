@@ -15,6 +15,10 @@ module.exports = [
         title: 'HTML validator'
       },
       {
+        page: '../css-validator/index.html',
+        title: 'CSS validator'
+      },
+      {
         page: '../scraping/index.html',
         title: 'web scraping'
       }
