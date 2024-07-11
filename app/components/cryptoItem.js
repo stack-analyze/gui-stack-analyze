@@ -51,7 +51,7 @@ class CryptoInfo extends HTMLElement {
     
     styles.textContent = `
       .container {
-        background-color: rgba(255, 255, 255, 0.25);
+        background-color: rgba(255, 255, 255, 0.05);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         backdrop-filter: blur(4px);
         border-radius: 10px;
@@ -60,6 +60,7 @@ class CryptoInfo extends HTMLElement {
         margin: 16px 8px;
         display: flex;
         align-items: center;
+        color: #ccc;
       }
       
       .container strong {
@@ -75,7 +76,6 @@ class CryptoInfo extends HTMLElement {
       }
       
       .coin-neutral, .coin-positive, .coin-negative {
-        background-color: #000;
         font-weight: bold;
       }
       

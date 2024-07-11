@@ -7,10 +7,11 @@ const wallpaperElement = document.querySelector('#wallpapers')
 const stackPopover = document.querySelector('#stack')
 
 // wallpaper list
-const wallpaperOptions = ['sol-moon', 'dimensions']
+const wallpaperOptions = ['sol-moon', 'dimensions', 'seyyahi2']
 const wallapersList = {
 	'sol-moon': [...Array(20).keys()],
-	dimensions: [...Array(12).keys()]
+	dimensions: [...Array(12).keys()],
+	seyyahi2: [...Array(14).keys()]
 }
 
 // events

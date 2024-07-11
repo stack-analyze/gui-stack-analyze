@@ -64,6 +64,10 @@ module.exports = [
         page: '../twitch-info/index.html',
         title: 'twitch search'
       },
+      {
+      	page: '../deezer/index.html',
+      	title: 'deezer search'
+      }
     ]
   },
   {

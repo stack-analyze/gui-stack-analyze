@@ -2,6 +2,14 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## version 14.0.0
+### Added 
+- deezer search tool
+- seyyahi2 wallpaper pack
+### changed
+- css background
+> npm version 1.3.0 & 1.3.1
+
 ## version 13.0.0
 ### Added css validator
 > npm version 1.2.9 & pwa 2.1.0

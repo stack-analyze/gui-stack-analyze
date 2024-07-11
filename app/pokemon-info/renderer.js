@@ -76,7 +76,6 @@ const pokemonInfo = async () => {
 		
 	} catch(err) {
 		toast(err.message)
-		console.error(err.message)
 	}
 	
 	if (typeof result === 'number') {
