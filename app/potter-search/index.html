@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>potter search</title>
+  <!-- normalize -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css" />
+  <!-- global styles -->
+  <link rel="stylesheet" href="../styles/global.css" />
+  <!-- main css -->
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+  <navbar-stack></navbar-stack>
+  
+  <main class="container">
+    <section class="app-glass">
+      <form id="potter-search">
+        <fieldset class="input-field col s12">
+          <input 
+            type="search" 
+            id="keyword-search" 
+            class="input-field-text"
+            autocomplete="off" 
+            placeholder="enter a keyword for search"
+            required 
+          />
+        </fieldset>
+        
+        <fieldset class="input-field">
+          <button id="" class="btn-submit full-btn" type="submit">
+            search characters
+          </button>
+        </fieldset>
+      </form>
+    </section>
+    
+    <section class="character-list" id="character-list"></section>
+  </main>
+  
+  <script async src="renderer.js"></script>
+</body>
+
+</html>

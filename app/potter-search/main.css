@@ -1,0 +1,32 @@
+.character-list {
+ margin-top: 8px;
+}
+
+.info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	color: #fff;
+	
+	&:not(:last-child) {
+		margin-bottom: 6px;
+	}
+}
+
+.info-img {
+  width: 14%;
+  grid-area: image;
+}
+
+.info-title {
+  grid-area: title;
+}
+
+.info-desc {
+  grid-area: desc;
+}
+
+.info-birthdate {
+  grid-area: datetime;
+}

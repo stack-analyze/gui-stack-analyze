@@ -20,7 +20,7 @@ async function animeTool(query) {
       params: { q: query }
     })
 
-    animeData.data.map((anime) => {
+    animeData.data.forEach((anime) => {
       // row element
       const animeCard = document.createElement('anime-card')
 

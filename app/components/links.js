@@ -67,6 +67,10 @@ module.exports = [
       {
       	page: '../deezer/index.html',
       	title: 'deezer search'
+      },
+      {
+        page: '../potter-search/index.html',
+        title: 'potter search'
       }
     ]
   },

@@ -24,6 +24,12 @@ module.exports = {
           - twitch info (now twitch search): npm version 1.1.7
           - webscraping: npm version 1.1.9
           - password generator: npm versions 1.2.0 - 1.2.1
+          - bundlephobia: npm version 1.2.3
+          - pokemon info: npm version 1.2.5
+          - wallpapers: npm version 1.2.7
+          - css validate: npm version 1.2.9
+          - deezer search: npm versions 1.3.0 - 1.3.1
+          - potter search: npm version 1.3.3
       `
     })
   }

@@ -111,7 +111,7 @@ const createWindow = () => {
   const menu = Menu.buildFromTemplate(templateMenu)
 
   // Set The Menu to the Main Window
-  // Menu.setApplicationMenu(menu)
+  Menu.setApplicationMenu(menu)
 }
 
 app.whenReady().then(() => {
