@@ -1,7 +1,7 @@
 // modules
 const { join } = require('node:path')
 const { 
-	app, BrowserWindow, Menu, dialog, shell
+  app, BrowserWindow, Menu, dialog, shell
 } = require('electron')
 // message
 const msg = require('./msg')

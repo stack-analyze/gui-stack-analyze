@@ -1,5 +1,3 @@
 const webRegexp = /https?:\/\//g
 
-module.exports = {
- webRegexp
-}
+module.exports = { webRegexp }

@@ -44,16 +44,12 @@ const colorBarChart = score => {
   switch(true) {
     case score === 0:
       return '#000'
-      break
     case score === 1 || score <= 49:
       return '#f00'
-      break
     case score === 50 || score <= 89:
       return '#ff0'
-      break
-    case score >= 90 || score === maxScore:
+    case score >= 90 || score === 100:
       return '#0f0'
-      break
   }
 }
 

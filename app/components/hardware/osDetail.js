@@ -51,21 +51,17 @@ class OsInfo extends HTMLElement {
 
     try {
       const {
-      hostname,
-      platform,
-      distro,
-      release,
-      kernel,
-      arch,
-      uefi
-    } = await osInfo();
+        hostname, platform, distro, release,
+        kernel, arch, uefi
+      } = await osInfo();
 
       const infoList = [
         { name: 'hostname', type: hostname },
         { name: 'platform', type: platform },
         { name: 'distro', type: distro },
         { name: 'release', type: release },
-        { name: 'kernel', type: arch },
+        { name: 'kernel', type: kernel },
+        { name: 'arch', type: arch},
         { name: 'uefi', type: uefi ? 'uefi bios' : 'legacy bios' },
       ];
 

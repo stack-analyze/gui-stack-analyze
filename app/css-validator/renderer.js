@@ -10,10 +10,10 @@ const btnSubmit = document.querySelector('#css-validate')
 const results = document.querySelector('#css-results')
 
 const cssValidate = () => {
-	validateCss({uri: url.value}, (err, data) => {
- 		if (err) { toast(err.message) } else {
- 			results.textContent = JSON.stringify(data, null, 2)
- 		}
+  validateCss({uri: url.value}, (err, data) => {
+    if (err) { toast(err.message) } else {
+      results.textContent = JSON.stringify(data, null, 2)
+    }
  	})
   
   url.value = ''
@@ -21,9 +21,9 @@ const cssValidate = () => {
 
 // events
 btnSubmit.addEventListener('click', () => {
-	!webRegexp.test(url.value)
-		? toast('https:// or https:// is required') 
-		: cssValidate()
+  !webRegexp.test(url.value)
+    ? toast('https:// or https:// is required') 
+    : cssValidate()
 })
 
 ipcRenderer.on('clear-stack', () => (results.textContent = ''))

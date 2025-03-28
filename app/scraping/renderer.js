@@ -15,11 +15,11 @@ const analyzeButton = document.getElementById('analyze-button')
 
 /* web  */
 const createScraping = async () => {
- if(!selectorScraping.value) {
-   toast('the scraping opt is required')
- }
+  if(!selectorScraping.value) {
+    toast('the scraping opt is required')
+  }
  
- try {
+  try {
     const res = await fetch(linkScraping.value)
     const data = await res.text()
 
@@ -27,9 +27,7 @@ const createScraping = async () => {
 
     scraping(data, resultScraping, selectorScraping.value)
     toast(res.status)
-  } catch (err) {
-    toast(err.message)
-  }
+  } catch (err) { toast(err.message) }
   
   linkScraping.value = ''
   selectorScraping.value = ''

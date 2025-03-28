@@ -8,16 +8,10 @@ GUI edition inspired of version 1.0.5 npm module stack-analyze for analyze tech 
 examples of start analyze
 
 ### start
-![window start stack-analyze gui edition!](docs/start-window.png "window start")
+![window start stack-analyze gui edition!](docs/start-window.jpg "window start")
 
-### analyze website
-![website analyzer with stack-analyze gui edition!](docs/tech-analyze-pagespeed.png "finish analyzer")
-
-### HTML validator start
-![start HTML validator exclusive tool](docs/validator-tool.png "finish analyzer")
-
-### HTML validator finish
-![finish HTML validator exclusive tool!](docs/validator-analyze.png "finish validator")
+### HTML validator
+![start HTML validator exclusive tool](docs/validator-tool.jpg "finish analyzer")
 
 ## CLI edition
 [stack-analyze module](https://www.npmjs.com/package/stack-analyze)<br>

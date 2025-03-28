@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>poker game</title>
+  <!-- normalize -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css" />
+  <!-- global styles -->
+  <link rel="stylesheet" href="../styles/global.css" />
+  <!-- main css -->
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+  <navbar-stack></navbar-stack>
+  
+  <main class="container app-glass game">
+    <div class="poker-game">
+    	<select class="selector-game">
+      	<option value="">select a poker game</option>
+      	<option value="go-fish">go fish</option>
+      	<option value="gin-rummy">gin rummy</option>
+      	<option value="blackjack">blackjack</option>
+      	<option value="slapjack">slapjack</option>
+      	<option value="basics-of-poker">basics of poker</option>
+      	<option value="texas-holdem-poker">texas holdem poker</option>
+    	</select>
+    </div>
+    
+    <h1 id="game-title"></h1>
+    
+    <ul class="game-details">
+      <li id="age"></li>
+      <li id="players"></li>
+    </ul>
+    
+    <ol id="how-play-title" class="how-play"></ol>
+    
+    <!-- <ul id="how-play-desc" class="how-play"></ul> -->
+  </main>
+  
+  <script async src="renderer.js"></script>
+</body>
+
+</html>

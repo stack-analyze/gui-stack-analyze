@@ -1,7 +1,7 @@
 :root {
   --primary: #042e8e;
-  --light: #f4f5f8;
-  --dark: #222428;
+  --danger: #bd1a30;
+  --copy: #048c09;
 }
 
 body {
@@ -40,12 +40,11 @@ body {
 }
 
 .btn-generator {
-  outline: 2px solid var(--dark);
+  outline: 2px solid var(--copy);
 }
 
 .btn-copy {
-  outline: 2px solid var(--light);
-  color: var(--dark);
+  outline: 2px solid var(--danger);
 }
 
 @media(hover: hover) {
@@ -54,13 +53,11 @@ body {
   }
   
   .btn-generator:hover {
-    background-color: var(--light);
-    color: var(--dark);
+    background-color: var(--copy);
   }
 
   .btn-copy:hover {
-    background-color: var(--dark);
-    color: var(--light);
+    background-color: var(--danger);
   }
 }
 

@@ -13,7 +13,6 @@ const { ipcRenderer } = require('electron')
 
 // modal element
 const modal = document.querySelector('dialog')
-const example = document.querySelector('button')
 
 // pc processes
 ipcRenderer.on('clear-stack', async () => {

@@ -84,6 +84,10 @@ module.exports = [
       {
         page: '../password-generator/index.html',
         title: 'password generator',
+      },
+      {
+        page: '../poker-game/index.html',
+        title: 'poker game',
       }
     ]
   }

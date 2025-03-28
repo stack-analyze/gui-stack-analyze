@@ -78,12 +78,6 @@ const recomendation = [
     label: 'projects',
     submenu: [
       {
-        label: "Doofy's Projects",
-        async click() {
-          await shell.openExternal('https://dprojects.org')
-        }
-      },
-      {
         label: 'black metal promotions',
         async click() {
           await shell.openExternal('https://www.youtube.com/@bmpromotion')
@@ -104,12 +98,6 @@ const recomendation = [
         label: 'dannyagii',
         async click() {
           await shell.openExternal('https://www.twitch.tv/dannyagii')
-        }
-      },
-      {
-        label: 'japon hr',
-        async click() {
-          await shell.openExternal('https://www.twitch.tv/japon_hr')
         }
       }
     ]

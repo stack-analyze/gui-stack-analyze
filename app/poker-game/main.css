@@ -1,0 +1,36 @@
+body {
+ color: #ddd;
+}
+
+ul {
+	list-style: none;
+}
+
+.game {
+ overflow: auto;
+ height: 80vh;
+}
+
+.poker-game {
+  padding: 8px;
+  
+}
+
+.selector-game {
+  border: none;
+  outline: none;
+  font: inherit;
+  width: 100%;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 0.2);
+  background: rgb(0 0 0 / 0.5);
+  padding: .7em;
+}
+
+/**/
+.game-details, .how-play {
+  display: grid;
+  gap: 8px;
+}

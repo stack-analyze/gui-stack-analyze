@@ -51,12 +51,8 @@ class RamInfo extends HTMLElement {
 
     try {
       const {
-      total,
-      free,
-      used,
-      active,
-      available
-    } = await mem();
+        total, free, used, active, available
+      } = await mem();
 
       const infoList = [
         { name: 'total', type: `${(total / 1073741824).toFixed(2)} GB` },

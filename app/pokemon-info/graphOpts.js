@@ -1,6 +1,6 @@
 const labels = [
-	'hp', 'attack', 'defense', 'special attack', 
-	'special defense', 'speed', 'xp'
+  'hp', 'attack', 'defense', 'special attack', 
+  'special defense', 'speed', 'xp'
 ]
 
 const data = {
@@ -9,11 +9,11 @@ const data = {
     label: 'stats',
     data: [0, 0, 0, 0, 0, 0, 0],
     backgroundColor: [
-    	'#ff0000', '#ffff00', '#4400ff',
-    	'#0000ff', '#00ff00', '#ff00ff',
-    	'#00ffff'
+      '#ff0000', '#ffff00', '#4400ff',
+      '#0000ff', '#00ff00', '#ff00ff',
+      '#00ffff'
     ],
-   }]
+  }]
 };
 
 module.exports = {
