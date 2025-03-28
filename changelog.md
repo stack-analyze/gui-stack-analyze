@@ -2,6 +2,10 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## version 16.0.0
+### Added
+- poker tool
+
 ## version 15.0.0
 ### Added
 - potter search
