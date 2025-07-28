@@ -30,6 +30,8 @@ module.exports = {
           - css validate: npm version 1.2.9
           - deezer search: npm versions 1.3.0 - 1.3.1
           - potter search: npm version 1.3.3
+          - poker rules: npm version 1.3.5
+          - quotes tool: npm version 1.3.7
       `
     })
   }

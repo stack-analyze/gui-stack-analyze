@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>potter search</title>
+  <!-- normalize -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css" />
+  <!-- global styles -->
+  <link rel="stylesheet" href="../styles/global.css" />
+  <!-- main css -->
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+  <navbar-stack></navbar-stack>
+  
+  <main class="container">
+    <section class="app-glass">
+      <form id="get-quote-info">
+        <fieldset class="input-field col s12">
+          <input 
+            class="input-field-text"
+            autocomplete="off" 
+            placeholder="enter a search if quote is anime is optional"
+            required
+          />
+
+          <select id="quotes">
+            <option value="">select a quote option</option>
+          </select>
+        </fieldset>
+        
+        <fieldset class="input-field">
+          <button class="btn-submit full-btn" disabled>
+            search characters
+          </button>
+        </fieldset>
+      </form>
+    </section>
+    
+    <pre id="results-quotes" class="quotes-info"></pre>
+  </main>
+  
+  <script async src="renderer.js"></script>
+</body>
+
+</html>

@@ -24,10 +24,10 @@ img {
 	display: block;
 	text-align: center;
 	padding: 10px;
-	outline: 1px solid #000;
+	outline: 1px solid #fff;
 	border-radius: 30px;
 	text-decoration: none;
-	color: #000;
+	color: #fff;
 	width: 80%;
 	margin: 8px auto;
 }
@@ -63,8 +63,8 @@ img {
 
 @media(hover: hover) {
 	.download-btn:hover {
-		background-color: #000;
-		color: #fff;
+		background-color: #fff;
+		color: #000;
 		outline: none;
 		text-decoration: underline;
 	}

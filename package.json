@@ -1,6 +1,6 @@
 {
   "name": "gui-stack-analyze",
-  "version": "16.0.0",
+  "version": "17.0.0",
   "description": "GUI version inspired from npm module stack-analyze 1.0.5 and browser extension",
   "main": "app/main.js",
   "repository": {
@@ -14,7 +14,7 @@
   "scripts": {
     "start": "electron .",
     "lint": "eslint .",
-    "electron:win": "electron-builder -win portable",
+    "electron:win": "electron-builder --win portable",
     "electron:linux": "electron-builder -l AppImage"
   },
   "keywords": [

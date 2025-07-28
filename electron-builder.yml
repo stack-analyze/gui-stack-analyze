@@ -5,4 +5,7 @@ files:
   - 'app/**/*'
   - 'icons'
   - 'package.json'
+portable:
+  artifactName: ${name}.${ext}
+npmRebuild: false
 copyright: stack-analyze
