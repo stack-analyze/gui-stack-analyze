@@ -11,5 +11,5 @@ module.exports = `
 
     main development: Julian David Cordoba torres (omega5300).
 
-    community: ${author} now stack-analyze, license: ${license}
+    community: intermachine-developers now ${author}, license: ${license}
 `

@@ -14,6 +14,11 @@ class NavBarStack extends HTMLElement {
     const styles = document.createElement('style')
 
     styles.textContent = `
+      h1 {
+        font-size: 1.6em;
+        margin: 0.67em 0;
+      }
+
       /* glass style*/
       .glass {
         background: rgba( 255, 255, 255, 0.10 );

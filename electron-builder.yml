@@ -7,5 +7,7 @@ files:
   - 'package.json'
 portable:
   artifactName: ${name}.${ext}
+win:
+  icon: icons/icon.ico
 npmRebuild: false
 copyright: stack-analyze

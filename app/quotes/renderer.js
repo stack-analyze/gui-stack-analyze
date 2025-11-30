@@ -22,17 +22,11 @@ quotesOptions.forEach(opt => {
 
 // events
 quoteSelector.addEventListener('change', () => {
-  const isRequired = quoteSelector.value !== 'anime'
-  quoteInput.required = isRequired
   btnSubmit.disabled = quoteSelector.value === ''
 })
 
 startSearch.addEventListener('submit', (e) => {
-  if(quoteInput.required) {
-    quotesFunctions[quoteSelector.value](quoteInput.value)
-  } else { 
-    quotesFunctions.anime(quoteInput.value)
-  }
+  quotesFunctions[quoteSelector.value](quoteInput.value)
 
   e.preventDefault()
   startSearch.reset()

@@ -3,8 +3,6 @@ const { default: axios } = require('axios')
 
 const resultsQuotes = document.querySelector('#results-quotes')
 
-const quotesOptions = ['anime']
-
 const quotesFunctions = {
   anime: async (anime) => {
     try {
@@ -18,7 +16,17 @@ const quotesFunctions = {
     } catch (err) {
       resultsQuotes.textContent = err.message
     }
+  },
+  swift: async () => {
+    try {
+      const data = await (await fetch('https://taylorswiftapi.onrender.com/get')).json()
+      resultsQuotes.textContent = JSON.stringify(data, null, 2)
+    } catch (err) {
+      resultsQuotes.textContent = err.message
+    }
   }
 }
+
+const quotesOptions = Object.keys(quotesFunctions)
 
 module.exports = { resultsQuotes, quotesOptions, quotesFunctions }

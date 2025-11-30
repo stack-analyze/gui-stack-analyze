@@ -1,6 +1,25 @@
+select {
+  border: none;
+  outline: none;
+  font: inherit;
+  width: 100%;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 3%;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 0.2);
+  background: rgb(0 0 0 / 0.5);
+  padding: .7em;
+}
+
 .quotes-info {
     color: #fff;
     text-wrap: wrap;
     background-color: #111;
     padding: 4px;
+}
+
+.input-field:first-child {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
 }

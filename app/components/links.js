@@ -43,6 +43,10 @@ module.exports = [
         page: '../bundlephobia/index.html',
         title: 'bundlephobia info'
       },
+      {
+        page: '../tcgp/index.html',
+        title: 'tcgp card info'
+      },
     ]
   },
   {

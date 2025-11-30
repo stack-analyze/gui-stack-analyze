@@ -1,0 +1,99 @@
+select {
+  border: none;
+  outline: none;
+  font: inherit;
+  width: 100%;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 3%;
+  box-shadow: 0 0 1rem 0 rgb(0 0 0 / 0.2);
+  background: rgb(0 0 0 / 0.5);
+  padding: .7em;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+}
+
+.card {
+  display: grid;
+  height: fit-content;
+  width: 90%;
+  grid-template-areas:
+    "header attack"
+    "header attack"
+    "footer footer";
+  align-items: center;
+  padding: 4px;
+  color: #fff;
+  margin-top: 12px;
+  margin-inline: auto;
+}
+
+.card-header {
+  margin: 2px;
+  grid-area: header;
+  text-align: center;
+}
+
+.card-img {
+  aspect-ratio: 9/16;
+  object-fit: contain;
+  height: 320px;
+  display: block;
+  margin-inline: auto;
+}
+
+.card-ability {
+  grid-area: ability;
+  margin-bottom: 8px;
+}
+
+.card-ability-name {
+  color: #d00;
+}
+
+.card-attacks {
+  grid-area: attack;
+}
+
+.card-attack {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-block: 2px;
+}
+
+.card-energies {
+  margin: 2px;
+}
+
+.card-attack-description {
+  width: 100%;
+}
+
+.card-energy {
+  aspect-ratio: 1/1;
+  width: 32px;
+  display: inline-block;
+  margin: 2px;
+}
+
+.card-footer {
+  display: flex;
+  list-style: none;
+  grid-area: footer;
+  justify-content: space-around;
+  padding: 0;
+  margin-block: 4px;
+}
+
+.card-subtitle,
+.card-title {
+  margin: 1px;
+}
+
+.card-subtitle {}

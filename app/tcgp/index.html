@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>github user info</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css" />
+    <!-- global css -->
+    <link rel="stylesheet" href="../styles/global.css" />
+    <!-- main css -->
+    <link rel="stylesheet" href="main.css" />
+
+    <script defer src="renderer.js"></script>
+</head>
+
+<body>
+    <navbar-stack></navbar-stack>
+    <main class="container">
+        <section class="app-glass">
+            <form id="tcgp-form">
+                <fieldset class="input-field fields">
+                    <div>
+                        <select id="expansion-id" class="">
+                            <option value="">select a expansion:</option>
+                            <option value="p-a">p-a</option>
+                            <option value="a1">a1</option>
+                            <option value="a1a">a1a</option>
+                            <option value="a2">a2</option>
+                            <option value="a2a">a2a</option>
+                            <option value="a2b">a2b</option>
+                            <option value="a3">a3</option>
+                            <option value="a3a">a3a</option>
+                            <option value="a3b">a3b</option>
+                            <option value="a4">a4</option>
+                            <option value="a4a">a4a</option>
+                            <option value="b1">b1</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input id="card-id" class="input-field-text" type="number" placeholder="enter a card id" min="1"
+                            disabled required />
+                    </div>
+                </fieldset>
+                <fieldset class="input-field">
+                    <button id="analyze-button" class="btn-submit full-btn" type="submit">
+                        get tcgp card
+                    </button>
+                </fieldset>
+            </form>
+        </section>
+
+        <section class="card app-glass">
+            <figure class="card-header">
+                <img class="card-img"
+                    src="../images/not-found.jpg"
+                    alt="card">
+                <h2 class="card-title"></h2>
+                <h3 class="card-subtitle"></h3>
+            </figure>
+
+            <article class="card-attacks"></article>
+            <ul class="card-footer"></ul>
+        </section>
+
+    </main>
+</body>
+
+</html>
