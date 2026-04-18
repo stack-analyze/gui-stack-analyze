@@ -1,6 +1,6 @@
 {
   "name": "gui-stack-analyze",
-  "version": "18.0.0",
+  "version": "19.0.0",
   "description": "GUI version inspired from npm module stack-analyze 1.0.5 and browser extension",
   "main": "app/main.js",
   "repository": {
@@ -26,21 +26,21 @@
   "license": "MIT",
   "dependencies": {
     "@tcgdex/sdk": "^2.7.1",
-    "axios": "^1.13.2",
+    "axios": "^1.15.0",
     "chart.js": "^4.5.1",
     "css-validator": "^0.11.0",
     "html-validator": "^6.0.1",
     "normalize.css": "^8.0.1",
-    "systeminformation": "^5.27.11",
+    "systeminformation": "^5.31.5",
     "timeago.js": "^4.0.2",
-    "w3c-css-validator": "^1.4.0",
+    "w3c-css-validator": "^1.4.1",
     "wapalyzer": "^6.10.65"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.39.1",
-    "electron": "^39.2.4",
-    "electron-builder": "^26.0.12",
-    "eslint": "^9.39.1"
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "electron": "^41.2.0",
+    "electron-builder": "^26.8.1",
+    "eslint": "^10.2.0"
   }
 }

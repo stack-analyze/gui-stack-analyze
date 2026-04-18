@@ -21,7 +21,7 @@ module.exports = [
       {
         page: '../scraping/index.html',
         title: 'web scraping'
-      }
+      },
     ]
   },
   {
@@ -75,7 +75,7 @@ module.exports = [
       {
         page: '../potter-search/index.html',
         title: 'potter search'
-      }
+      },
     ]
   },
   {
@@ -92,7 +92,11 @@ module.exports = [
       {
         page: '../poker-game/index.html',
         title: 'poker game',
-      }
+      },
+      {
+        page: '../magic-ball/index.html',
+        title: 'magic ball'
+      },
     ]
   }
 ]

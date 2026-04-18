@@ -1,19 +1,10 @@
 // modules
 const { join } = require('node:path')
-const { 
-  app, BrowserWindow, Menu, dialog, shell
-} = require('electron/main')
-// message
-const msg = require('./msg')
+const { app, BrowserWindow, Menu, } = require('electron/main')
 
-// about tools
-const aboutTools  = require('./aboutTools')
-
-// recomendation
-const recomendation = require('./recomendation')
-
-// mac os
-const isMac = process.platform === 'dawin'
+const {
+  isMac, macMenu, fileMenu, helpMenu
+} = require('./TemplateMenu.js')
 
 app.disableHardwareAcceleration()
 
@@ -28,83 +19,59 @@ const createWindow = () => {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      preload: join(__dirname, 'preload.js')
+      preload: join(__dirname, 'preload.js'),
     },
     autoHideMenuBar: false,
-    icon: join(__dirname, '../icons/icon.png')
+    icon: join(__dirname, '../icons/icon.png'),
   })
 
   // and load the index.html of the app.
   win.loadFile(join(__dirname, 'index/index.html'))
 
+  const radioWindow = () => {
+    const radio = new BrowserWindow({
+      parent: win,
+      width: 800,
+      height: 600,
+      minWidth: 800,
+      minHeight: 600,
+      icon: join(__dirname, '../icons/icon.png'),
+      title: 'radio stations',
+      modal: true,
+      show: false,
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: false,
+      }
+    })
+
+    radio.setMenuBarVisibility(false)
+    radio.loadFile(join(__dirname, 'radio/index.html'))
+    radio.once('ready-to-show', () => radio.show())
+  }
+
   // main menu template
   const templateMenu = [
-    ...(isMac
-      ? [
-        {
-          label: app.name,
-          submenu: [{ role: 'hide' }, { role: 'unhide' }, { role: 'quit' }]
-        }
-      ]
-      : []),
+    ...(macMenu),
+    fileMenu,
     {
-      label: 'File',
-      submenu: [
-        { role: 'minimize' },
-        isMac ? { role: 'close' } : { role: 'quit' }
-      ]
+      label: 'radio stations',
+      accelerator: isMac ? 'Comand+R' : 'Ctrl+R',
+      click() { radioWindow() }
     },
     {
       label: 'Option',
       submenu: [
         {
           label: 'delete analyzer',
-          accelerator: process.platform === 'darwin' ? 'Comand+D' : 'Ctrl+D',
+          accelerator: isMac ? 'Comand+D' : 'Ctrl+D',
           click() {
             win.webContents.send('clear-stack')
           }
         },
       ]
     },
-    {
-      label: 'Help',
-      submenu: [
-        aboutTools,
-        {
-          label: 'About App',
-          accelerator: 'F1',
-          click() {
-            dialog.showMessageBoxSync({
-              icon: join(__dirname, '../icons/icon.png'),
-              type: 'none',
-              buttons: ['OK'],
-              title: app.name,
-              message: msg
-            })
-          }
-        },
-        {
-          label: 'Recomendation',
-          submenu: recomendation
-        },
-        {
-          label: 'Learn wiki',
-          async click() {
-            await shell.openExternal(
-              'https://github.com/intermachine-developers/gui-stack-analyze/wiki'
-            )
-          }
-        },
-        {
-          label: 'Github',
-          async click() {
-            await shell.openExternal(
-              'https://github.com/intermachine-developers/gui-stack-analyze'
-            )
-          }
-        }
-      ]
-    }
+    helpMenu
   ]
 
   // menu bar
@@ -117,11 +84,11 @@ const createWindow = () => {
 app.whenReady().then(() => {
   createWindow()
 
-  app.on('activate', function () {
+  app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
 
-app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
+app.on('window-all-closed', () => {
+  if (!isMac) app.quit()
 })

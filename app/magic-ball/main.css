@@ -1,0 +1,36 @@
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.lang-select {
+    border: none;
+    outline: none;
+    font: inherit;
+    width: 100%;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1rem rgb(0 0 0 / 0.2);
+    background-color: rgb(0 0 0 / 0.5);
+    padding: .7rem;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.magic-ball {
+    color: #fff;
+    margin-top: 1.45rem;
+
+    & legend {
+        font-size: larger;
+        padding-inline: 8px;
+    }
+
+    & p {
+        font-size: x-large;
+        text-align: center;
+    }
+}

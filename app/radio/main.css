@@ -1,0 +1,132 @@
+/* fonts */
+@font-face {
+  font-family: 'Roboto';
+  font-display: block;
+  src: url('../fonts/Roboto-Regular.woff');
+  unicode-range: U+0370-03FF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #152331;
+  /* fallback */
+  background-image: linear-gradient(to right, #000000, #152331);
+  color: #fff;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.fab {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.5rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+  transition: all 0.2s ease;
+  opacity: 0.5;
+  pointer-events: none;
+
+  &.enabled {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &:hover {
+    scale: 1.08;
+    box-shadow: 0 6px 25px rgba(239, 68, 68, 0.5);
+  }
+
+  &:active {
+    scale: 0.95;
+  }
+}
+
+.stations-list {
+  list-style: none;
+  margin-block: 1em 0;
+  padding-left: 0;
+  height: 80vh;
+}
+
+
+/* input */
+.input-field {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+
+  & input {
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid #e2e8f0;
+    border-radius: 0.5rem;
+    color: inherit;
+    width: 65vw;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(237, 238, 240, 0.15);
+    }
+  }
+}
+
+.btn {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  color: #ffffff;
+
+  &:active {
+    scale: 0.98;
+  }
+}
+
+.btn-primary {
+  outline: 1px solid #19bb62;
+
+  &:hover {
+    background-color: #19bb62;
+  }
+}
+
+.btn-secondary {
+  outline: 1px solid #8a0f0f;
+
+  &:hover {
+    background-color: #8a0f0f;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 1.5rem 1rem 6rem;
+  }
+
+  .station-item {
+    padding: 0.875rem 1rem;
+  }
+}

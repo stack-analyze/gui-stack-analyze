@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>magic ball</title>
+  <!-- normalize -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css">
+  <!-- global stylesheet-->
+  <link rel="stylesheet" href="../styles/global.css">
+  <!-- main stylesheet-->
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <navbar-stack></navbar-stack>
+
+  <main class="container">
+    <section class="app-glass">
+      <fieldset class="input-field fields">
+        <div>
+          <input id="question" class="input-field-text" type="text" placeholder="enter a question?">
+        </div>
+
+        <div>
+          <select id="lang" class="lang-select">
+            <option class="" value="">select a scraping option:</option>
+            <option class="" value="en">en</option>
+            <option class="" value="es">es</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset class="input-field">
+        <button id="analyze-button" class="btn-submit full-btn" disabled>get anwser</button>
+      </fieldset>
+    </section>
+
+    <fieldset class="magic-ball">
+      <legend>sin respuesta</legend>
+      <p></p>
+    </fieldset>
+  </main>
+
+  <script async src="renderer.js"></script>
+</body>
+
+</html>
