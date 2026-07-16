@@ -2,13 +2,34 @@
 
 stack-analyze desktop all version and notable changes, fixed, remove and new additions in code.
 
+## version 20.0.0
+- shortwave stations schedule
+> npm version 1.4.3
+
+## version 19.0.0
+### Added
+- radio stations
+- magic ball
+> npm version 1.4.0 & 1.4.1
+
+## version 18.0.0
+- tgc pocket card info
+> npm version 1.3.9
+
+## version 17.0.0
+### Added
+- quotes tool
+> npm version 1.3.7
+
 ## version 16.0.0
 ### Added
 - poker tool
+> npm version 1.3.5
 
 ## version 15.0.0
 ### Added
 - potter search
+> npm version 1.3.3
 
 ## version 14.0.0
 ### Added 

@@ -47,6 +47,10 @@ module.exports = [
         page: '../tcgp/index.html',
         title: 'tcgp card info'
       },
+      {
+        page: '../shortwave/index.html',
+        title: 'shortwave stations search'
+      }
     ]
   },
   {

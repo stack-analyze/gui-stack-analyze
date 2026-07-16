@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>radio stations</title>
+  <!-- normalize -->
+  <link rel="stylesheet" href="../../node_modules/normalize.css/normalize.css" />
+  <!-- local css -->
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="../styles/global.css">
+</head>
+
+<body>
+  <navbar-stack></navbar-stack>
+
+  <main class="container">
+    <section class="app-glass row">
+      <fieldset class="input-field">
+        <input type="number" name="freq" id="freq" class="input-field-text" placeholder="enter a shortwave freq:"
+          min="2300" max="26100" />
+      </fieldset>
+
+      <fieldset class="input-field">
+        <button id="analyze-button" class="btn-submit full-btn" disabled>
+          search stations
+        </button>
+      </fieldset>
+    </section>
+
+    <section class="app-glass shortwave-container">
+      <table class="shortwave-table">
+        <thead class="shortwave-table-head">
+          <tr>
+            <th scope="col" class="shortwave-table-col">name</th>
+            <th scope="col" class="shortwave-table-col">lang</th>
+            <th scope="col" class="shortwave-table-col">days</th>
+            <th scope="col" class="shortwave-table-col">startUTC</th>
+            <th scope="col" class="shortwave-table-col">endUTC</th>
+          </tr>
+        </thead>
+
+        <tbody id="stations"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="./renderer.js"></script>
+</body>
+
+</html>
