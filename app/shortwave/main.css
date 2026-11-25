@@ -1,7 +1,7 @@
 .shortwave-container {
   position: relative;
   margin-top: 8px;
-  height: 76vh;
+  height: fit-content;
   overflow-y: auto;
   color: #fff;
   padding: 3px;

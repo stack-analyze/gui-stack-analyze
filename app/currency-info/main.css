@@ -1,0 +1,54 @@
+.currency-container {
+  position: relative;
+  margin-top: 8px;
+  margin-inline: auto;
+  width: 42vw;
+  height: fit-content;
+  overflow-y: auto;
+  color: #fff;
+  padding: 3px;
+}
+
+.currency-table {
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.428571;
+  text-align: left;
+
+  &:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
+    text-align: right;
+  }
+}
+
+.currency-table-head {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.currency-table-col {
+  padding: 12px 24px;
+  font-weight: 500;
+}
+
+.currency-table-body {
+
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 1px;
+  height: fit-content;
+
+  @property --tw-border-style {
+    syntax: "*";
+    inherits: false;
+    initial-value: solid;
+  }
+
+  & th {
+    padding: 16px 24px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  & td {
+    padding: 16px 24px;
+  }
+}

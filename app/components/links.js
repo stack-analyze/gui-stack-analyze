@@ -36,6 +36,10 @@ module.exports = [
         title: 'bitly info'
       },
       {
+        page: '../currency-info/index.html',
+        title: 'currency info'
+      },
+      {
         page: '../crypto-market/index.html',
         title: 'crypto market'
       },
